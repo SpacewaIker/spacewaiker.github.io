@@ -1,31 +1,26 @@
-mod router;
-
 use std::collections::HashMap;
 
+use leptos::{component, provide_context, view, IntoView};
+use leptos_meta::{provide_meta_context, Stylesheet};
+use leptos_router::{Route, Router, Routes};
+use portfolio::components::ContentDetailsView;
 use portfolio::ApplicationData;
-use router::{switch, Route};
-use stylist::yew::use_style;
 use toml::Table;
-use yew::prelude::*;
-use yew_router::prelude::*;
 
-#[function_component]
-fn App(data: &ApplicationData) -> Html {
-    let style = use_style!(
-        r"
-            height: 100%;
-            width: 100%;
-        "
-    );
+#[component]
+fn App(data: ApplicationData) -> impl IntoView {
+    provide_meta_context();
+    provide_context(data);
 
-    html! {
-        <div class={style}>
-            <ContextProvider<ApplicationData> context={data.clone()}>
-                <BrowserRouter>
-                    <Switch<Route> render={ switch } />
-                </BrowserRouter>
-            </ContextProvider<ApplicationData>>
-        </div>
+    view! {
+        <Stylesheet id="leptos" href="/dist/output.css" />
+        <Router>
+            // navbar
+            <Routes>
+                <Route path="/" view=|| view! { <h1 class="text-2xl text-red-900">"Home"</h1> } />
+                <Route path="/content/:id" view=ContentDetailsView />
+            </Routes>
+        </Router>
     }
 }
 
@@ -42,7 +37,9 @@ fn main() {
         language: String::from("en"),
     };
 
-    yew::Renderer::<App>::with_props(app_data).render();
+    console_error_panic_hook::set_once();
+
+    leptos::mount_to_body(|| view! { <App data=app_data/> });
 }
 
 /// Reroots the table to bring the language keys to the top level

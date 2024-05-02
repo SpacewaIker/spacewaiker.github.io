@@ -1,45 +1,61 @@
 use crate::ApplicationData;
-use toml::Value;
-use yew::prelude::*;
+use leptos::{component, use_context, view, CollectView, IntoView, SignalGetUntracked};
+use leptos_router::use_params_map;
 
-#[derive(Properties, Clone, PartialEq, Eq)]
-pub struct Props {
-    pub id: String,
-}
+#[component]
+pub fn ContentDetailsView() -> impl IntoView {
+    let params = use_params_map().get_untracked();
 
-#[function_component(ContentDetailsView)]
-pub fn content_details_view(props: &Props) -> Html {
+    let id = params.get("id");
+
+    if id.is_none() {
+        return view! {
+            <div>
+                <h1>{ "No id" }</h1>
+            </div>
+        };
+    }
+
+    let id = id.unwrap();
+
     let app_data = use_context::<ApplicationData>().expect("No context found!");
     let lang = app_data.language;
-    let content = app_data.content_map.get(&props.id);
+    let content = app_data.content_map.get(id);
 
     if content.is_none() {
-        return html! {
+        return view! {
             <div>
-                <h1>{ "Content not found" }</h1>
+                <h1>"Content not found"</h1>
             </div>
         };
     }
 
     let content = content.unwrap().get(&lang).unwrap().clone();
 
+    let title = content
+        .get("title")
+        .map(|v| v.as_str().unwrap_or("").to_owned());
+
     let links = content.get("links").map(|v| {
         v.as_table()
             .unwrap()
             .iter()
-            .map(|(key, value)| match key.as_str() {
-                "github" => html! { <a href={value.as_str()}>{"GH"}</a> },
-                "itchio" => html! { <a href={value.as_str()}>{"II"}</a> },
-                _ => Html::default(),
+            .map(|(key, value)| {
+                let url = value.as_str().unwrap().to_owned();
+                match key.as_str() {
+                    "github" => Some(view! { <a href=url>{"GH"}</a> }),
+                    "itchio" => Some(view! { <a href=url>{"II"}</a> }),
+                    _ => None,
+                }
             })
-            .collect::<Vec<Html>>()
+            .collect_view()
     });
 
-    html! {
+    view! {
         <div>
-            if let Some(Value::String(title)) = content.get("title") { <h1>{ title }</h1> }
-            if let Some(links) = links {{ links }}
-            <div>{"hello"}</div>
+            <h1>{id}</h1>
+            <h1>{title}</h1>
+            {links}
         </div>
     }
 }
