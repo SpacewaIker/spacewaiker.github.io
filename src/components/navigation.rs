@@ -3,6 +3,7 @@ use leptos::{component, document, use_context, view, window, IntoView, SignalGet
 use leptos_router::A;
 use wasm_bindgen::JsCast;
 
+/// Header component
 #[component]
 pub fn Header() -> impl IntoView {
     let app_data = use_context::<ApplicationData>().expect("No context found");
@@ -16,7 +17,7 @@ pub fn Header() -> impl IntoView {
     };
 
     view! {
-        <header class="text-yellow font-mono text-lg fixed text-center w-screen z-10 top-0">
+        <header class="text-yellow font-mono text-lg fixed text-center w-screen z-20 top-0">
             <svg class="-z-[1] h-28 w-full absolute" viewBox="0 0 100 150" preserveAspectRatio="none">
                 <polyline class="fill-purple drop-shadow-header" points="0 0, 100 0, 100 100, 0 70"></polyline>
             </svg>
@@ -43,11 +44,13 @@ pub fn Header() -> impl IntoView {
     }
 }
 
+/// Footer component
 #[component]
 pub fn Footer() -> impl IntoView {
     let app_data = use_context::<ApplicationData>().expect("No context found");
     let lang = app_data.language;
 
+    // Copy email to clipboard
     let copy_email = move |_| {
         let el = document()
             .create_element("input")
@@ -68,6 +71,7 @@ pub fn Footer() -> impl IntoView {
             .expect("Failed to copy");
         el.remove();
 
+        // show "copied" popup
         let popup = document()
             .get_element_by_id("email-copy-popup")
             .unwrap()
@@ -101,11 +105,9 @@ pub fn Footer() -> impl IntoView {
     };
 
     view! {
-        <footer class="absolute w-full flex justify-center text-beige text-lg space-x-20 font-line bg-beige">
-            <svg class="absolute fill-darkpurple w-full h-[28rem]" viewBox="0 0 100 120" preserveAspectRatio="none">
-                <polyline class="drop-shadow-footer" points="0 40, 100 20, 100 120, 0 120"></polyline>
-            </svg>
-            <div class="flex flex-col items-center text-center z-10 mt-40">
+        <footer class="sticky bottom-0 w-full flex justify-center text-beige text-lg space-x-20 font-line bg-darkpurple p-8">
+            // "Website Links" column
+            <div class="flex flex-col items-center text-center z-10">
                 <h1 class="font-mono text-3xl font-bold my-6">{move || if lang.get() == "fr" {"Liens du site"} else {"Website Links"}}</h1>
                 <ul>
                     <li><a class="sliding-underline-beige" href="/">{move || if lang.get() == "fr" {"Accueil"} else {"Home"}}</a></li>
@@ -113,7 +115,9 @@ pub fn Footer() -> impl IntoView {
                     <li><a class="sliding-underline-beige" href="/#timeline-screen">{move || if lang.get() == "fr" {"Chronologie"} else {"Timeline"}}</a></li>
                 </ul>
             </div>
-            <div class="flex flex-col items-center text-center z-10 mt-40">
+
+            // "Social" column
+            <div class="flex flex-col items-center text-center z-10">
                 <h1 class="font-mono text-3xl font-bold my-6">"Social"</h1>
                 <div class="absolute top-32 p-2 rounded-md border-4 border-purple bg-darkpurple -z-[1] opacity-0 transition-opacity duration-300" id="email-copy-popup">
                     {move || if lang.get() == "fr" {"Courriel copié !"} else {"Email Copied!"}}
@@ -128,7 +132,9 @@ pub fn Footer() -> impl IntoView {
                     <li><a class="sliding-underline-beige" href="/cv.pdf">CV</a></li>
                 </ul>
             </div>
-            <div class="flex flex-col items-center text-center z-10 mt-40">
+
+            // "About" column
+            <div class="flex flex-col items-center text-center z-10">
                 <h1 class="font-mono text-3xl font-bold my-6">{move || if lang.get() == "fr" {"À propos"} else {"About"}}</h1>
                 <p>
                     {move || if lang.get() == "fr" {"Site web conçu et construit par"} else {"Website designed and built by"}}

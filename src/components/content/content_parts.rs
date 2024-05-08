@@ -3,6 +3,7 @@ use toml::Value;
 
 use crate::utils::format_date;
 
+/// Component for the "tags" in a piece of content
 #[component]
 pub fn ContentTags(#[prop(into)] tags: Signal<Option<Value>>) -> impl IntoView {
     let list_items = move || {
@@ -22,6 +23,9 @@ pub fn ContentTags(#[prop(into)] tags: Signal<Option<Value>>) -> impl IntoView {
     }
 }
 
+/// Component for the date in a piece of content
+///
+/// The date is constant once loaded, but the language can change
 #[component]
 pub fn ContentDate(date: Option<Value>, #[prop(into)] lang: Signal<String>) -> impl IntoView {
     date.map(|v| {
@@ -44,6 +48,7 @@ pub fn ContentDate(date: Option<Value>, #[prop(into)] lang: Signal<String>) -> i
     })
 }
 
+/// Component for the "lines" in a piece of content
 #[component]
 pub fn ContentResumeLines(#[prop(into)] lines: Signal<Option<Value>>) -> impl IntoView {
     let list_items = move || {
@@ -63,6 +68,9 @@ pub fn ContentResumeLines(#[prop(into)] lines: Signal<Option<Value>>) -> impl In
     }
 }
 
+/// Component for the images in a piece of content
+///
+/// The images are rendered in a button that gets maximized when clicked
 #[component]
 pub fn ContentImageGallery(#[prop(into)] images: Signal<Option<Value>>) -> impl IntoView {
     images.get().map(|images| {
@@ -88,6 +96,9 @@ pub fn ContentImageGallery(#[prop(into)] images: Signal<Option<Value>>) -> impl 
     })
 }
 
+/// Component for the images in a piece of content
+///
+/// The images are rendered in full width
 #[component]
 pub fn ContentImageGalleryL(#[prop(into)] images: Signal<Option<Value>>) -> impl IntoView {
     images.get().map(|images| {
@@ -99,5 +110,31 @@ pub fn ContentImageGalleryL(#[prop(into)] images: Signal<Option<Value>>) -> impl
             .collect_view();
 
         view! { <div class="space-y-4">{ images }</div> }
+    })
+}
+
+/// Component for showing links as icons
+#[must_use]
+#[component]
+pub fn ContentLinkIcons(#[prop(into)] links: Signal<Option<Value>>) -> impl IntoView {
+    links.get().map(|links| {
+        links
+            .as_table()
+            .unwrap()
+            .iter()
+            .map(|(key, value)| {
+                let url = value.as_str().unwrap().to_owned();
+                let icon = match key.as_str() {
+                    "github" => view! { <i class="nf nf-fa-github"></i> },
+                    "itchio" => view! { <i class="nf nf-fa-itch-io"></i> },
+                    _ => view! { <i class="nf nf-fa-link"></i> },
+                };
+                view! {
+                    <a href=url target="_blank" class="text-4xl text-darkpurle ml-4 sliding-underline-low -top-1">
+                        { icon }
+                    </a>
+                }
+            })
+            .collect_view()
     })
 }

@@ -3,7 +3,7 @@ use std::collections::HashMap;
 use leptos::{component, provide_context, view, IntoView};
 use leptos_meta::{provide_meta_context, Stylesheet};
 use leptos_router::{Route, Router, Routes};
-use portfolio::components::{ContentDetailsView, Footer, Header};
+use portfolio::components::{ContentDetailsView, Footer, Header, NotFound};
 use portfolio::ApplicationData;
 use toml::Table;
 
@@ -15,15 +15,22 @@ fn App(data: ApplicationData) -> impl IntoView {
     view! {
         <Stylesheet id="leptos" href="/dist/output.css" />
         <Router>
-            // navbar
             <Header />
-            <Routes>
-                <Route path="/" view=|| view! { <h1 class="text-2xl mt-20 h-screen">"Home"</h1> } />
-                <Route path="/projects" view=|| view! { <h1 class="text-2xl mt-20">"projects"</h1> } />
-                <Route path="/experience" view=|| view! { <h1 class="text-2xl mt-20">"experience"</h1> } />
-                <Route path="/education" view=|| view! { <h1 class="text-2xl mt-20">"education"</h1> } />
-                <Route path="/content/:id" view=ContentDetailsView />
-            </Routes>
+            <div class="relative z-10">
+                <Routes>
+                    <Route path="/" view=|| view! { <h1 class="text-2xl mt-20 h-screen">"Home"</h1> } />
+                    <Route path="/projects" view=|| view! { <h1 class="text-2xl mt-20">"projects"</h1> } />
+                    <Route path="/experience" view=|| view! { <h1 class="text-2xl mt-20">"experience"</h1> } />
+                    <Route path="/education" view=|| view! { <h1 class="text-2xl mt-20">"education"</h1> } />
+                    <Route path="/content/:id" view=ContentDetailsView />
+                    <Route path="*" view=NotFound />
+                </Routes>
+
+                // required to make the footer angled
+                <svg class="h-20 w-full relative -top-2" viewBox="0 0 100 100" preserveAspectRatio="none">
+                    <polyline class="fill-beige" points="0 0, 100 0, 100 60, 0 100"></polyline>
+                </svg>
+            </div>
             <Footer />
         </Router>
     }

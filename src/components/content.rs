@@ -1,4 +1,4 @@
-use crate::{components::LinkIcons, ApplicationData};
+use crate::{components::NotFound, ApplicationData};
 use leptos::{component, create_memo, use_context, view, IntoView, SignalGet, SignalGetUntracked};
 use leptos_router::use_params_map;
 use std::borrow::ToOwned;
@@ -8,6 +8,9 @@ mod content_parts;
 #[allow(clippy::wildcard_imports)]
 use content_parts::*;
 
+/// Component for showing a detailed view of a piece of content
+///
+/// This is intended as a full-page view
 #[component]
 pub fn ContentDetailsView() -> impl IntoView {
     let params = use_params_map().get_untracked();
@@ -15,11 +18,7 @@ pub fn ContentDetailsView() -> impl IntoView {
     let id = params.get("id");
 
     if id.is_none() {
-        return view! {
-            <div>
-                <h1>{ "No id" }</h1>
-            </div>
-        };
+        return NotFound().into_view();
     }
 
     let id = id.unwrap();
@@ -29,11 +28,7 @@ pub fn ContentDetailsView() -> impl IntoView {
     let content = app_data.content_map.get(id).cloned();
 
     if content.is_none() {
-        return view! {
-            <div>
-                <h1>"Content not found"</h1>
-            </div>
-        };
+        return NotFound().into_view();
     }
 
     let content = create_memo(move |_| content.as_ref().unwrap().get(&lang.get()).unwrap().clone());
@@ -57,7 +52,7 @@ pub fn ContentDetailsView() -> impl IntoView {
     view! {
         <div class="bg-beige h-fit min-h-screen p-10 pt-20">
             <h1 class="font-title text-4xl font-bold underline text-darkpurple inline-block mb-4">{title}</h1>
-            <LinkIcons links=move || content.get().get("links").map(ToOwned::to_owned) />
+            <ContentLinkIcons links=move || content.get().get("links").map(ToOwned::to_owned) />
             <ContentDate date=content.get().get("date").map(ToOwned::to_owned) lang=lang />
             <ContentTags tags=move || content.get().get("tags").map(ToOwned::to_owned) />
             <div class="flex flex-row space-x-8">
@@ -74,5 +69,5 @@ pub fn ContentDetailsView() -> impl IntoView {
                 <ContentImageGalleryL images=move || content.get().get("media").map(ToOwned::to_owned) />
             </div>
         </div>
-    }
+    }.into_view()
 }

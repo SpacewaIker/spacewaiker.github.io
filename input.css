@@ -9,6 +9,11 @@
 @tailwind components;
 @tailwind utilities;
 
+/* continues the footer's colour */
+body {
+  @apply bg-darkpurple;
+}
+
 @layer components {
   .sliding-underline {
     @apply after:block after:absolute after:h-1 after:m-auto after:w-0 after:top-6 after:-inset-1 after:bg-[transparent] relative inline-block
@@ -27,16 +32,14 @@
     @apply sliding-underline hover:after:bg-beige;
   }
 
+  /* adds the underline to the current page on the header */
   [aria-current="page"] {
     @apply after:w-full after:bg-yellow;
   }
 
+  /* used in ContentResumeLines */
   .list-arrow {
     @apply *:before:content-['>'] *:before:font-mono *:before:text-lg *:before:mr-2;
-  }
-
-  .image-enlarge {
-    @apply w-[90vw] left-[5vw] rounded-none;
   }
 
   .fixed-center {
