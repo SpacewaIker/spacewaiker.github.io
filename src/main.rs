@@ -3,7 +3,7 @@ use std::collections::HashMap;
 use leptos::{component, provide_context, view, IntoView};
 use leptos_meta::{provide_meta_context, Stylesheet};
 use leptos_router::{Route, Router, Routes};
-use portfolio::components::ContentDetailsView;
+use portfolio::components::{ContentDetailsView, Footer, Header};
 use portfolio::ApplicationData;
 use toml::Table;
 
@@ -16,10 +16,15 @@ fn App(data: ApplicationData) -> impl IntoView {
         <Stylesheet id="leptos" href="/dist/output.css" />
         <Router>
             // navbar
+            <Header />
             <Routes>
-                <Route path="/" view=|| view! { <h1 class="text-2xl text-red-900">"Home"</h1> } />
+                <Route path="/" view=|| view! { <h1 class="text-2xl mt-20 h-screen">"Home"</h1> } />
+                <Route path="/projects" view=|| view! { <h1 class="text-2xl mt-20">"projects"</h1> } />
+                <Route path="/experience" view=|| view! { <h1 class="text-2xl mt-20">"experience"</h1> } />
+                <Route path="/education" view=|| view! { <h1 class="text-2xl mt-20">"education"</h1> } />
                 <Route path="/content/:id" view=ContentDetailsView />
             </Routes>
+            <Footer />
         </Router>
     }
 }
@@ -32,10 +37,7 @@ fn main() {
     let content = toml::from_str::<toml::Table>(file).expect("Unable to parse TOML");
     content_map.insert("test_content1".to_string(), reroot(content));
 
-    let app_data = ApplicationData {
-        content_map,
-        language: String::from("en"),
-    };
+    let app_data = ApplicationData::new(content_map, String::from("en"));
 
     console_error_panic_hook::set_once();
 

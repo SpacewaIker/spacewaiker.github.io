@@ -1,3 +1,68 @@
+@import url(https://fonts.cdnfonts.com/css/bahnschrift);
+@import url(https://fonts.googleapis.com/css?family=Raleway);
+@import url(https://fonts.googleapis.com/css?family=Bree+Serif);
+@import url(https://fonts.googleapis.com/css?family=Fira+Code);
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+@import url(https://www.nerdfonts.com/assets/css/webfont.css);
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .sliding-underline {
+    @apply after:block after:absolute after:h-1 after:m-auto after:w-0 after:top-6 after:-inset-1 after:bg-[transparent] relative inline-block
+    after:transition-[width,background-color] duration-200 hover:after:w-full hover:after:bg-darkpurple;
+  }
+  .sliding-underline-low {
+    @apply sliding-underline after:top-11;
+  }
+  .sliding-underline-yellow {
+    @apply sliding-underline hover:after:bg-yellow;
+  }
+  .sliding-underline-yellow-low {
+    @apply sliding-underline-yellow after:top-8;
+  }
+  .sliding-underline-beige {
+    @apply sliding-underline hover:after:bg-beige;
+  }
+
+  [aria-current="page"] {
+    @apply after:w-full after:bg-yellow;
+  }
+
+  .list-arrow {
+    @apply *:before:content-['>'] *:before:font-mono *:before:text-lg *:before:mr-2;
+  }
+
+  .image-enlarge {
+    @apply w-[90vw] left-[5vw] rounded-none;
+  }
+
+  .fixed-center {
+    @apply top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2;
+  }
+
+  /* .styled-body is applied to a container of markdown to html formatted text */
+  .styled-body {
+    @apply space-y-4;
+  }
+  .styled-body a {
+    @apply underline hover:text-purple;
+  }
+  .styled-body code { /* code snippets `` and `````` */
+    @apply bg-[#00000018];
+  }
+  .styled-body pre code { /* code blocks `````` */
+    @apply rounded-lg p-2;
+  }
+  .styled-body ul {
+    @apply list-disc ml-4;
+  }
+  .styled-body ol {
+    @apply list-decimal ml-4;
+  }
+  .styled-body blockquote {
+    @apply border-l-4 border-purple pl-2 font-line;
+  }
+}

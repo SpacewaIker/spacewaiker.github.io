@@ -1,6 +1,12 @@
-use crate::ApplicationData;
-use leptos::{component, use_context, view, CollectView, IntoView, SignalGetUntracked};
+use crate::{components::LinkIcons, ApplicationData};
+use leptos::{component, create_memo, use_context, view, IntoView, SignalGet, SignalGetUntracked};
 use leptos_router::use_params_map;
+use std::borrow::ToOwned;
+
+mod content_parts;
+
+#[allow(clippy::wildcard_imports)]
+use content_parts::*;
 
 #[component]
 pub fn ContentDetailsView() -> impl IntoView {
@@ -20,7 +26,7 @@ pub fn ContentDetailsView() -> impl IntoView {
 
     let app_data = use_context::<ApplicationData>().expect("No context found!");
     let lang = app_data.language;
-    let content = app_data.content_map.get(id);
+    let content = app_data.content_map.get(id).cloned();
 
     if content.is_none() {
         return view! {
@@ -30,32 +36,43 @@ pub fn ContentDetailsView() -> impl IntoView {
         };
     }
 
-    let content = content.unwrap().get(&lang).unwrap().clone();
+    let content = create_memo(move |_| content.as_ref().unwrap().get(&lang.get()).unwrap().clone());
 
-    let title = content
-        .get("title")
-        .map(|v| v.as_str().unwrap_or("").to_owned());
+    let title = move || {
+        content
+            .get()
+            .get("title")
+            .map(|v| v.as_str().unwrap_or("").to_owned())
+    };
 
-    let links = content.get("links").map(|v| {
-        v.as_table()
-            .unwrap()
-            .iter()
-            .map(|(key, value)| {
-                let url = value.as_str().unwrap().to_owned();
-                match key.as_str() {
-                    "github" => Some(view! { <a href=url>{"GH"}</a> }),
-                    "itchio" => Some(view! { <a href=url>{"II"}</a> }),
-                    _ => None,
-                }
-            })
-            .collect_view()
-    });
+    let icon = move || {
+        content.get()
+        .get("icon")
+        .map(|v| view! { <img src=v.as_str().unwrap().to_owned() class="relative w-1/2 left-1/4 -top-8 mb-4" /> })
+    };
+
+    let body_html = move || markdown::to_html(content.get().get("body").unwrap().as_str().unwrap());
+    let body = view! { <div inner_html=body_html class="font-paragraph text-darkpurple text-lg styled-body" /> };
 
     view! {
-        <div>
-            <h1>{id}</h1>
-            <h1>{title}</h1>
-            {links}
+        <div class="bg-beige h-fit min-h-screen p-10 pt-20">
+            <h1 class="font-title text-4xl font-bold underline text-darkpurple inline-block mb-4">{title}</h1>
+            <LinkIcons links=move || content.get().get("links").map(ToOwned::to_owned) />
+            <ContentDate date=content.get().get("date").map(ToOwned::to_owned) lang=lang />
+            <ContentTags tags=move || content.get().get("tags").map(ToOwned::to_owned) />
+            <div class="flex flex-row space-x-8">
+                <div class="ml-8 basis-3/4">
+                    <ContentResumeLines lines=move || content.get().get("resume_lines").map(ToOwned::to_owned) />
+                    {body}
+                </div>
+                <div class="basis-1/4">
+                    {icon}
+                    <ContentImageGallery images=move || content.get().get("media").map(ToOwned::to_owned) />
+                </div>
+            </div>
+            <div class="mt-16">
+                <ContentImageGalleryL images=move || content.get().get("media").map(ToOwned::to_owned) />
+            </div>
         </div>
     }
 }
