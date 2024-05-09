@@ -863,6 +863,7 @@ name = "portfolio"
 version = "0.1.0"
 dependencies = [
  "console_error_panic_hook",
+ "itertools",
  "leptos",
  "leptos_meta",
  "leptos_router",

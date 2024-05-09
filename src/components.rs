@@ -2,9 +2,11 @@ use leptos::{component, view, IntoView};
 
 mod content;
 mod navigation;
+mod page;
 
 pub use content::ContentDetailsView;
 pub use navigation::{Footer, Header};
+pub use page::ContentListingPage;
 
 /// Page for a wrong route
 #[must_use]

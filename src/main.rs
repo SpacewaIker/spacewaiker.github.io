@@ -3,14 +3,20 @@ use std::collections::HashMap;
 use leptos::{component, provide_context, view, IntoView};
 use leptos_meta::{provide_meta_context, Stylesheet};
 use leptos_router::{Route, Router, Routes};
-use portfolio::components::{ContentDetailsView, Footer, Header, NotFound};
-use portfolio::ApplicationData;
-use toml::Table;
+#[allow(clippy::wildcard_imports)]
+use portfolio::components::*;
+use portfolio::utils::reroot;
+use portfolio::{ApplicationData, PageData};
 
 #[component]
-fn App(data: ApplicationData) -> impl IntoView {
+fn App(
+    app_data: ApplicationData,
+    projects: PageData,
+    experience: PageData,
+    education: PageData,
+) -> impl IntoView {
     provide_meta_context();
-    provide_context(data);
+    provide_context(app_data);
 
     view! {
         <Stylesheet id="leptos" href="/dist/output.css" />
@@ -19,9 +25,9 @@ fn App(data: ApplicationData) -> impl IntoView {
             <div class="relative z-10">
                 <Routes>
                     <Route path="/" view=|| view! { <h1 class="text-2xl mt-20 h-screen">"Home"</h1> } />
-                    <Route path="/projects" view=|| view! { <h1 class="text-2xl mt-20">"projects"</h1> } />
-                    <Route path="/experience" view=|| view! { <h1 class="text-2xl mt-20">"experience"</h1> } />
-                    <Route path="/education" view=|| view! { <h1 class="text-2xl mt-20">"education"</h1> } />
+                    <Route path="/projects" view=move || view! { <ContentListingPage page_data=&projects /> } />
+                    <Route path="/experience" view=move || view! { <ContentListingPage page_data=&experience /> } />
+                    <Route path="/education" view=move || view! { <ContentListingPage page_data=&education /> } />
                     <Route path="/content/:id" view=ContentDetailsView />
                     <Route path="*" view=NotFound />
                 </Routes>
@@ -37,42 +43,57 @@ fn App(data: ApplicationData) -> impl IntoView {
 }
 
 fn main() {
-    // get and parse content
-    let mut content_map = HashMap::new();
-
-    let file = include_str!("../content/projects/test_content1.toml");
-    let content = toml::from_str::<toml::Table>(file).expect("Unable to parse TOML");
-    content_map.insert("test_content1".to_string(), reroot(content));
-
-    let app_data = ApplicationData::new(content_map, String::from("en"));
+    let (app_data, projects, experience, education) = load_data();
 
     console_error_panic_hook::set_once();
 
-    leptos::mount_to_body(|| view! { <App data=app_data/> });
+    leptos::mount_to_body(
+        || view! { <App app_data=app_data projects=projects experience=experience education=education /> },
+    );
 }
 
-/// Reroots the table to bring the language keys to the top level
-fn reroot(table: Table) -> Table {
-    let mut table_en = Table::new();
-    let mut table_fr = Table::new();
+fn load_data() -> (ApplicationData, PageData, PageData, PageData) {
+    // get and parse content
+    let mut content_map = HashMap::new();
 
-    for (key, value) in table {
-        if let toml::Value::Table(table) = value {
-            if table.contains_key("en") && table.contains_key("fr") {
-                table_en.insert(key.clone(), table.get("en").unwrap().clone());
-                table_fr.insert(key.clone(), table.get("fr").unwrap().clone());
-                continue;
-            }
-            table_en.insert(key.clone(), toml::Value::Table(table.clone()));
-            table_fr.insert(key.clone(), toml::Value::Table(table.clone()));
-        } else {
-            table_en.insert(key.clone(), value.clone());
-            table_fr.insert(key.clone(), value.clone());
-        }
-    }
+    let content_file = include_str!("../content/projects/test_content1.toml");
+    let content = toml::from_str::<toml::Table>(content_file).expect("Unable to parse TOML");
+    let content = reroot(content);
 
-    let mut new_table = Table::new();
-    new_table.insert("en".to_string(), toml::Value::Table(table_en));
-    new_table.insert("fr".to_string(), toml::Value::Table(table_fr));
-    new_table
+    content_map.insert("test_content1".to_string(), content.clone());
+    content_map.insert("test_content2".to_string(), content.clone());
+    content_map.insert("test_content3".to_string(), content.clone());
+
+    let projects = vec![
+        String::from("test_content1"),
+        String::from("test_content2"),
+        String::from("test_content3"),
+    ];
+
+    let projects_index_file = include_str!("../content/projects/index.toml");
+    let projects_index =
+        toml::from_str::<toml::Table>(projects_index_file).expect("Unable to parse TOML");
+    let projects_index = reroot(projects_index);
+
+    let (language, set_language) = leptos::create_signal("en".to_string());
+
+    (
+        ApplicationData {
+            content_map,
+            language,
+            set_language,
+        },
+        PageData {
+            index: projects_index,
+            ids: projects,
+        },
+        PageData {
+            index: toml::Table::new(),
+            ids: Vec::new(),
+        },
+        PageData {
+            index: toml::Table::new(),
+            ids: Vec::new(),
+        },
+    )
 }

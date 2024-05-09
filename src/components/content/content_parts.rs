@@ -72,8 +72,8 @@ pub fn ContentResumeLines(#[prop(into)] lines: Signal<Option<Value>>) -> impl In
 ///
 /// The images are rendered in a button that gets maximized when clicked
 #[component]
-pub fn ContentImageGallery(#[prop(into)] images: Signal<Option<Value>>) -> impl IntoView {
-    images.get().map(|images| {
+pub fn ContentImageGallery(images: Option<Value>, show_all: bool) -> impl IntoView {
+    images.map(|images| {
         let images = images
             .as_array()
             .unwrap()
@@ -81,7 +81,7 @@ pub fn ContentImageGallery(#[prop(into)] images: Signal<Option<Value>>) -> impl 
             .map(|image| {
                 view! {
                     <div class="py-2 has-[:focus]:fixed has-[:focus]:w-screen has-[:focus]:h-screen has-[:focus]:top-0 has-[:focus]:left-0
-                                has-[:focus]:backdrop-blur-sm has-[:focus]:backdrop-brightness-50">
+                                has-[:focus]:backdrop-blur-sm has-[:focus]:backdrop-brightness-50 has-[:focus]:z-50">
                         <button class="focus:fixed focus:fixed-center group">
                             <img src=image.as_str().unwrap().to_owned()
                                 class="rounded-xl hover:outline hover:outline-purple hover:shadow-lg group-focus:hover:outline-none
@@ -89,8 +89,13 @@ pub fn ContentImageGallery(#[prop(into)] images: Signal<Option<Value>>) -> impl 
                         </button>
                     </div>
                 }
-            })
-            .collect_view();
+            });
+
+        let images = if show_all {
+            images.collect_view()
+        } else {
+            images.take(1).collect_view()
+        };
 
         view! { <div>{ images }</div> }
     })
@@ -100,8 +105,8 @@ pub fn ContentImageGallery(#[prop(into)] images: Signal<Option<Value>>) -> impl 
 ///
 /// The images are rendered in full width
 #[component]
-pub fn ContentImageGalleryL(#[prop(into)] images: Signal<Option<Value>>) -> impl IntoView {
-    images.get().map(|images| {
+pub fn ContentImageGalleryL(images: Option<Value>) -> impl IntoView {
+    images.map(|images| {
         let images = images
             .as_array()
             .unwrap()
@@ -116,8 +121,8 @@ pub fn ContentImageGalleryL(#[prop(into)] images: Signal<Option<Value>>) -> impl
 /// Component for showing links as icons
 #[must_use]
 #[component]
-pub fn ContentLinkIcons(#[prop(into)] links: Signal<Option<Value>>) -> impl IntoView {
-    links.get().map(|links| {
+pub fn ContentLinkIcons(links: Option<Value>) -> impl IntoView {
+    links.map(|links| {
         links
             .as_table()
             .unwrap()
