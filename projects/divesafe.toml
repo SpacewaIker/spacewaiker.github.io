@@ -1,0 +1,58 @@
+date = { start = 2022-01-01, end = 2022-04-01 }
+title = { en = "DiveSafe", fr = "DiveSafe" }
+icon = "DiveSafe_logo.png"
+media = ["divesafe_screenshot.png"]
+
+[tags]
+en = [
+  "Java",
+  "MVC",
+  "UML",
+  "Test Driven Development",
+  "Behaviour Driven Development",
+  "Gherkin",
+  "JavaFX",
+]
+fr = [
+  "Java",
+  "MVC",
+  "UML",
+  "Test Driven Development",
+  "Behaviour Driven Development",
+  "Gherkin",
+  "JavaFX",
+]
+
+[summary]
+en = "With the help of five other students, I worked on a desktop GUI managing app for a fictional diving company. Based on the Model-View-Controller design pattern, this program allowed administrators to manage users, schedules, and equipment."
+fr = "Avec l'aide de cinq autre étudiants, j'ai travaillé sur une application de gestion avec interface graphique pour une compagnie de plongée fictive. Basée sur le motif d'architecture modèle-vue-contrôleur, ce programme permettait aux administrateurs de gérer les utilisateurs, les horaires et l'équipement."
+
+[resume_lines]
+en = [
+  "Developed a desktop GUI application for managing diving members, trips, and equipment rental.",
+  "Collaborated with five other developers from the architecture design to the development and testing.",
+  "Used the Model-View-Controller design pattern and developed the application both as Test- and Behavior-Driven-Development.",
+  "Designed and created a logo for the application.",
+]
+fr = [
+  "Développement d'une application avec interface graphique permettant de gérer les membres et les excursions de plongée, ainsi que la location d'équipement.",
+  "Collaboration avec cinq autres développeurs du design de l'architecture au développement et à la phase de tests.",
+  "Utilisation du motif d'architecture modèle-vue-contrôleur et a développé l'application en « test-driven-development » ainsi qu'en « behavior-driven-development ».",
+  "Design et creation d'un logo pour l'application.",
+]
+
+[body]
+en = """
+The DiveSafe desktop application is a management application for a fictional diving company. It can manage club members, diving guides and their schedules, member trips, and equipment rental.
+
+The purpose of this project was to experiment with popular design pattern and development styles. As such, the application's architecture was based on the Model-View-Controller pattern. The Model was built from a UML diagram and the Java classes were automatically generated from a model description using the Umple tool. Some parts of the Controller were developed with Test-Driven-Development, while for others we used Behavior-Driven-Development. For the former, we used JUnit, and for the latter, we used Cucumber and Gherkin user stories. Finally, for the graphical user interface, we used JavaFX.
+
+I also designed and created the application's logo which you can see above!
+"""
+fr = """
+L'application DiveSafe est une application de gestion pour une companie de plongée fictive. Elle permet de gérer les membres du club, les guides de plongée et leur horaire, les excursions des membres, et la location d'équipement.
+
+Le but principal de ce projet était d'expérimenter avec des motifs de design et des styles de développement populaires. Le motif d'architecture choisi était donc le modèle-vue-contrôleur. Le modèle a été construit à partir d'un diagramme UML, et les classes Java ont été générées automatiquement à partir d'une description du modèle grâce à l'outil Umple. Certaines parties du contrôleur ont été développées en « test-driven-development », et d'autres en « behavior-driven-development ». Pour les tests unitaires, nous avons utilisé JUnit, alors que pour les tests d'intégration, nous avons utilisé Cucumber et Gherkin. Finalement, nous avons utilisé JavaFX pour créer l'interface graphique.
+
+J'ai aussi designé et créé le logo de l'application visible ci-dessus!
+"""

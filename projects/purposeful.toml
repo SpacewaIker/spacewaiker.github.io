@@ -1,0 +1,43 @@
+date = { start = 2023-01-01, end = 2023-05-01 }
+title = { en = "Purposeful", fr = "Purposeful" }
+
+[links]
+github = "https://github.com/wassimjabz/purposeful"
+
+[tags]
+en = ["Java", "JavaScript", "Spring", "Next.js", "PostgreSQL"]
+fr = ["Java", "JavaScript", "Spring", "Next.js", "PostgreSQL"]
+
+[summary]
+en = "In a team of 10 developers, I practiced my agile skills by developing a web application during two scrum sprints, along with regular meetings, a scrum master, and a product owner."
+fr = "Dans une équipe de 10 développeurs, j'ai pratiqué mes connaissances agile en développant une appliaction web durant deux sprints scrum, avec des réunions régulières, un scrum master et un product owner."
+
+[resume_lines]
+en = [
+  "Developed a web application that allows users to share project ideas and find collaborators.",
+  "Worked as part of a team of 10 developers over two sprints to deliver a fully functional application.",
+  "Managed the project's development using the scrum framework with a product owner and a scrum master.",
+  "Implemented advanced features such as OAuth2 authentication using Spring Security and JWT Tokens.",
+]
+fr = [
+  "Développement d'une application web permettant aux utilisateurs de partager des idées de projets et de trouver des collaborateurs.",
+  "Travail dans une équipe de 10 développeurs pendant deux sprints pour développer une application complètement fonctionnelle.",
+  "Gestion du développement du projet en utilisant le principe scrum avec un product owner et un scrum master.",
+  "Implémentation de fonctionnalités avancées telles l'autentification OAuth2 avec Spring Security et des tokens JWT.",
+]
+
+[body]
+en = """
+For this project, we tackled an issue that we see often as software engineering students: everyone wants to work on big projects, but everyone works on their own, limiting the potential of what's created. The goal was therefore to create a platform where people can easily collaborate to create projects that have a purpose.
+
+A big part of the project was also to experience working in a large team, with 10 developers, and how to manage the project with the scrum framework. As such, we worked through two three-week sprints, where we managed the project backlog, refined tasks at the beginning of the sprints, held sprint planning meetings, etc. We also had a product owner to focus our efforts into making the project successful, and a scrum master to help the other developers if they encountered issues.
+
+The result is probably the most polished project I've worked on so far, with a lot of features and a great user experience. I'm very proud of what we accomplished, given the time frame and our very busy schedules. We were also able to work on some more advanced features such as authentication, which is something that we often overlooked before due to time constraints.
+"""
+fr = """
+Pour ce projet, nous nous sommes attaqués à un problème que nous voyons souvent en tant qu'étudiants en génie logiciel: tout le monde veut travailler sur des gros projets, mais tout le monde travaille seul, ce qui limite le potentiel de ce qui est créé. Le but était donc de créer une plateform où les utilisateurs peuvent facilement collaborer pour créer des projets ayant une utilité et un but concrets.
+
+Une grosse partie du projet était aussi d'avoir l'expérience de travailler dans une grande équipe, avec 10 développeurs, et de voir comment gérer le projet avec la méthodologie scrum. Nous avons donc travaillé sur le projet pendant deux sprints de trois semaines, où nous gérions le backlog, précisions les tâches au début des sprints, se recontraient pour planifier les prints, etc. Nous avions aussi un product owner pour concentrer nos efforts dans le but d'avoir un projet fonctionnel et un scrum master qui aidait les autres développeurs s'ils avaient des problèmes.
+
+Le résultat est probablement le projet le plus poli sur lequel j'ai travaillé avec beaucoup de fonctionnalités et une très bonne expérience utilisateur. Je suis très fier de ce que nous avons accompli, étant donné le laps de temps et nos horaires très occupés. Nous avons aussi pu travailler sur des fonctionnalités plus avancées telles l'autentification, ce qui est quelque chose que nous avions souvant négligé précédemment à cause de contraintes de temps.
+"""

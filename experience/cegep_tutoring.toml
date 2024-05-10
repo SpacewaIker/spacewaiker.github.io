@@ -1,0 +1,29 @@
+date = { start = 2020-09-01, end = 2020-12-01 }
+title = { en = "Tutoring", fr = "Tutorat" }
+icon = "stlawrence_logo.png"
+
+[tags]
+en = ["Teaching", "Mathematics", "Physics", "Chemistry"]
+fr = ["Enseignement", "Mathématiques", "Physique", "Chimie"]
+
+[summary]
+en = "During this semester, I started to tutor students in my CEGEP who had difficulty in the fields of Calculus, Mechanics, and Electromagnetism."
+fr = "Pendant ce semestre, j'ai commancé à faire du tutorat à mon cégep pour des étudiants avec des difficultés en calcul différentiel/intégral, en méchanique et en électromagnétisme."
+
+[resume_lines]
+en = ["Tutored other CEGEP students in mathematics, physics, and chemistry."]
+fr = [
+  "Tutorat pour d'autres élèves du cégep en mathématiques, physique et chimie.",
+]
+
+[body]
+en = """
+At the beginning of my second year of CEGEP, I was contacted as a potential tutor for the classes I was best at: mathematics, physics, and chemistry. As I enjoy helping other people learn and making people understand things, I started tutoring.
+
+Since this was in the fall of 2020, the covid-related lockdowns were in effect and I had to tutor through videoconferencing sessions. This made the task somewhat more difficult, but I used the tools available to me to make the most out of this experience and to teach as best I could!
+"""
+fr = """
+Au début de ma deuxième année de cégep, j'ai été contacté en tant que tuteur potentiel pour les cours dans lesquels je réussissais le mieux, soit les mathématiques, la physique et la chimie. Vu que j'apprécie aider les autres à apprendre et faire comprendre les autres, j'ai commencé à faire du tutorat.
+
+Puisque c'était en automne 2020, les confinement liés à la covid étaient en place et j'ai du faire du tutorat via videoconférence. Cela à légèrement compliqué la tâche, mais j'ai pu utiliser les outils à ma disposition pour tirer le meilleur parti de cette situation et enseinger du mieux que je pouvais!
+"""

@@ -1,0 +1,34 @@
+date = { start = 2022-10-01, end = 2022-11-01 }
+title = { en = "Museum Manager", fr = "Gestionnaire de musée" }
+
+[tags]
+en = ["Java", "TypeScript", "Spring", "Next.js", "PostgreSQL"]
+fr = ["Java", "TypeScript", "Spring", "Next.js", "PostgreSQL"]
+
+[summary]
+en = "I collaborated within a team of six students to develop a museum management webapp. The backend was written in Java using Spring, and the frontend in TypeScript with Next.js. The webapp manages items, employees, and customers."
+fr = "J'ai collaboré dans une équipe de six étudiants pour développer une application web de gestion de musée. Le backend a été écrit en Java avec Spring, et le frontend en TypeScript avec Next.js. L'application web gère les items, employés, et clients."
+
+[resume_lines]
+en = [
+  "Created a webapp for managing a museum's items, employees, and customers.",
+  "Developed a modern webapp from the domain model design and the Java backend using Spring and a PostgreSQL database to the frontend using TypeScript and Next.js.",
+  "Collaborated in a team of six developers using GitHub Issues and Projects to manage the development.",
+]
+fr = [
+  "Création d'une application web pour gérer les items, employés et clients d'un musée.",
+  "Développement d'une application web moderne du design du modèle de domaine et le backend Java avec Spring et une base de données PostgreSQL au frontend avec TypeScript et Next.js.",
+  "Collaboration au sein d'une équipe de six développeurs en utilisant des GitHub Issues et un GitHub Project pour gérer le développement.",
+]
+
+[body]
+en = """
+This project is a management web application for a fictional museum that allows the management of the museum's items, employees, and customers. Items can be put in specific rooms or in storage and can be loaned by customers. Customers can also donate items to the museum. Employees can approve loans and donations in addition to putting items in and out of storage. Finally, the museum's owner can perform the same actions as the employees in addition to hiring and firing employees.
+
+As this project is more or less a follow-up to the [DiveSafe project](https://thibautbaguette.com/content/divesafe), the goals are similar: to learn about project management techniques while familiarizing ourselves with the tools used in the industry. As such, we used a Kanban board with GitHub Projects to manage our tasks. We also used GitHub and GitHub Issues to collaborate on the project and to manage our code. Our backend was written in Java using the Spring framework connected to a PostgreSQL database. Finally, our frontend was written in TypeScript using Next.js.
+"""
+fr = """
+Ce projet est une application web de gestion pour un musée fictif qui permet la gestion des items, employés et clients du musée. Les items peuvent être déplacés dans des pièces spécifiques ou en stockage et peuvent être loués par les clients. Les clients peuvent aussi donner des items au musée. Les employés peuvent approuver les locations et les donations ainsi que de mettre des items en stockage ou en salle de montre. Finalement, le propriétaire du musée peut performer les mêmes actions qu'un employé, mais peut aussi engager et renvoyer des employés.
+
+Puisque ce projet est plus ou moins un successeur au [projet DiveSafe](https://thibautbaguette.com/content/divesafe), les buts sont similaires : d'apprendre des techniques de gestion de projet et de se familiariser avec les outils utilisés en industrie. Comme tel, nous avons utilisé un tableau Kanban avec un GitHub Project pour gérer les tâches. Nous avons aussi utilisé GitHub et des GitHub Issues pour collaborer sur le projet et pour gérer notre code. Le backend a été écrit en Java avec le framework Spring connecté à une base de données PostgreSQL. Le frontend a été écrit en TypeScript avec Next.js.
+"""

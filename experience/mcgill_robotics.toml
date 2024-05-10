@@ -1,0 +1,37 @@
+date = { start = 2022-10-01, end = 2022-12-01 }
+title = { en = "Software Developer", fr = "Développeur logiciel" }
+icon = "mcgill_robotics_logo.png"
+
+[tags]
+en = ["Systems Programming", "UI Design", "Python", "C", "MS Planner"]
+fr = [
+  "Programmation système",
+  "Conception d'interface",
+  "Python",
+  "C",
+  "MS Planner",
+]
+
+[summary]
+en = "To explore the field of robotics, I joined McGill's robotics team as part of the software engineering division for the Mars rover project."
+fr = "Pour explorer le domaine de la robotique, j'ai rejoint l'équipe de robotique de McGill en tant que membre de la division de génie logiciel pour le projet de rover martien."
+
+[resume_lines]
+en = [
+  "Developing the software for a Mars rover competing in the University Rover Challenge.",
+  "Collaborating on a software engineering project within a team of thirty students.",
+  "Familiarizing myself with Linux (Ubuntu) development to work with the Rover Operating System (ROS) library.",
+]
+fr = [
+  "Développement de logiciel pour un rover martien qui participe au University Rover Challenge.",
+  "Collaboration sur un projet de génie logiciel au sein d'une équipe de trente étudiants.",
+  "Familiarisation avec le développement Linux (Ubuntu) pour travailler avec la librairie Rover Operating System (ROS).",
+]
+
+[body]
+en = """
+Now that I felt comfortable with my software development skills and that I knew I could put my expertise to use, I joined the McGill Robotics Team. The team's slogan is "Inspiring students to build robots. Building robots to inspire students", which I think embodies perfectly my own vision of what engineering projects should be. The team currently has three projects: a Mars rover, an autonomous underwater vehicle (AUV), and a drone. I have chosen to work on the rover as I have always been interested in space and everything around it.
+"""
+fr = """
+Maintenant que j'étais à l'aise avec mes talents de développement logiciel et que je savais que mon expertise serait utile, j'ai rejoint l'équipe de robotique de McGill. Le slogan de l'équipe est « Inspirer des étudiants à construire des robots. Construire des robots pour inspirer des étudiants », ce qui communique parfaitement ma propre vision de ce que les projets d'ingéniérie devraient être. L'équipe a pour l'instant trois projets: un rover martien, un véhicule sous-marin autonome, et un drone. J'ai choisi de travailler sur le rover puisque j'ai toujours été intéressé par l'espace et tout ce qui s'y rapporte.
+"""

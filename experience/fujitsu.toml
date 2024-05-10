@@ -1,0 +1,39 @@
+date = { start = 2022-05-01, end = 2022-07-01 }
+title = { en = "GIS Developer Intern", fr = "Stagiaire en développement géomatique" }
+icon = "fujitsu-logo.png"
+
+[tags]
+en = ["JavaScript", "Node.js", "Docker", "PostgreSQL", "Proof of Concept"]
+fr = ["JavaScript", "Node.js", "Docker", "PostgreSQL", "Preuve de concept"]
+
+[summary]
+en = "I developed a proof of concept for a web-based mobile application related to indoor routing. I researched the technologies that would be used, and worked with Docker containers and a PostgreSQL database."
+fr = "J'ai développé une preuve de concept pour une application web mobile liée au routage en intérieur. J'ai recherché les technologies qui pourraient être utilisées et j'ai travaillé avec des containers Docker et une base de données PostgreSQL."
+
+[resume_lines]
+en = [
+  "Successfully developed a proof-of-concept indoor routing web application in JavaScript/Node.js.",
+  "Connected a front-end web application to a PostgreSQL database running on an Ubuntu Docker container.",
+  "Identified the most efficient technologies concerning what format the geographic data should be encoded in, which JavaScript libraries and which routing engine to use.",
+]
+fr = [
+  "Développement avec succès d'une preuve de concept pour une application web de routage en intérieur avec JavaScript/Node.js.",
+  "Connection d'une application web front-end avec une base de données PostgreSQL roulant sur un container Docker Ubuntu.",
+  "Identification des technologies les plus efficaces pour l'encodage des données géographiques, pour les libraires JavaScript/Node.js et quel engin de routage à utiliser.",
+]
+
+[body]
+en = """
+For this internship I was tasked with developing a proof-of-concept for a web application related to indoor routing. During the development, I had to research the available technologies and make decisions as to which technologies were best suited for this project. I also had to adapt to some compatibility issues I encountered and instead opted for Docker containers for the back-end of the application.
+
+The application was developed in JavaScript with Yarn and Webpack. For the back-end, I used Docker Compose to create a PostgreSQL database, a PostgREST API, and a routing engine that would all three work together. The web application was deployed on an IIS server.
+
+At the end of the internship, the application was fully functional and responded to the clients' requirements.
+"""
+fr = """
+Pour ce stage, j'ai été chargé de développer une preuve de concept pour une application web liée au routage en intérieur. Pendant le développement, j'ai du rechercher les technologies possibles et faire des décisions sur quelles technologies seraient les plus adaptées au projet. J'ai aussi du m'adapter à cause de problèmes de compatibilité que j'ai rencontré ce qui m'a poussé à utiliser des containers Docker pour le back-end de l'application.
+
+L'application a été développée en JavaScript avec Yarn et Webpack. Pour le back-end, J'ai utilisé Docker Compose pour créer une base de données PostgreSQL, un API PostgREST et un engin de routage qui travailleraient tous les trois ensemble. L'appliation web a été deployée sur un serveur IIS.
+
+À la fin du stage, l'application était totalement fonctionelle et répondait aux exigences du client.
+"""

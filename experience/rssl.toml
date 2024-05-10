@@ -1,0 +1,55 @@
+date = { start = 2023-05-01, end = 2023-07-01 }
+title = { en = "Machine Learning Research Assistant", fr = "Assistant de recherche en machine learning" }
+icon = "rssl-logo-r-white.png"
+
+[tags]
+en = [
+  "Python",
+  "Tensorflow",
+  "Computer Vision",
+  "Machine Learning",
+  "C++",
+  "Academic Research",
+]
+fr = [
+  "Python",
+  "Tensorflow",
+  "Vision par ordinateur",
+  "Machine learning",
+  "C++",
+  "Recherche académique",
+]
+
+[summary]
+en = "I developed computer vision models for deployment on edge devices such as the development board I was working with: a Raspberry Pi with a camera with hardware acceleration for ML."
+fr = "J'ai développé des modèles de computer vision pour un déploiement sur des appareils périphériques tels la carte de développement avec laquelle je travaillais: un Raspberry Pi doté d'une caméra avec de l'accélération matérielle pour le ML."
+
+[resume_lines]
+en = [
+  "Implemented computer vision models from published papers in Python with Tensorflow.",
+  "Developed a C++ application using a computer vision model to process a video feed in real time.",
+  "Processed quantized neural networks using specialized tooling for use on a development board.",
+  "Set up a development board for research and development uses, including installing the OS and building drivers.",
+]
+fr = [
+  "Implémentation de modèles de computer vision d'articles publiés en Python avec Tensorflow.",
+  "Développement d'une application en C++ utilisant un modèle de computer vision pour traiter un flux vidéo en temps réel.",
+  "Traite de réseaux quantifiés en utilisant des outils spécialisés pour l'utilisation sur une carte de développement.",
+  "Configuration d'une carte de développement pour des utilisations de recherche et développement, incluant l'installation de l'OS et la construction des pilotes.",
+]
+
+[body]
+en = """
+For my second internship, I have the chance to work as a research assistant at the Reliable Silicon Systems Lab at McGill University. My task was to set up a machine learning development board and to figure out how to get a computer vision model to run on it. The development board was a Raspberry Pi with a camera module with a hardware acceleration chip for machine learning tasks.
+
+During the internship, I implemented multiple computer vision models from published papers, such as LeNet and PortraitNet, using Tensorflow. Each model had to be quantized to 8-bit integers using Tensorflow Lite, before being processed and pacakged with the board's proprietary toolchain. Then, a C++ application would use the packaged model to run directly on the edge device.
+
+By the end, I had successfully implemented and run two computer vision models and a third one was in progress.
+"""
+fr = """
+Pour mon deuxième stage, j'ai eu la chance de travailer en tant qu'assistant de recherche au *Reliable Silicon Systems Lab* à l'université McGill. Ma tache était de configurer une carte de développement pour le machine learning et de trouver comment exécuter un modèle de machine learning dessus. La carte de développement était un Raspberry Pi avec un module de caméra doté d'une puce d'accélération matérielle pour les tâches de machine learning.
+
+Pendant le stage, j'ai implémenté plusieurs modèles de computer vision provenant d'articles publiés, tels que LeNet et PortraitNet, en utulisant Tensorflow. Chaque modèle devait être quantifié en nombres entiers de 8 bits en utilisant Tensorflow Lite, avant d'être traité avec la chaine d'outils de la carte. Ensuite, une application C++ utilisait le modèle final pour être executé directement sur l'appareil périphérique.
+
+À la fin, j'avais implémenté avec succès deux modèles de computer vision avec un troixième en cours.
+"""

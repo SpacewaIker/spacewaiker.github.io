@@ -1,0 +1,15 @@
+[title]
+en = "Projects"
+fr = "Projets"
+
+[body]
+en = """
+One of the best ways to learn programming is through practicing and working on projects. Whether it is alone or in a team, for a course or a personal project, trying to create something is crucial to concretizing theoretical knowledge.
+
+My bigger projects are presented below, and almost all are also available on GitHub. Scroll down to discover them!
+"""
+fr = """
+Une des meilleures façons d'apprendre la programmation est en pratiquant et en travaillant sur des projets. Que ce soit seul ou en équipe, pour un cours ou un projet personnel, essayer de créer quelque chose est crucial pour concrétizer les connaissances théoriques.
+
+Mes plus gros projets sont présentés ci-dessous, et la majorité sont aussi présentés sur GitHub. Faites défiler pour les découvrir!
+"""

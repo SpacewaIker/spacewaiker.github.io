@@ -1,0 +1,42 @@
+date = { start = 2023-09-01 }
+title = { en = "Roll-a-Ball?", fr = "Roll-a-Ball?" }
+media = ["rollaball_screenshot_1.png", "rollaball_screenshot_2.png"]
+
+[links]
+itchio = "https://spacewaiker.itch.io/roll-a-ball"
+
+[tags]
+en = ["Game Development", "Unreal Engine 5", "C++", "Blueprints"]
+fr = ["Développement de Jeux", "Unreal Engine 5", "C++", "Blueprints"]
+
+[summary]
+en = "To apply to the GameDev McGill club, I created a small top-down exploration game in Unreal Engine 5, vaguely based on Unity's Roll-a-Ball tutorial."
+fr = "Pour appliquer au club GameDev McGill, j'ai créé un petit jeu d'exploration en vue du dessus avec Unreal Engine 5, vaguement basé sur le tutoriel « Roll-a-Ball » de Unity."
+
+[resume_lines]
+en = [
+  "Created a small top-down game in Unreal Engine 5 using C++ and Blueprints.",
+  "Familiarized myself with the Enhanced Input Plugin as well as animations in UE5.",
+  "Developed a game in a few days to apply to the GameDev McGill club.",
+]
+fr = [
+  "Création d'un petit jeu en vue de dessus avec Unreal Engine 5 en utilisant C++ et des blueprints.",
+  "Je me suis familiarisé avec le Enhanced Input System, ainsi que les animations dans UE5.",
+  "Développement d'un jeu en quelques jours pour appliquer au club GameDev McGill.",
+]
+
+[body]
+en = """
+To apply to the GameDev McGill club, I had to complete the Roll-a-Ball tutorial from Unity. I decided to do it in Unreal Engine 5, as I was more familiar with it. And as I found that a ball rolling about was a bit pointless, I changed it into a wizard character collecting items in a small village. You can run around, jump, rotate the top-down camera, and even get jump boosts on hay carts!
+
+As the goal of this project was to do a small project in a few days, I didn't do anything groundbreaking with it. However, I still learned more about making animations based on context (running, jumping, falling, etc.), and I learned how to use Unreal's Enhanced Input Plugin to handle user input well, including both keyboard and mouse and controller input.
+
+You can learn more about the game on my (itch.io page)[https://spacewaiker.itch.io/]!
+"""
+fr = """
+Pour appliquer au club GameDev McGill, je devais compléter le tutoriel Roll-a-Ball de Unity. J'ai décidé de le faire avec Unreal Engine 5 puisque j'étais plus à l'aise avec ce moteur de jeu. Et comme je trouvais qu'une balle roulant était un peu simple, je l'ai transformé en un magicien collectionnant des items dans un petit village. Vous pouvez courir, sauter, tourner la caméra en vue de dessus et même obtenir un super saut sur des bottes de fouin!
+
+Puisque le but de ce projet était de faire un petit projet en quelques jours, je n'ai rien fait de trop compliqué. Par contre, j'ai quand même pu en apprendre plus sur les animations en fonction du contexte (courir, sauter, tomber, etc.) et j'ai appris comment utiliser le Enhanced Input Plugin pour gérer les entrées de l'utilisateur correctement, en incluant le clavier et la souris, ainsi que la manette de jeu.
+
+Vous pouvez en apprendre plus sur le jeu sur ma (page itch.io)[https://spacewaiker.itch.io/]!
+"""

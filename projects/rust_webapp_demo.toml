@@ -1,0 +1,38 @@
+date = { start = 2023-01-01, end = 2023-04-01 }
+title = { en = "Rust Webapp Demo", fr = "Démo d'application web Rust" }
+media = ["artist_details.png"]
+
+[links]
+github = "https://www.github.com/SpacewaIker/rust-webapp-demo/"
+
+[tags]
+en = ["Rust", "Rocket", "SeaORM", "Yew", "PostgreSQL"]
+fr = ["Rust", "Rocket", "SeaORM", "Yew", "PostgreSQL"]
+
+[summary]
+en = "To explore the frontend and backend web frameworks in Rust, I created a small demo web application. The result is a snappy website written all in one language and which was incredibly fun to work on."
+fr = "Pour explorer les frameworks web frontend et backend en Rust, j'ai créé une petite application web démo. Le résultat est un site web vif écrit en un seul langage, sur lequel il était très agréable de travailler."
+
+[resume_lines]
+en = [
+  "Developed a web application using the Rust programming language for the full stack.",
+  "Used the Rocket framework with SeaORM for the backend and Yew for the frontend.",
+  "Created a snappy web application frontend running on the browser with WebAssembly.",
+]
+fr = [
+  "Développement d'une application web en utilisant le langage de programmation Rust pour le stack complet.",
+  "Utilisation du framework Rocket avec SeaORM pour le backend et Yew pour le frontend.",
+  "Création d'un frontend d'application web vif, s'exécutant dans le navigateur grâce a WebAssembly.",
+]
+
+[body]
+en = """
+The main goal of this project was to check out the web frameworks in Rust and to see what the experience of creating a web application completely in Rust would be like. The website is a discography management app, where the user can create and link artists, albums, and songs.
+
+Overall, I was impressed by the frameworks, given that the Rust language is still relatively new. The frameworks were quite similar to other web frameworks I've worked with in the past such as Spring and React, while retaining the Rust awesomeness. I had a lot of fun working on this small project through which I also learned a lot about Rust and WebAssembly.
+"""
+fr = """
+Le but principal de ce projet était de jeter un coup d'oeil aux frameworks web en Rust et de voir comment serait l'expérience de créer une application web complètement en Rust. Le site web est une application de gestion de discographie, où l'utilisateur peut créer et lier des artistes, des albums, et des chansons.
+
+Globalement, j'ai été impressioné par les frameworks, étant donné que Rust est un langage encore relativement jeune. Les frameworks étaient similaires à d'autres frameworks avec lesquels j'avais précédemment travaillé, tels Spring et React, tout en gardant les aspects qui rendent Rust génial. Je me suis beaucoup amusé à travailler sur ce projet, à travers lequel j'ai aussi appris beaucoup à propos de Rust et de WebAssembly.
+"""

@@ -1,0 +1,46 @@
+date = { start = 2021-10-01, end = 2021-12-01 }
+title = { en = "Pong", fr = "Pong" }
+media = ["pong_screenshot.png"]
+
+[links]
+github = "https://www.github.com/SpacewaIker/Pong"
+
+[tags]
+en = [
+  "Java",
+  "Game Development",
+  "Physics Simulation",
+  "Object-Oriented Programming",
+]
+fr = [
+  "Java",
+  "Développement de jeux",
+  "Simulation physique",
+  "Programmation orientée objet",
+]
+
+[summary]
+en = "As my first Java project, I created a clone of Pong. I also added features such as a pause feature and in-game color customization, variable speed, and opponent difficulty."
+fr = "Pour mon premier projet en Java, j'ai créé un clone du jeu Pong. J'ai aussi ajouté des fonctionalités telles des customisations de couleurs, une vitesse variable, une difficulté variable, et une fonctionalité de pause."
+
+[resume_lines]
+en = [
+  "Recreated the Pong game in Java with a physics simulation for the ball's movement.",
+  "The game includes settings such as the opponent's difficulty, the physics simulation's speed, and the colour of the ball and paddles.",
+]
+fr = [
+  "Recreation du jeu de Pong en Java avec une simulation de physique pour le mouvement de la balle.",
+  "Le jeu inclut des options telles la difficulté de l'adversaire, la vitesse de la simulation, et les couleurs de la balle et des raquettes.",
+]
+
+[body]
+en = """
+For this project I recreated the classic Pong game in Java. This was my first project in Java and a more formal introduction to Object Oriented Programming. As such, the game was first developed with a functional/imperative programming style, and then later converted to an Object-Oriented Programming style. This allowed for easier maintenance of the code, as well as additional features, such as multiple balls simulation through multithreading.
+
+The game includes many features such as a scoring system with renamable players, colour settings for the ball and paddles, game settings, and keyboard shortcuts for actions like restarting the game, pausing the game, and quitting the game.
+"""
+fr = """
+Pour ce projet, j'ai recréé le jeu classique de Pong en Java. Ceci était mon premier peojet en Java et une introduction plus formelle à la programmation orientée objet. Le jeu a donc été développé en premier lieu avec un style fonctionnel/impératif et a été plus tard converti en un style orienté objet. L'orienté objet permettait un maintien du code plus facile, ainsi que des fonctionnalités additionelles telles plusieurs simulations de balles avec du multithreading.
+
+Le jeu inclut de nombreuses fonctionnalités : un systeme de pointage avec des joueurs que l'on peut renommer, des options de couleurs pour la balle et les raquettes, des options de jeux et des raccourcis clavier pour des actions comme récommencer, pauser ou quitter la partie.
+"""

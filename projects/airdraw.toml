@@ -1,0 +1,56 @@
+date = { start = 2021-10-01, end = 2021-11-01 }
+title = { en = "AirDraw", fr = "AirDraw" }
+media = ["airdraw_screenshot.png"]
+
+[links]
+github = "https://www.github.com/SpacewaIker/AirDraw/"
+other = "https://devpost.com/software/air-drawing"
+
+[tags]
+en = [
+  "Python",
+  "SciKit-Learn",
+  "MediaPipe",
+  "AI/ML",
+  "Computer Vision",
+  "StreamLit",
+]
+fr = [
+  "Python",
+  "SciKit-Learn",
+  "MediaPipe",
+  "IA/ML",
+  "Vision par Ordinateur",
+  "StreamLit",
+]
+
+[summary]
+en = "This was the final project for the AI Bootcamp. With the help of another student, I created an AI-based game where the user can draw shapes by waving their hand and making hand signs in front of a camera."
+fr = "Ceci était le projet final pour le cours d'IA. Avec l'aide d'un autre étudiant, j'ai créé un jeu basé sur l'IA où le joueur peut dessiner des formes en bougeant sa main et en faisant des signes devant une caméra."
+
+[resume_lines]
+en = [
+  "Built an artificial intelligence based web app in Python.",
+  "Built, trained, and saved the machine learning model used for the recognition of the hand signs.",
+  "Improved the model's performance through data augmentation techniques.",
+]
+fr = [
+  "Développement d'une application web basée sur l'intelligence artificielle en Python.",
+  "Création, entraînement, et sauvegarde du modèle de machine learning utilisé pour la reconaissance des signes de mains.",
+  "Amélioration de la performance du modèle en utilisant des techniques d'augmentation de données.",
+]
+
+[body]
+en = """
+This project was the final assignment for the McGill Artificial Intelligence Society's "MAIS 202" AI bootcamp. The goal of this assignment was to use all that we learned throughout the bootcamp to come up with an AI-based application. My partner and I were interested in computer vision, and as such, decided to build an app where the user would draw shapes by waving their hand and making signs in front of a camera.
+
+We handled the full development of the app, from the gathering of the training data, to choice of which machine learning algorithm to use, and the building and training of the model. We decided to go for a decision tree algorithm for the classification of the hand signs, and we used MediaPipe's Hands library to extract the hand's position from the video stream. For the web app, we used StreamLit and PyVirtualCam as these libraries were straightforward and corresponded perfectly to our needs.
+
+As this was a team project, I developed my teamwork skills. Notably, I had to demonstrate good communication and time management skills due to some problems I encountered with my teammate. The code for the model training as well as a proof of concept web app are available on the GitHub repository. A DevPost page was also made for this project."""
+fr = """
+Ce projet était le dernier du cours d'IA « MAIS 202 » de la société d'intelligence artificielle de McGill. Le but du projet était d'utiliser tout ce que nous avions appris dans le cours pour créer une application basée sur l'intelligence artificielle. Mon coéquipier et moi étions intéressés par la vision par ordinateur et avons donc décidé de créer une application où l'utilisateur dessinerait des formes en bougeant sa main et en faisant des signes devant une caméra.
+
+Nous avons géré le développement complet de l'application, de la collection des données d'entraînement au choix d'algorithme et la création et l'entraînement du modèle. Nous avons décidé d'opter pour un algorithme d'arbre de décision pour la classificiation des signes de main. Nous avons utilisé la librairie Hands de MediaPipe pour extraire la position des mains du flux vidéo. Pour l'application web nous avons utilisé StreamLit et PyVirtualCam puisque ces librairies étaient simples et correspondaient parfaitement à nos besoins.
+
+Puisqu'il s'agissait d'un projet d'équipe, j'ai pu développer mes compétences de travail d'équipe. Notament, j'ai du démontrer de bonnes compétences de communication et de gestion du temps à cause de problèmes que j'ai rencontrés avec mon coéquipier. Le code pour l'entraînement du modèle ainsi qu'une preuve de concept sont disponibles sur le dépot GitHub. Une page DevPost a aussi été créée pour le projet.
+"""

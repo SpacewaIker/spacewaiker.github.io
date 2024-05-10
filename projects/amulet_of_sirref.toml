@@ -1,0 +1,53 @@
+date = { start = 2023-05-01, end = 2023-07-01 }
+title = { en = "The Amulet of Sirref", fr = "The Amulet of Sirref" }
+media = ["rust-roguelike_screenshot.png"]
+
+[links]
+github = "https://www.github.com/SpacewaIker/rust-roguelike/"
+itchio = "https://spacewaiker.itch.io/the-amulet-of-sirref"
+
+[tags]
+en = ["Rust", "Bracket-lib", "WebAssembly", "Game Development", "Roguelike"]
+fr = [
+  "Rust",
+  "Bracket-lib",
+  "WebAssembly",
+  "Développement de Jeux",
+  "Roguelike",
+]
+
+[summary]
+en = "As I wanted to set foot in the world of game development, I created *The Amulet of Sirref*, a roguelike game written all in Rust, which you can play in your browser!"
+fr = "Puisque je voulais mettre le pied dans le monde du développement de jeux vidéos, j'ai créé *The Amulet of Sirref*, un jeu roguelike écrit tout en Rust, que l'on peut jouer dans le navigateur internet!"
+
+[resume_lines]
+en = [
+  "Developed a roguelike game in Rust using the Bracket-lib library and Legion ECS.",
+  "Implemented a procedural map generator, a turn-based combat system, and a simple enemy AI.",
+  "Released the game publicly as a web assembly application, playable from virtually any device with a keyboard.",
+]
+fr = [
+  "Développement d'un jeu roguelike en Rust avec la librairie Bracket-lib et le ECS Legion.",
+  "Implémentation d'un système de génération de cartes procédural, un système de combat au tour-par-tour, et une IA d'ennemis simple.",
+  "Publication du jeu publiquement en application web assembly, jouable depuis virtuellement tous les appareils avec un clavier.",
+]
+
+[body]
+en = """
+For this second project in Rust, I wanted to dive more seriously into game development. As such, I decided to follow Herbert Wolverson's [Hands-on Rust](https://hands-on-rust.com/) book, an introductory tutorial to creating a roguelike game in Rust. I however pushed my game much further by adding many more features, different game modes, more items, more enemies, etc.
+
+The game is a turn-based roguelike dungeon crawler, where the player must find the Amulet of Sirref, a powerful artifact that will allow them to rid the world of evil monsters. The player must fight their way through the dungeon, defeating enemies and collecting items to help them on their quest, such as weapons, armor, potions, and special items.
+
+Overall, I am very proud of what I was able to accomplish in my first serious game development project. I also learned a lot about game development, such as how an entity-component-system architecture works, while further improving my Rust skills.
+
+The game is available to play online, right in your browser: (try it out!)[https://thibautbaguette.com/rust-roguelike] (you will need a keyboard).
+"""
+fr = """
+Pour ce deuxième projet en Rust, je voulais me lancer plus sérieusement dans le développement de jeux vidéos. J'ai donc décidé de suivre le livre [*Hands-on Rust*](https://hands-on-rust.com/) de Herbert Wolverson, un tutoriel d'introduction sur les jeux roguelike en Rust. J'ai par contre poussé mon jeu beuacoup plus loin en ajoutant beaucoup de fonctionnalités telles différents modes de jeu, plus d'items, plus d'ennemis, etc.
+
+Le jeu est un roguelike au tour-par-tour, où le joueur doit trouver l'Amulette de Sirref, un artefact puissant qui lui permettra de vaincre les monstres maléfiques. Le joueur doit se battre contre des monstres à travers le donjon, collectant des items pour l'aider sur sa quête, tels des armes, de l'armure, des potions et des items spéciaux.
+
+Globalement, je suis très fier de ce que j'ai accompli pour mon premier projet sérieux en développement de jeux vidéos. J'ai aussi appris énormément à propos du développement de jeux vidéos, notemment comment fonctionne l'architecture entity-component-system, tout en améliorant mes capacités en Rust.
+
+Le jeu est disponible en ligne, directement dans votre navigateur web: (essayez-le!)[https://thibautbaguette.com/rust-roguelike] (clavier nécessaire).
+"""

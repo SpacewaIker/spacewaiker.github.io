@@ -1,0 +1,36 @@
+date = { start = 2024-01-01, end = 2024-04-01 }
+title = { en = "C Compiler", fr = "Compilateur C" }
+# media = []
+
+# [links]
+# github = ""
+
+[tags]
+en = ["C", "Compiler", "Java", "MIPS Assemply"]
+fr = ["C", "Compilateur", "Java", "Assembly MIPS"]
+
+[summary]
+en = "For my Compiler Design class, I wrote a complete compiler for a subset of the C progamming language from scratch in Java."
+fr = "Pour mon cours de « Compiler Design », j'ai écrit un compilateur pour une partie du langage de programmation C, de zéro en Java."
+
+[resume_lines]
+en = [
+  "Complete compiler for a subset of the C language from scratch in Java.",
+  "Implemented a lexer, a parser, a semantic analyzer, and a code generator.",
+]
+fr = [
+  "Compilateur complèt pour une partie du langage C écrit de zéro en Java.",
+  "Implémentation d'un lexer, un parser, un semantic analyzer st un code generator.",
+]
+
+[body]
+en = """
+For my Compiler Design course, I had to write a compiler for a subset of the C programming language from scratch in Java. This includes the front-end, written by hand, and the back-end.
+
+This project is still underway, and I have still a lot to learn about compilers!
+"""
+fr = """
+Pour mon cours de "Compiler Design", j'ai eu a écrire un compilateur pour une partie du langage de programmation C, de zéro en Java. Cela inclut le front-end, écrit manuellement, et le back-end.
+
+Ce projet est encore en cours, j'ai encore beaucoup de choses à apprendre sur les compilateurs!
+"""

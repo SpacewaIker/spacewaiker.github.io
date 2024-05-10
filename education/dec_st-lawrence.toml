@@ -1,0 +1,35 @@
+date = { start = 2019-09-01, end = 2021-05-01 }
+title = { en = "DEC Pure & Applied Science", fr = "DEC en sciences pures et appliquées" }
+icon = "stlawrence_logo.png"
+
+[summary]
+en = "..."
+fr = "..."
+
+[resume_lines]
+en = [
+  "Selected for the Honour List for the semesters of Winter 2020, Fall 2020, and Winter 2021.",
+  "Participated in the Canadian Open Mathematics Challenge and received Performance with Honours.",
+  "Tutored other students in Mathematics, Physics, and Chemistry.",
+]
+fr = [
+  "Séléctionné pour la liste d'honneur pour les semestres d'hiver 2020, d'automne 2020, et d'hiver 2021.",
+  "Participation au défi ouvert canadien en mathématiques et a reçu un certificat « Performance with Honours ».",
+  "Tutorat en mathematiques, physique, et chimie.",
+]
+
+[body]
+en = """
+During my two years in CEGEP, I focused mainly on my studies, even though I began to learn programming on the side. This was my first time going to an English-speaking school as a native French speaker. As such, there was a bit of getting used to, but I was quickly comfortable with learning in English.
+
+In my second year, I began to do some tutoring in mathematics, physics, and chemistry. I also participated in the Canadian Open Mathematical Challenge and received Performance with Honours.
+
+At the middle of my second semester, the first covid quarantining started. From then, the rest of my college studies were remote. Once teachers and students got used to remote learning/teaching, I used this opportunity to improve my autodidactic skills and my autonomy.
+"""
+fr = """
+Pendant mes deux années de cégep, je me suis principalement concentré sur mes études, même si j'ai commancé à apprendre la programmation dans mes temps libres. En tant que francophone, c'était la première fois que j'allais dans une école anglophone. Il y a donc eu une petite période d'adapation, mais j'étais vite à l'aise d'apprendre en anglais.
+
+Lors de ma deuxième année, j'ai commencé à faire du tutorat en mathématiques, en physique et en chimie. J'ai aussi participé au défit ouvert canadien de mathématiques, pour lequel j'ai reçu un certificat « Performance with Honours ».
+
+À la moitié de mon deuxième semestre, le premier confinement de covid a commencé. À partir de ce moment, le reste de mon cégep était à distance. Une fois que les professeurs et étudianats se sont habitués à l'enseignment à distance, j'ai pu utiliser cette opportunité pour améliorer mes compétences autodidactes et mon autonomie.
+"""

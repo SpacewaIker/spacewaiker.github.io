@@ -1,0 +1,50 @@
+date = { start = 2022-05-01, end = 2022-09-01 }
+title = { en = "Portfolio Website (v1)", fr = "Site web portfolio (v1)" }
+icon = "favicon.ico"
+media = [
+  "website_v1_screenshot_desktop.png",
+  "website_v1_screenshot_mobile.jpg",
+]
+
+[links]
+github = "https://www.github.com/SpacewaIker/spacewaiker.github.io/"
+
+[tags]
+en = ["HTML", "CSS", "JavaScript", "JQuery"]
+fr = ["HTML", "CSS", "JavaScript", "JQuery"]
+
+[summary]
+en = "I created this website with HTML, CSS, JavaScript, and also lots of inspiration, dedication, and ingenuity!"
+fr = "J'ai créé ce site web avec du HTML, du CSS, JavaScript, et aussi beaucoup d'inspiration, de dédication, et d'ingéniosité!"
+
+[resume_lines]
+en = [
+  "Designed a developer portfolio website using Figma.",
+  "Built a responsive static website using HTML, CSS, and JavaScript.",
+  "Published a bilingual website using GitHub Pages and Google Domains.",
+]
+fr = [
+  "A designé un site web portfolio pour développeur avec Figma.",
+  "A créé un site web statique adaptatif avec du HTML, du CSS et du JavaScript.",
+  "A publié un site web bilingue avec GitHub Pages et Google Domains.",
+]
+
+[body]
+en = """
+During the summer I designed and built this very website. I took some online courses on HTML, CSS, JavaScript, and JQuery to get started and learned the rest along the way.
+
+I first designed the website in Figma, at which point I decided on a design that was interactive and fun, yet simple and functional. I also chose a color palette, the fonts I would use and what content I would include.
+
+After this, I started prototyping some parts of the website such as the menu popup on mobile, the horizontally-scrolling timeline, and the title animation. This allowed me to get more comfortable with JavaScript as well as starting to build pieces of the website. I then started to build the complete website.
+
+Through a lot of creative thinking, problem solving, and dedication, I was able to finish the website before the start of the Fall 2022 semester, and the beginning of the internship application season.
+"""
+fr = """
+Pendant l'été j'ai designé et créé ce site même. J'ai suivi des cours de HTML, CSS, JavaScript et JQuery pour démarrer et puis j'ai appris le reste en cours de route.
+
+J'ai d'abord designé le site avec Figma et je me suis décidé sur un design qui était intéractif et amusant, tout en étant simple et fonctionnel. J'ai aussi choisi une palette de couleurs, les polices que j'utiliserais, et quel contenu j'y incluerait.
+
+Après, j'ai commencé à prototyper certaines parties du site, telles le bouton de menu sur mobile, la ligne du temps qui défile horizontalement, et l'animation du titre. Ceci m'a permis de me familiariser avec JavaScript, ainsi que de commencer à créer des parties du site web. Par la suite, j'ai commencé à créer le site complet.
+
+Avec beaucoup de créativité, de resolution de problèmes et de dédication, j'ai pu finir le site web avant le début du semestre d'automne 2022, et avant le début de la période d'application de stages.
+"""

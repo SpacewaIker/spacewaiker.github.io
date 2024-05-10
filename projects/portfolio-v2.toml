@@ -1,0 +1,27 @@
+date = { start = 2024-05-01 }
+title = { en = "Portfolio Website (v2)", fr = "Site web portfolio (v2)" }
+icon = "favicon.ico"
+# media = []
+
+[links]
+github = "https://www.github.com/SpacewaIker/spacewaiker.github.io"
+
+[tags]
+en = ["Rust", "Leptos", "WebAssembly"]
+fr = ["Rust", "Leptos", "WebAssembly"]
+
+[summary]
+en = ""
+fr = ""
+
+[resume_lines]
+en = [""]
+fr = [""]
+
+[body]
+en = """
+
+"""
+fr = """
+
+"""

@@ -1,0 +1,34 @@
+date = { start = 2021-01-01 }
+title = { en = "Snake", fr = "Snake" }
+media = ["snake_screenshot.png"]
+
+[links]
+github = "https://www.github.com/SpacewaIker/Snake"
+
+[tags]
+en = ["Python", "PyGame", "Game Development"]
+fr = ["Python", "PyGame", "Développement de Jeux"]
+
+[summary]
+en = "Going back to the roots of video game history, I made a clone of the classic Snake game. This game was complete with beeps and crashes and a high score feature."
+fr = "Retournant aux racines des jeux video, j'ai créé un clone du jeu Snake. Le jeu avait des effets sonores et une fonctionalité de « high score »."
+
+[resume_lines]
+en = [
+  "Recreated the game of Snake with Python and PyGame.",
+  "Included sound elements and various color schemes for the snake.",
+  "High score feature.",
+]
+fr = [
+  "Recréation le jeu Snake avec Python et PyGame.",
+  "Inclut des éléments sonores et plusieurs thèmes de couleurs pour le serpent.",
+  "Fonctionnalité de « high score ».",
+]
+
+[body]
+en = """
+As one of my bigger Python projects, I recreated the game of Snake with PyGame. This game includes sound effects when the snake eats a fruit and when it collides. The game also includes a high score feature and multiple snake speeds. The snake had multiple colour schemes.
+"""
+fr = """
+Un de mes plus gros projets en Python a été de recréer le jeu Snake avec PyGame. Le jeu inclut des effets sonores quand le serpent mange un fruit ou quand il entre en collision. Le jeu inclut aussi une fonctionnalité de « high score » et plusieurs vitesses de serpent. Le serpent avait aussi plusieurs thèmes de couleurs.
+"""
