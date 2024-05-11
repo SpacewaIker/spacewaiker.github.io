@@ -18,9 +18,7 @@ pub fn Header() -> impl IntoView {
 
     view! {
         <header class="text-yellow font-mono text-lg fixed text-center w-screen z-20 top-0">
-            <svg class="-z-[1] h-28 w-full absolute" viewBox="0 0 100 150" preserveAspectRatio="none">
-                <polyline class="fill-purple drop-shadow-header" points="0 0, 100 0, 100 100, 0 70"></polyline>
-            </svg>
+            <div class="bg-purple -z-[1] w-[130vw] h-24 absolute rotate-1 -left-[15vw] -top-8 shadow-header"></div>
             <nav class="inline-block *:inline-block *:mr-4 mt-4">
                 <div>
                     "menu("

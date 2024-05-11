@@ -19,14 +19,10 @@ module.exports = {
       darkgray: "#202220",
     },
     extend: {
-      dropShadow: {
+      boxShadow: {
         header: [
           '0 8px 6px rgb(0 0 0 / 0.1)',
-          '0 4px 3px rgb(0 0 0 / 0.4)',
-        ],
-        footer: [
-          '0 -8px 6px rgb(0 0 0 / 0.1)',
-          '0 -4px 3px rgb(0 0 0 / 0.4)',
+          '0 4px 3px rgb(0 0 0 / 0.2)',
         ],
       },
     },

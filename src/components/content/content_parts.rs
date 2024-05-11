@@ -68,6 +68,10 @@ pub fn ContentResumeLines(#[prop(into)] lines: Signal<Option<Value>>) -> impl In
     }
 }
 
+fn image_path(image: &str) -> String {
+    format!("https://github.com/SpacewaIker/portfolio-v2/blob/content/media/{image}?raw=true")
+}
+
 /// Component for the images in a piece of content
 ///
 /// The images are rendered in a button that gets maximized when clicked
@@ -83,7 +87,7 @@ pub fn ContentImageGallery(images: Option<Value>, show_all: bool) -> impl IntoVi
                     <div class="py-2 has-[:focus]:fixed has-[:focus]:w-screen has-[:focus]:h-screen has-[:focus]:top-0 has-[:focus]:left-0
                                 has-[:focus]:backdrop-blur-sm has-[:focus]:backdrop-brightness-50 has-[:focus]:z-50">
                         <button class="focus:fixed focus:fixed-center group">
-                            <img src=image.as_str().unwrap().to_owned()
+                            <img src=image_path(image.as_str().unwrap())
                                 class="rounded-xl hover:outline hover:outline-purple hover:shadow-lg group-focus:hover:outline-none
                                        group-focus:max-w-[90vw] group-focus:max-h-[90vh]"/>
                         </button>
@@ -111,7 +115,7 @@ pub fn ContentImageGalleryL(images: Option<Value>) -> impl IntoView {
             .as_array()
             .unwrap()
             .iter()
-            .map(|image| view! { <img src=image.as_str().unwrap().to_owned() class="rounded-xl shadow-lg"/> })
+            .map(|image| view! { <img src=image_path(image.as_str().unwrap()) class="rounded-xl shadow-lg"/> })
             .collect_view();
 
         view! { <div class="space-y-4">{ images }</div> }
