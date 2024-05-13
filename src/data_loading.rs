@@ -1,64 +1,34 @@
-use std::collections::HashMap;
-
 use base64::prelude::*;
-use futures::future::join_all;
+use cached::proc_macro::cached;
+use futures::{future::join_all, TryFutureExt};
 use reqwest::header::{HeaderMap, HeaderValue, ACCEPT, AUTHORIZATION};
-use reqwest::Client;
+use reqwest::{Client, RequestBuilder};
 
-use crate::{utils::reroot, PageData};
+use crate::utils::reroot;
 
-pub async fn load_data() -> (
-    HashMap<String, toml::Table>,
-    String,
-    PageData,
-    PageData,
-    PageData,
-) {
-    // get and parse content
-    let mut content_map = HashMap::new();
+/// Fetches and parses content from a given path
+///
+/// The path should be a relative path to the content file in the repository.
+/// The file will be parsed as a TOML file.
+#[cached]
+pub async fn get_content(path: String) -> toml::Table {
+    #[cfg(debug_assertions)]
+    leptos::logging::log!("Loading content for path: {path}");
 
     let client = create_client();
 
-    let (projects_index, projects) = fetch_directory(&client, "projects").await;
-    let projects_ids = projects
-        .iter()
-        .map(|(id, _)| id.clone())
-        .collect::<Vec<String>>();
-    content_map.extend(projects);
+    let req = client.get(format!(
+        "https://api.github.com/repos/SpacewaIker/portfolio-v2/contents/{path}.toml?ref=content"
+    ));
 
-    let (experience_index, experience) = fetch_directory(&client, "experience").await;
-    let experience_ids = experience
-        .iter()
-        .map(|(id, _)| id.clone())
-        .collect::<Vec<String>>();
-    content_map.extend(experience);
-
-    let (education_index, education) = fetch_directory(&client, "education").await;
-    let education_ids = education
-        .iter()
-        .map(|(id, _)| id.clone())
-        .collect::<Vec<String>>();
-    content_map.extend(education);
-
-    (
-        content_map,
-        String::from("en"),
-        PageData {
-            index: projects_index,
-            ids: projects_ids,
-        },
-        PageData {
-            index: experience_index,
-            ids: experience_ids,
-        },
-        PageData {
-            index: education_index,
-            ids: education_ids,
-        },
-    )
+    fetch_parse_content(req).await
 }
 
+/// Creates a `reqwest::Client` with the necessary headers for GitHub API requests
+#[cached]
 fn create_client() -> Client {
+    #[cfg(debug_assertions)]
+    leptos::logging::log!("Creating client");
     let github_pat = include_str!("../.github_pat").trim();
 
     let mut headers = HeaderMap::new();
@@ -76,98 +46,79 @@ fn create_client() -> Client {
     Client::builder().default_headers(headers).build().unwrap()
 }
 
-async fn fetch_directory(
-    client: &Client,
-    directory: &str,
-) -> (toml::Table, Vec<(String, toml::Table)>) {
-    let listing_json = client
-        .get(format!("https://api.github.com/repos/SpacewaIker/portfolio-v2/contents/{directory}?ref=content"))
+/// Fetches the list of items in a directory
+///
+/// # Panics
+/// If the JSON response from the GitHub API is not an array
+#[cached]
+pub async fn get_directory_items(directory: String) -> Vec<String> {
+    #[cfg(debug_assertions)]
+    leptos::logging::log!("Loading items for directory: {directory}");
+
+    let client = create_client();
+
+    client.get(format!("https://api.github.com/repos/SpacewaIker/portfolio-v2/contents/{directory}?ref=content"))
         .send()
+        .and_then(reqwest::Response::json::<serde_json::Value>)
+        .and_then(|json| async move {
+            let listing = json.as_array().expect("Directory listing is not an array");
+
+            let mut items = join_all(listing.iter().map(|repo_file| async {
+                let file_name = repo_file
+                    .get("name")
+                    .unwrap()
+                    .as_str()
+                    .unwrap()
+                    .split('.')
+                    .next()
+                    .unwrap()
+                    .to_owned();
+
+                let content = get_content(format!("{directory}/{file_name}").to_owned()).await;
+
+                (file_name, content)
+            })).await;
+
+            items.sort_by_key(|(_, table)| {
+                let date = table.get("en").unwrap().as_table().unwrap().get("date").unwrap().as_table().unwrap();
+                date.get("end").unwrap_or_else(|| date.get("start").unwrap()).as_datetime().unwrap().to_owned()
+            });
+            items.reverse();
+
+            let ids = items.iter().map(|(id, _)| id.to_owned()).collect();
+
+            Ok(ids)
+        })
+        .unwrap_or_else(|_| Vec::new())
         .await
-        .expect("GET Request for directory failed")
-        .json::<serde_json::Value>()
-        .await
-        .expect("Failed to parse directory listing as JSON object");
-    let listing = listing_json
-        .as_array()
-        .expect("Directory listing is not an array");
+}
 
-    let mut items = join_all(listing.iter().map(|repo_file| async {
-        let file_name = repo_file
-            .get("name")
-            .unwrap()
-            .as_str()
-            .unwrap()
-            .split('.')
-            .next()
-            .unwrap()
-            .to_owned();
-
-        let content_json = client
-            .get(repo_file.get("url").unwrap().as_str().unwrap())
-            .send()
-            .await
-            .expect("GET Request for file failed")
-            .json::<serde_json::Value>()
-            .await
-            .expect("Failed to parse file as JSON object");
-
-        let content = content_json
-            .get("content")
-            .expect("Failed to get content from file")
-            .as_str()
-            .expect("Content is not a string")
-            .replace('\n', "");
-        let content = BASE64_STANDARD
-            .decode(content)
-            .expect("Failed to decode content from base64");
-        let content = String::from_utf8(content).expect("Failed to parse content as UTF-8 string");
-        let content = toml::from_str(&content).expect("Failed to parse content as TOML");
-        let content = reroot(content);
-
-        (file_name, content)
-    }))
-    .await;
-
-    items.sort_by_key(|(_, table)| {
-        let date = table
-            .get("en")
-            .unwrap()
-            .as_table()
-            .unwrap()
-            .get("date")
-            .unwrap()
-            .as_table()
-            .unwrap();
-        date.get("end")
-            .unwrap_or_else(|| date.get("start").unwrap())
-            .as_datetime()
-            .unwrap()
-            .to_owned()
-    });
-    items.reverse();
-
-    let index_json = client.get(
-        format!("https://api.github.com/repos/SpacewaIker/portfolio-v2/contents/{directory}.toml?ref=content"),
-    )
+/// Fetches and parses content from a given request
+///
+/// The request should be a `reqwest::RequestBuilder` with the necessary headers for GitHub API requests.
+/// It is sent, then parsed as a JSON object, and the content is extracted from it. The content
+/// is decoded from base64, parsed as a TOML file, and rerooted.
+async fn fetch_parse_content(request: RequestBuilder) -> toml::Table {
+    request
         .send()
-        .await
-        .expect("GET Request for index failed")
-        .json::<serde_json::Value>()
-        .await
-        .expect("Failed to parse index as JSON");
-    let index = index_json
-        .get("content")
-        .expect("Failed to get index content")
-        .as_str()
-        .expect("Index content is not a string")
-        .replace('\n', "");
-    let index = BASE64_STANDARD
-        .decode(index)
-        .expect("Failed to decode index from base64");
-    let index = String::from_utf8(index).expect("Failed to parse index as UTF-8 string");
-    let index = toml::from_str(&index).expect("Failed to parse index as TOML");
-    let index = reroot(index);
+        .and_then(reqwest::Response::json::<serde_json::Value>)
+        .and_then(|json| async move {
+            let content = json
+                .get("content")
+                .expect("Failed to get content")
+                .as_str()
+                .expect("Content is not a string")
+                .replace('\n', "");
 
-    (index, items)
+            let content = BASE64_STANDARD
+                .decode(content)
+                .expect("Failed to decode content from base64");
+            let content =
+                String::from_utf8(content).expect("Failed to parse content as UTF-8 string");
+            let content = toml::from_str(&content).expect("Failed to parse content as TOML");
+            let content = reroot(content);
+            Ok(content)
+        })
+        .unwrap_or_else(|_| toml::value::Table::new())
+        .await
 }

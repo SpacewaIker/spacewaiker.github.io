@@ -1,5 +1,7 @@
-use crate::{components::NotFound, ApplicationData};
-use leptos::{component, create_memo, use_context, view, IntoView, SignalGet, SignalGetUntracked};
+use crate::{components::NotFound, data_loading::get_content, AppLanguage};
+use leptos::{
+    component, create_memo, use_context, view, Await, IntoView, SignalGet, SignalGetUntracked,
+};
 use leptos_router::{use_params_map, A};
 use std::borrow::ToOwned;
 
@@ -12,7 +14,7 @@ use content_parts::*;
 ///
 /// This is intended as a full-page view
 #[component]
-pub fn ContentDetailsView() -> impl IntoView {
+pub fn ContentDetailsView(directory: String) -> impl IntoView {
     let params = use_params_map().get_untracked();
 
     let id = params.get("id");
@@ -21,17 +23,24 @@ pub fn ContentDetailsView() -> impl IntoView {
         return NotFound().into_view();
     }
 
-    let id = id.unwrap();
+    let id = id.unwrap().clone();
 
-    let app_data = use_context::<ApplicationData>().expect("No context found!");
-    let lang = app_data.language;
-    let content = app_data.content_map.get(id).cloned();
-
-    if content.is_none() {
-        return NotFound().into_view();
+    view! {
+        <Await
+            future=move || get_content(format!("{directory}/{id}"))
+            let:content
+        >
+            <ContentDetailsViewInner content=content.clone() />
+        </Await>
     }
+    .into_view()
+}
 
-    let content = create_memo(move |_| content.as_ref().unwrap().get(&lang.get()).unwrap().clone());
+#[component]
+fn ContentDetailsViewInner(content: toml::Table) -> impl IntoView {
+    let lang = use_context::<AppLanguage>().expect("No context found!").0;
+
+    let content = create_memo(move |_| content.get(&lang.get()).unwrap().clone());
 
     let title = move || {
         content
@@ -69,24 +78,36 @@ pub fn ContentDetailsView() -> impl IntoView {
                 <ContentImageGalleryL images=content.get_untracked().get("media").map(ToOwned::to_owned) />
             </div>
         </div>
-    }.into_view()
+    }
 }
 
 /// Component for showing a summarized view of a piece of content
 ///
 /// This is intended as a preview in a list
 #[component]
-#[allow(clippy::needless_lifetimes)]
-pub fn ContentSummaryView<'a>(id: &'a str) -> impl IntoView {
-    let app_data = use_context::<ApplicationData>().expect("No context found!");
-    let lang = app_data.language;
-    let content = app_data.content_map.get(id).cloned();
-
-    if content.is_none() {
-        return NotFound().into_view();
+pub fn ContentSummaryView(directory: String, id: String) -> impl IntoView {
+    let directory2 = directory.clone();
+    let id2 = id.clone();
+    view! {
+        <Await
+            future=move || get_content(format!("{directory}/{id}"))
+            let:content
+        >
+            <ContentSummaryViewInner directory=&directory2 id=&id2 content=content.clone() />
+        </Await>
     }
+}
 
-    let content = create_memo(move |_| content.as_ref().unwrap().get(&lang.get()).unwrap().clone());
+#[component]
+#[allow(clippy::needless_lifetimes)]
+fn ContentSummaryViewInner<'a>(
+    directory: &'a str,
+    id: &'a str,
+    content: toml::Table,
+) -> impl IntoView {
+    let lang = use_context::<AppLanguage>().expect("No context found!").0;
+
+    let content = create_memo(move |_| content.get(&lang.get()).unwrap().clone());
 
     let title = move || {
         content
@@ -106,7 +127,7 @@ pub fn ContentSummaryView<'a>(id: &'a str) -> impl IntoView {
     let summary = view! { <div inner_html=summary_html class="font-paragraph text-darkpurple text-lg styled-body" /> };
 
     view! {
-        <A href=format!("/content/{id}") class="block mt-28 mb-4 rounded-md hover:outline-purple hover:outline hover:outline-4">
+        <A href=format!("/{directory}/{id}") class="block mt-28 mb-4 rounded-md hover:outline-purple hover:outline hover:outline-4">
             <div class="bg-beige p-4">
                 <h1 class="font-title text-4xl font-bold underline text-darkpurple inline-block mb-4">{title}</h1>
                 <ContentLinkIcons links=content.get_untracked().get("links").map(ToOwned::to_owned) />

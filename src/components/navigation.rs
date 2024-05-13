@@ -1,4 +1,4 @@
-use crate::ApplicationData;
+use crate::AppLanguage;
 use leptos::{component, document, use_context, view, window, IntoView, SignalGet, SignalSet};
 use leptos_router::A;
 use wasm_bindgen::JsCast;
@@ -6,10 +6,9 @@ use wasm_bindgen::JsCast;
 /// Header component
 #[component]
 pub fn Header() -> impl IntoView {
-    let app_data = use_context::<ApplicationData>().expect("No context found");
-    let lang = app_data.language;
+    let lang = use_context::<AppLanguage>().expect("No context found!").0;
     let switch_lang = move |_| {
-        app_data.set_language.set(if lang.get() == "fr" {
+        lang.set(if lang.get() == "fr" {
             "en".to_string()
         } else {
             "fr".to_string()
@@ -45,8 +44,7 @@ pub fn Header() -> impl IntoView {
 /// Footer component
 #[component]
 pub fn Footer() -> impl IntoView {
-    let app_data = use_context::<ApplicationData>().expect("No context found");
-    let lang = app_data.language;
+    let lang = use_context::<AppLanguage>().expect("No context found!").0;
 
     // Copy email to clipboard
     let copy_email = move |_| {
