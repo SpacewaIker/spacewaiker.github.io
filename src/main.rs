@@ -17,7 +17,7 @@ fn App(lang: AppLanguage) -> impl IntoView {
             <Header />
             <div class="relative z-10">
                 <Routes>
-                    <Route path="/" view=|| view! { <h1 class="text-2xl mt-20 h-screen">"Home"</h1> } />
+                    <Route path="/" view=|| view! { <HomePage /> } />
                     <Route path="/projects" view=move || view! { <ContentListingPage directory=String::from("projects") /> } />
                     <Route path="/experience" view=move || view! { <ContentListingPage directory=String::from("experience") /> } />
                     <Route path="/education" view=move || view! { <ContentListingPage directory=String::from("education") /> } />

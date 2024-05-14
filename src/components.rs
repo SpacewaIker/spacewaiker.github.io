@@ -1,10 +1,12 @@
 use leptos::{component, view, IntoView};
 
 mod content;
+mod homepage;
 mod navigation;
 mod page;
 
 pub use content::ContentDetailsView;
+pub use homepage::HomePage;
 pub use navigation::{Footer, Header};
 pub use page::ContentListingPage;
 
