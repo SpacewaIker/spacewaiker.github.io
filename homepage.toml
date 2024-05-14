@@ -1,0 +1,13 @@
+greeting = { en = "Hello there. I'm", fr = "Bonjour. Je suis" }
+
+[intro]
+en = """
+I'm a software engineering student at McGill University with an interest in artificial intelligence, game development, and robotics.
+
+I love learning and have developed my skills as an autonomous developer and autodidact through personal projects. Scroll down to learn more about my work experience!
+"""
+fr = """
+Je suis un étudiant en génie logiciel à l'université McGill avec un intérêt en intélligence artificielle, en développement de jeux video et en robotique.
+
+J'adore apprendre et j'ai développé mes compétences en tant que développeur autonome et autodidacte à travers des projets personnels. Défilez pour en apprendre plus à propos de mon expérience de travail!
+"""
