@@ -46,6 +46,11 @@ body {
     @apply top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2;
   }
 
+  /* title */
+  .title-text-stroke {
+    -webkit-text-stroke: 4px #AB21DF;
+  }
+
   /* .styled-body is applied to a container of markdown to html formatted text */
   .styled-body {
     @apply space-y-4;

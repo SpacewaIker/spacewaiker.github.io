@@ -23,13 +23,6 @@ fn HomePageInner(content: toml::Table) -> impl IntoView {
 
     let content = create_memo(move |_| content.get(&lang.get()).unwrap().clone());
 
-    let greeting = move || {
-        content
-            .get()
-            .get("greeting")
-            .map(|v| v.as_str().unwrap_or("").to_owned())
-    };
-
     let intro_html =
         move || markdown::to_html(content.get().get("intro").unwrap().as_str().unwrap());
 
@@ -43,15 +36,15 @@ fn HomePageInner(content: toml::Table) -> impl IntoView {
     name_event.forget();
 
     view! {
-        <div class="bg-beige h-fit min-h-screen">
+        <div class="bg-beige h-fit min-h-screen overflow-x-hidden">
             // title screen
-            <div class="relative w-full h-screen">
-                // name container
-                <div class="absolute w-full text-center left-0 bottom-0 text-darkpurple">
-                    <h2 class="absolute font-serif text-4xl top-[calc(-120px-12vw)] left-10">{greeting}</h2>
-                    <h1 id="first-name" class="absolute inline-block bottom-0 text-[12.5vw] font-title font-extralight left-0 z-20">Thibaut</h1>
-                    <h1 id="last-name" class="absolute inline-block bottom-0 text-[12.5vw] font-title font-extralight right-0 z-20">Baguette</h1>
-                </div>
+
+            <div class="relative z-20 font-title text-[23vw] text-[transparent] mix-blend-color-dodge title-text-stroke">
+                <div id="first-name" class="absolute left-1/2 -translate-x-1/2 top-0">Thibaut</div>
+                <div id="last-name"  class="absolute left-1/2 -translate-x-1/2 top-[45vh]">Baguette</div>
+            </div>
+
+            <div class="w-full h-screen">
             </div>
 
             <div class="relative w-full h-40 z-10">
@@ -61,12 +54,12 @@ fn HomePageInner(content: toml::Table) -> impl IntoView {
             </div>
 
             // intro screen
-            <div class="bg-darkgray text-beige relative w-full h-screen shadow-header ">
-                <div class="absolute overflow-hidden -left-10 top-16 h-[40vw] w-[40vw] rounded-r-[35%] rotate-12">
+            <div class="bg-darkgray text-beige relative w-full shadow-header flex" style="padding-top: calc(15rem + 12vw);">
+                <div class="relative overflow-hidden -left-16 -top-10 h-[40vw] w-[40vw] rounded-[30%] rotate-12">
                     // <img class="-rotate-12" src="https://github.com/SpacewaIker/portfolio-v2/blob/content/media/profile_picture.jpg?raw=true" />
-                    <img class="h-[110%] w-[110%] max-w-none -rotate-12" src="https://thibautbaguette.com/img/profile_picture.jpg" />
+                    <img class="relative -top-[5%] h-[110%] w-[110%] max-w-none -rotate-12" src="https://thibautbaguette.com/img/profile_picture.jpg" />
                 </div>
-                <div inner_html=intro_html class="absolute w-1/2 top-[50vh] right-20 font-paragraph text-2xl styled-body" />
+                <div inner_html=intro_html class="w-1/2 right-20 font-paragraph text-2xl styled-body" />
             </div>
 
             <div class="h-screen">
@@ -75,7 +68,7 @@ fn HomePageInner(content: toml::Table) -> impl IntoView {
     }
 }
 
-/// Change name colour and position of the name
+/// Change size and position of name
 #[allow(clippy::cast_lossless)]
 #[allow(clippy::similar_names)]
 fn name_event() {
@@ -94,64 +87,65 @@ fn name_event() {
         .unwrap();
 
     let scroll_top = window.page_y_offset().unwrap();
-    let end_scroll = window.inner_height().unwrap().as_f64().unwrap() * 0.7;
-    let scroll_amount = if scroll_top < end_scroll {
-        scroll_top
-    } else {
-        end_scroll
-    };
+    let end_scroll = window.inner_height().unwrap().as_f64().unwrap() * 0.9;
+    let scroll_amount = f64::min(scroll_top, end_scroll);
     let t = scroll_amount / end_scroll;
 
-    // colour
-    // from rgb(41 0 41) to rgb(97 40 255)
-    let max_r = 97.0f64;
-    let min_r = 41.0f64;
-    let max_g = 40.0f64;
-    let min_g = 0.0f64;
-    let max_b = 255.0f64;
-    let min_b = 41.0f64;
-
-    let red = (max_r - min_r).mul_add(t, min_r);
-    let green = (max_g - min_g).mul_add(t, min_g);
-    let blue = (max_b - min_b).mul_add(t, min_b);
-    let colour = format!("rgb({red} {green} {blue})");
-
-    first_name.style().set_property("color", &colour).unwrap();
-    last_name.style().set_property("color", &colour).unwrap();
-
-    // position
     let window_width = window.inner_width().unwrap().as_f64().unwrap();
     let window_height = window.inner_height().unwrap().as_f64().unwrap();
-
-    let max_lnc = (window_width - last_name.offset_width() as f64) * 0.15;
-    let min_lnc = 0.0;
-    let max_fnc = (window_width - first_name.offset_width() as f64) * 0.95;
-    let min_fnc = 0.0;
-
-    let max_lnv = window_height.mul_add(0.25, window_width * 0.25);
-    let min_lnv = 0.0;
-    let max_fnv = window_height.mul_add(0.25, window_width * 0.125);
-    let min_fnv = 0.0;
-
-    let last_name_centering = (max_lnc - min_lnc).mul_add(t, min_lnc);
-    let first_name_centering = (max_fnc - min_fnc).mul_add(t, min_fnc);
-    let last_name_vertical = -(max_lnv - min_lnv).mul_add(t, min_lnv);
-    let first_name_vertical = -(max_fnv - min_fnv).mul_add(t, min_fnv);
-
-    last_name
-        .style()
-        .set_property("right", &format!("{last_name_centering}px"))
+    let rem = window
+        .get_computed_style(&leptos::document().document_element().unwrap())
+        .unwrap()
+        .unwrap()
+        .get_property_value("font-size")
+        .unwrap()
+        .replace("px", "")
+        .parse::<f64>()
         .unwrap();
+
+    // size
+    let size_start = 0.23 * window_width;
+    let size_end = 0.12 * window_width;
+    let size = (size_end - size_start).mul_add(t, size_start);
+
     first_name
         .style()
-        .set_property("left", &format!("{first_name_centering}px"))
+        .set_property("font-size", &format!("{size}px"))
         .unwrap();
     last_name
         .style()
-        .set_property("bottom", &format!("{last_name_vertical}px"))
+        .set_property("font-size", &format!("{size}px"))
         .unwrap();
+
+    // y position
+    let y_start_first = 0.0;
+    let y_start_last = 0.45 * window_height;
+    let y_end = 15.0f64.mul_add(rem, window_height); // 100vh + 10rem (separator height) + 5rem padding
+    let y_first = (y_end - y_start_first).mul_add(t, y_start_first);
+    let y_last = (y_end - y_start_last).mul_add(t, y_start_last);
+
     first_name
         .style()
-        .set_property("bottom", &format!("{first_name_vertical}px"))
+        .set_property("top", &format!("{y_first}px"))
+        .unwrap();
+    last_name
+        .style()
+        .set_property("top", &format!("{y_last}px"))
+        .unwrap();
+
+    // x position
+    let x_start = -50.0f64;
+    let x_end_first = -115.0f64;
+    let x_end_last = -5.0f64;
+    let x_first = (x_end_first - x_start).mul_add(t, x_start);
+    let x_last = (x_end_last - x_start).mul_add(t, x_start);
+
+    first_name
+        .style()
+        .set_property("transform", &format!("translateX({x_first}%)"))
+        .unwrap();
+    last_name
+        .style()
+        .set_property("transform", &format!("translateX({x_last}%)"))
         .unwrap();
 }
