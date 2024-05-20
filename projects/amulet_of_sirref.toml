@@ -40,7 +40,7 @@ The game is a turn-based roguelike dungeon crawler, where the player must find t
 
 Overall, I am very proud of what I was able to accomplish in my first serious game development project. I also learned a lot about game development, such as how an entity-component-system architecture works, while further improving my Rust skills.
 
-The game is available to play online, right in your browser: (try it out!)[https://thibautbaguette.com/rust-roguelike] (you will need a keyboard).
+The game is available to play online, right in your browser: [try it out!](https://thibautbaguette.com/rust-roguelike) (you will need a keyboard).
 """
 fr = """
 Pour ce deuxième projet en Rust, je voulais me lancer plus sérieusement dans le développement de jeux vidéos. J'ai donc décidé de suivre le livre [*Hands-on Rust*](https://hands-on-rust.com/) de Herbert Wolverson, un tutoriel d'introduction sur les jeux roguelike en Rust. J'ai par contre poussé mon jeu beuacoup plus loin en ajoutant beaucoup de fonctionnalités telles différents modes de jeu, plus d'items, plus d'ennemis, etc.
@@ -49,5 +49,5 @@ Le jeu est un roguelike au tour-par-tour, où le joueur doit trouver l'Amulette 
 
 Globalement, je suis très fier de ce que j'ai accompli pour mon premier projet sérieux en développement de jeux vidéos. J'ai aussi appris énormément à propos du développement de jeux vidéos, notemment comment fonctionne l'architecture entity-component-system, tout en améliorant mes capacités en Rust.
 
-Le jeu est disponible en ligne, directement dans votre navigateur web: (essayez-le!)[https://thibautbaguette.com/rust-roguelike] (clavier nécessaire).
+Le jeu est disponible en ligne, directement dans votre navigateur web: [essayez-le!](https://thibautbaguette.com/rust-roguelike) (clavier nécessaire).
 """

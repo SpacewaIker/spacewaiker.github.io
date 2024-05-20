@@ -2,35 +2,57 @@ date = { start = 2024-01-01, end = 2024-04-01 }
 title = { en = "C Compiler", fr = "Compilateur C" }
 # media = []
 
-# [links]
-# github = ""
+[links]
+github = "https://github.com/SpacewaIker/compiler-design-coursework"
 
 [tags]
 en = ["C", "Compiler", "Java", "MIPS Assemply"]
 fr = ["C", "Compilateur", "Java", "Assembly MIPS"]
 
 [summary]
-en = "For my Compiler Design class, I wrote a complete compiler for a subset of the C progamming language from scratch in Java."
-fr = "Pour mon cours de « Compiler Design », j'ai écrit un compilateur pour une partie du langage de programmation C, de zéro en Java."
+en = "For my Compiler Design class, I wrote a complete compiler for a subset of the C programming language from scratch in Java. This included the compiler front-end that was written by hand, as well as the back-end with the code generator and a graph colouring register allocator. The final version of the compiler also had support for some object oriented programming features such as inheritance and polymorphism. At 10860 lines of code, this was by far the largest solo project I've worked on!"
+fr = "Pour mon cours de « Compiler Design », j'ai écrit un compilateur pour une partie du langage de programmation C, de zéro en Java. Ceci incluait le front-end du compilateur, programmé manuellement, ainsi que le back-end avec un générateur de code et un allocateur de registres par coloration de graphe. La version finale du compilateur supportait aussi quelques fonctionalités de programmation orienté objet, telles l'héritage et le polymorphisme. Avec 10860 lignes de code, c'était définitivement le plus gros projet solo sur lequel j'avais travaillé !"
 
 [resume_lines]
 en = [
   "Complete compiler for a subset of the C language from scratch in Java.",
-  "Implemented a lexer, a parser, a semantic analyzer, and a code generator.",
+  "Hand-wrote a lexer, a parser, a semantic analyzer, a code generator, and a regiser allocator.",
+  "Support for object oriented programming features such as inheritance and polymorphism.",
 ]
 fr = [
   "Compilateur complèt pour une partie du langage C écrit de zéro en Java.",
-  "Implémentation d'un lexer, un parser, un semantic analyzer st un code generator.",
+  "Implémentation manuelle d'un analyzeur lexical, un analyzeur syntaxique et sémantique, un générateur de code et un allocateur de registres.",
+  "Support pour des fonctionalités de programmation orienté objet telles que l'héritage et le polymorphisme.",
 ]
 
 [body]
 en = """
-For my Compiler Design course, I had to write a compiler for a subset of the C programming language from scratch in Java. This includes the front-end, written by hand, and the back-end.
+For my Compiler Design course, I had to write a compiler for a subset of the C programming language from scratch in Java. This included the entire front-end, all hand written, as well as the complete back-end. The project was divided into five parts: the parser, the AST builder and semantic analyzer, the code generator, the register allocator, and finally the object-oriented features.
 
-This project is still underway, and I have still a lot to learn about compilers!
+In the first part, the compiler reads the input file and converts the stream of characters into a stream of tokens, including keywords, identifiers, syntactic elements like brackets, and literals. Then, the parser consumes the stream of tokens and checks that it conforms to the context-free LL(k) grammar defined for the compiled language.
+
+For the second part, the parser was modified so that it would build an abstract syntax tree (AST) on top of verifying the validity of the input. The AST is then fed to the semantic analyzer, which further checks the validity of the input programs. The name analyzer will check that function calls refer to defined functions, that two declared variables don't have the same name, it will enforce scoping rules, etc. The type analyzer will enforce the typing rules for the language. This entails deriving a type for each expression and ensuring that it matches what was expected.
+
+At this point, the compiler has ensured a significant level of validity for the input program; if the program is invalid, it would be on a logical level, but not in the syntax or the semantics of the language. In part three, the code generator will now take the AST previously generated and output an equivalent assembly program using an unlimited number of virtual registers. This might sound simple, but was possibly the most challenging part of this project as it involves a good understanding of how the compiled language works, and how assembly works. The main concept was to use pattern matching and return a register containing the result of an operation. This allows the compiler to recursively generate instructions to achieve the control flow and the result specified in the input program. 
+
+Now that the compiler has created an assembly program using virtual registers, it must map these to the physical registers. This involves analyzing the lifetimes of the virtual registers to understand when a physical register can be overwritten by another result. The first step is therefore to build a control-flow graph from the assembly program, which is used in liveness analysis to output an interference graph. Once this is done, a graph colouring algorithm is used to map the virtual registers to physical ones. Since graph colouring is NP-Complete, Chaitin's Algorithm, a heuristic algorithm, was used to achieve polynomial runtime. After this step, we have a complete assembly program that will run and produce the same output as the input program!
+
+Finally, the last part of the project was to add some object-oriented features to the language. As this involved new syntax and semantics, the entire compiler had to be modified. In this case, the language allows single-inheritance between classes including method overriding, uses dynamic dispatch for polymorphism and allows subtyping. 
+
+Overall, I'm very happy about this project. It involved a tremendous amount of work, but I learned a lot about compilers and programming languages. I also improved my skills as a programmer by working on this large project. I cannot share the repository for this project as it was part of a course, but I did make [a repository](https://github.com/SpacewaIker/compiler-design-coursework) showing some of the inner workings of the compiler!
 """
 fr = """
-Pour mon cours de "Compiler Design", j'ai eu a écrire un compilateur pour une partie du langage de programmation C, de zéro en Java. Cela inclut le front-end, écrit manuellement, et le back-end.
+Pour mon cours de "Compiler Design", j'ai eu a écrire un compilateur pour une partie du langage de programmation C, de zéro en Java. Cela inclut le front-end, écrit manuellement, et le back-end. Le projet était divisé en cinq parties: l'analyseur syntaxique, le constructeur d'arbre syntaxique abstait et l'analyseur sémantique, le générateur de code, l'allocateur de registres et finalement les fonctionalités orienté objet.
 
-Ce projet est encore en cours, j'ai encore beaucoup de choses à apprendre sur les compilateurs!
+Dans la première partie, le compilateur lit le fichier d'entrée et convertit la séquence de caractères en une séquence de tokens lexicaux, incluant les mots-clés, les identifiants, les éléments syntaxiques comme des parenthèses et les littéraux. Ensuite, l'analyseur syntaxique consomme les tokens et vérifie qu'ils soient conformes à la grammaire non contextuelle LL(k) définie pour le langage compilé.
+
+Pour la deuxième partie, l'analyseur syntaxique a été modifié pour construire un arbre syntaxique abstrait (ASA) en plus de vérifier la validité du programme. L'ASA est ensuite envoyé à l'analyseur sémantique qui vérifie la validité du programme à un niveau plus avancé. L'analyseur de noms va vérifier que les appels de fonctions font référence à des fonctions déclarées, que deux variables déclarées n'ont pas le même nom, va appliquer les règles de portée, etc. L'analyseur de types va appliquer les règles de types du langage, ce qui implique dériver un type pour chaque expression et assurer qu'il corresponde au type attendu.
+
+Maintenant, le compilateur à assuré un bon niveau de validité du programme d'entrée; si le programme est invalide, cela serait à un niveau logique, mais pas au niveau de la syntaxe ou de la sémantique du langage. Dans la troisième partie, le générateur de code va prendre l'ASA généré précédemment et produire un programme équivalent en assembly en utilisant un nombre illimité de registres virtuels. Cela peut sembler simple, mais c'était probablement la partie la plus difficile de ce projet car cela implique une bonne compréhension du langage compilé et de l'assembly. Le concept général était d'utiliser des motifs de correspondance et de retourner un registre contenant le résultat d'une opération. Cela permet au compilateur de générer récursivement des instructions pour obtenir la structure de contrôle et le résultat spécifié dans le programme d'entrée.
+
+Une fois que le compilateur a créee un programme en assembly utilisant des registres virtuels, il doit les associer à des registres physiques. Cela implique d'analyser les durées de vie des registres virtuels pour comprendre quand un registre physique peut être écrasé par un autre résultat. La première étape est donc de construire un graphe de flot de contrôle à partir du programme en assembly, qui est utilisé dans l'analyse de vivacité pour produire un graphe d'interférence. Une fois cela fait, un algorithme de coloration de graphe est utilisé pour associer les registres virtuels aux registres physiques. Puisque la coloration de graphe est NP-Complet, un algorithme heuristique, l'algorithme de Chaitin, a été utilisé pour obtenir un temps d'exécution polynomial. Après cette étape, nous avons un programme en assembly complet qui s'exécutera et produira le même résultat que le programme d'entrée!
+
+Finalement, la dernière partie du projet était d'ajouter des fonctionalités orienté objet au langage. Comme cela impliquait une nouvelle syntaxe et sémantique, le compilateur entier a dû être modifié. Ici, le langage permet l'héritage simple entre classes incluant la surcharge de méthodes, utilise la répartition dynamique pour le polymorphisme et permet le sous-typage.
+
+Dans l'ensemble, je suis très content de ce projet. C'était un énorme travail, mais j'ai appris beaucoup sur les compilateurs et les langages de programmation. J'ai aussi amélioré mes compétences en tant que programmeur en travaillant sur ce grand projet. Je ne peux pas partager le dépôt pour ce projet car il faisait partie d'un cours, mais j'ai fait [un dépôt](https://github.com/SpacewaIker/compiler-design-coursework) montrant quelques parties internes du compilateur!
 """
