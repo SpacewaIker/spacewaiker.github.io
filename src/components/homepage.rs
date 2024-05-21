@@ -26,6 +26,8 @@ fn HomePageInner(content: toml::Table) -> impl IntoView {
     let intro_html =
         move || markdown::to_html(content.get().get("intro").unwrap().as_str().unwrap());
 
+    let body_html = move || markdown::to_html(content.get().get("body").unwrap().as_str().unwrap());
+
     // add scroll event listener to change name colour and position
     let name_event = wasm_bindgen::closure::Closure::wrap(Box::new(name_event) as Box<dyn FnMut()>);
     leptos::window()
@@ -36,34 +38,41 @@ fn HomePageInner(content: toml::Table) -> impl IntoView {
     name_event.forget();
 
     view! {
-        <div class="bg-beige h-fit min-h-screen overflow-x-hidden">
-            // title screen
+        <div>
+            <div class="bg-beige h-fit min-h-screen overflow-x-hidden">
+                // title screen
 
-            <div class="relative z-20 font-title text-[23vw] text-[transparent] mix-blend-color-dodge title-text-stroke">
-                <div id="first-name" class="absolute left-1/2 -translate-x-1/2 top-0">Thibaut</div>
-                <div id="last-name"  class="absolute left-1/2 -translate-x-1/2 top-[45vh]">Baguette</div>
-            </div>
-
-            <div class="w-full h-screen">
-            </div>
-
-            <div class="relative w-full h-40 z-10">
-                <svg class="w-full h-[175%] fill-purple" viewBox="0 0 100 100" preserveAspectRatio="none">
-                    <polyline points="0 30,100 0,100 70,0 100"></polyline>
-                </svg>
-            </div>
-
-            // intro screen
-            <div class="bg-darkgray text-beige relative w-full shadow-header flex" style="padding-top: calc(15rem + 12vw);">
-                <div class="relative overflow-hidden -left-16 -top-10 h-[40vw] w-[40vw] rounded-[30%] rotate-12">
-                    // <img class="-rotate-12" src="https://github.com/SpacewaIker/portfolio-v2/blob/content/media/profile_picture.jpg?raw=true" />
-                    <img class="relative -top-[5%] h-[110%] w-[110%] max-w-none -rotate-12" src="https://thibautbaguette.com/img/profile_picture.jpg" />
+                <div class="relative z-20 font-title text-[23vw] text-[transparent] mix-blend-color-dodge title-text-stroke">
+                    <div id="first-name" class="absolute left-1/2 -translate-x-1/2 top-0">Thibaut</div>
+                    <div id="last-name"  class="absolute left-1/2 -translate-x-1/2 top-[45vh]">Baguette</div>
                 </div>
-                <div inner_html=intro_html class="w-1/2 right-20 font-paragraph text-2xl styled-body" />
+
+                <div class="w-full h-screen">
+                </div>
+
+                <div class="relative w-full h-40 z-10">
+                    <svg class="w-full h-[175%] fill-purple" viewBox="0 0 100 100" preserveAspectRatio="none">
+                        <polyline points="0 30,100 0,100 70,0 100"></polyline>
+                    </svg>
+                </div>
+
+                // intro screen
+                <div class="bg-darkgray text-beige relative w-full flex" style="padding-top: calc(15rem + 12vw);">
+                    <div class="relative overflow-hidden -left-16 -top-10 h-[40vw] w-[40vw] rounded-[30%] rotate-12">
+                        // <img class="-rotate-12" src="https://github.com/SpacewaIker/portfolio-v2/blob/content/media/profile_picture.jpg?raw=true" />
+                        <img class="relative -top-[5%] h-[110%] w-[110%] max-w-none -rotate-12" src="https://thibautbaguette.com/img/profile_picture.jpg" />
+                    </div>
+                    <div inner_html=intro_html class="w-1/2 right-20 font-paragraph text-2xl styled-body" />
+                </div>
+
+                <div class="bg-darkgray text-beige w-full" inner_html=body_html>
+                </div>
             </div>
 
-            <div class="h-screen">
-            </div>
+            // required to make the footer angled
+            <svg class="h-20 w-full relative -top-2" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <polyline class="fill-darkgray" points="0 0, 100 0, 100 60, 0 100"></polyline>
+            </svg>
         </div>
     }
 }
@@ -72,8 +81,16 @@ fn HomePageInner(content: toml::Table) -> impl IntoView {
 #[allow(clippy::cast_lossless)]
 #[allow(clippy::similar_names)]
 fn name_event() {
-    let document = leptos::document();
     let window = leptos::window();
+
+    // check if path is home, otherwise can't get the first-name and last-name elements
+    let href = window.location().href().unwrap();
+    if !href.ends_with('/') {
+        // path for home should end with '/'
+        return;
+    }
+
+    let document = leptos::document();
 
     let first_name = document
         .get_element_by_id("first-name")

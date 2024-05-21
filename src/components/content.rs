@@ -31,6 +31,11 @@ pub fn ContentDetailsView(directory: String) -> impl IntoView {
             let:content
         >
             <ContentDetailsViewInner content=content.clone() />
+
+            // required to make the footer angled
+            <svg class="h-20 w-full relative -top-2" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <polyline class="fill-beige" points="0 0, 100 0, 100 60, 0 100"></polyline>
+            </svg>
         </Await>
     }
     .into_view()

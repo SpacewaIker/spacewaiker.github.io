@@ -26,11 +26,6 @@ fn App(lang: AppLanguage) -> impl IntoView {
                     <Route path="/education/:id" view=move || view! { <ContentDetailsView directory=String::from("education") /> } />
                     <Route path="*" view=NotFound />
                 </Routes>
-
-                // required to make the footer angled
-                <svg class="h-20 w-full relative -top-2" viewBox="0 0 100 100" preserveAspectRatio="none">
-                    <polyline class="fill-beige" points="0 0, 100 0, 100 60, 0 100"></polyline>
-                </svg>
             </div>
             <Footer />
         </Router>

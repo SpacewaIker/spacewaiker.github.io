@@ -15,24 +15,31 @@ pub fn ContentListingPage(directory: String) -> impl IntoView {
     let index_directory = directory.clone();
     let ids_directory = directory.clone();
     view! {
-        <div class="bg-beige h-fit min-h-screen p-10 pt-20">
-            <Await
-                future=move || get_content(index_directory.clone())
-                let:index
-            >
-                <ContentListingPageIndex index=index.clone() />
-            </Await>
+        <div>
+            <div class="bg-beige h-fit min-h-screen p-10 pt-20">
+                <Await
+                    future=move || get_content(index_directory.clone())
+                    let:index
+                >
+                    <ContentListingPageIndex index=index.clone() />
+                </Await>
 
-            <svg class="absolute h-36 w-full top-[70vh] left-0 fill-purple" viewBox="0 0 100 100" preserveAspectRatio="none">
-                <polyline points="0 30, 100 0, 100 70, 0 100"></polyline>
+                <svg class="absolute h-36 w-full top-[70vh] left-0 fill-purple" viewBox="0 0 100 100" preserveAspectRatio="none">
+                    <polyline points="0 30, 100 0, 100 70, 0 100"></polyline>
+                </svg>
+
+                <Await
+                    future=move || get_directory_items(ids_directory.clone())
+                    let:ids
+                >
+                    <ContentListingPageList directory=&directory ids=ids />
+                </Await>
+            </div>
+
+            // required to make the footer angled
+            <svg class="h-20 w-full relative -top-2" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <polyline class="fill-beige" points="0 0, 100 0, 100 60, 0 100"></polyline>
             </svg>
-
-            <Await
-                future=move || get_directory_items(ids_directory.clone())
-                let:ids
-            >
-                <ContentListingPageList directory=&directory ids=ids />
-            </Await>
         </div>
     }
 }
