@@ -88,13 +88,20 @@ pub fn ContentImageGallery(images: Option<Value>, show_all: bool) -> impl IntoVi
             .unwrap()
             .iter()
             .map(|image| {
+                let mut div_class = String::from("py-2");
+                let mut button_class = String::new();
+                let mut img_class = String::from("rounded-xl");
+
+                if show_all {
+                    div_class += " has-[:focus]:fixed has-[:focus]:w-screen has-[:focus]:h-screen has-[:focus]:top-0 has-[:focus]:left-0 has-[:focus]:backdrop-blur-sm has-[:focus]:backdrop-brightness-50 has-[:focus]:z-50";
+                    button_class += " focus:fixed focus:fixed-center group";
+                    img_class += " hover:outline hover:outline-purple hover:shadow-lg group-focus:hover:outline-none group-focus:max-w-[90vw] group-focus:max-h-[90vh]";
+                }
+
                 view! {
-                    <div class="py-2 has-[:focus]:fixed has-[:focus]:w-screen has-[:focus]:h-screen has-[:focus]:top-0 has-[:focus]:left-0
-                                has-[:focus]:backdrop-blur-sm has-[:focus]:backdrop-brightness-50 has-[:focus]:z-50">
-                        <button class="focus:fixed focus:fixed-center group">
-                            <img src=image_path(image.as_str().unwrap())
-                                class="rounded-xl hover:outline hover:outline-purple hover:shadow-lg group-focus:hover:outline-none
-                                       group-focus:max-w-[90vw] group-focus:max-h-[90vh]"/>
+                    <div class=div_class>
+                        <button class=button_class>
+                            <img src=image_path(image.as_str().unwrap()) class=img_class/>
                         </button>
                     </div>
                 }
