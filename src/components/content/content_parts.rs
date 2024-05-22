@@ -56,7 +56,12 @@ pub fn ContentResumeLines(#[prop(into)] lines: Signal<Option<Value>>) -> impl In
             v.as_array()
                 .unwrap()
                 .iter()
-                .map(|line| view! { <li>{ line.as_str().unwrap().to_owned() }</li> })
+                .map(|line| {
+                    let line_html = markdown::to_html(line.as_str().unwrap())
+                        .replace("<p>", "")
+                        .replace("</p>", "");
+                    view! { <li inner_html=line_html></li> }
+                })
                 .collect_view()
         })
     };
