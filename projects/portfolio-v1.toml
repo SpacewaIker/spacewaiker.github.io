@@ -24,9 +24,9 @@ en = [
   "Published a bilingual website using GitHub Pages and Google Domains.",
 ]
 fr = [
-  "A designé un site web portfolio pour développeur avec Figma.",
-  "A créé un site web statique adaptatif avec du HTML, du CSS et du JavaScript.",
-  "A publié un site web bilingue avec GitHub Pages et Google Domains.",
+  "Design d'un site web portfolio pour développeur avec Figma.",
+  "Création d'un site web statique adaptatif avec du HTML, du CSS et du JavaScript.",
+  "Publication d'un site web bilingue avec GitHub Pages et Google Domains.",
 ]
 
 [body]

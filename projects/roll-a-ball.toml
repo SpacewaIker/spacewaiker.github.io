@@ -21,7 +21,7 @@ en = [
 ]
 fr = [
   "Création d'un petit jeu en vue de dessus avec Unreal Engine 5 en utilisant C++ et des blueprints.",
-  "Je me suis familiarisé avec le Enhanced Input System, ainsi que les animations dans UE5.",
+  "Je me suis familiarisé avec le *Enhanced Input System*, ainsi que les animations dans UE5.",
   "Développement d'un jeu en quelques jours pour appliquer au club GameDev McGill.",
 ]
 
