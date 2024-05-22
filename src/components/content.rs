@@ -47,7 +47,7 @@ fn ContentDetailsViewInner(content: toml::Table) -> impl IntoView {
 
     let links = content.get("links").map(ToOwned::to_owned);
     let date = content.get("date").map(ToOwned::to_owned);
-    let images = content.get("images").map(ToOwned::to_owned);
+    let images = content.get("media").map(ToOwned::to_owned);
 
     let content = create_memo(move |_| content.get(&lang.get()).unwrap().clone());
 
@@ -118,7 +118,7 @@ fn ContentSummaryViewInner<'a>(
 
     let links = content.get("links").map(ToOwned::to_owned);
     let date = content.get("date").map(ToOwned::to_owned);
-    let images = content.get("images").map(ToOwned::to_owned);
+    let images = content.get("media").map(ToOwned::to_owned);
 
     let content = create_memo(move |_| content.get(&lang.get()).unwrap().clone());
 
