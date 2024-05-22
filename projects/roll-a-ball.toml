@@ -31,12 +31,12 @@ To apply to the GameDev McGill club, I had to complete the Roll-a-Ball tutorial 
 
 As the goal of this project was to do a small project in a few days, I didn't do anything groundbreaking with it. However, I still learned more about making animations based on context (running, jumping, falling, etc.), and I learned how to use Unreal's Enhanced Input Plugin to handle user input well, including both keyboard and mouse and controller input.
 
-You can learn more about the game on my (itch.io page)[https://spacewaiker.itch.io/]!
+You can learn more about the game on my [itch.io page](https://spacewaiker.itch.io/)!
 """
 fr = """
 Pour appliquer au club GameDev McGill, je devais compléter le tutoriel Roll-a-Ball de Unity. J'ai décidé de le faire avec Unreal Engine 5 puisque j'étais plus à l'aise avec ce moteur de jeu. Et comme je trouvais qu'une balle roulant était un peu simple, je l'ai transformé en un magicien collectionnant des items dans un petit village. Vous pouvez courir, sauter, tourner la caméra en vue de dessus et même obtenir un super saut sur des bottes de fouin!
 
 Puisque le but de ce projet était de faire un petit projet en quelques jours, je n'ai rien fait de trop compliqué. Par contre, j'ai quand même pu en apprendre plus sur les animations en fonction du contexte (courir, sauter, tomber, etc.) et j'ai appris comment utiliser le Enhanced Input Plugin pour gérer les entrées de l'utilisateur correctement, en incluant le clavier et la souris, ainsi que la manette de jeu.
 
-Vous pouvez en apprendre plus sur le jeu sur ma (page itch.io)[https://spacewaiker.itch.io/]!
+Vous pouvez en apprendre plus sur le jeu sur ma [page itch.io](https://spacewaiker.itch.io/)!
 """
