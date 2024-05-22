@@ -65,7 +65,7 @@ fn HomePageInner(content: toml::Table) -> impl IntoView {
                     <div inner_html=intro_html class="w-1/2 right-20 font-paragraph text-2xl styled-body" />
                 </div>
 
-                <div class="bg-darkgray text-beige w-full" inner_html=body_html>
+                <div class="bg-darkgray text-beige w-full font-paragraph text-xl styled-body styled-body-cols py-10 px-24" inner_html=body_html>
                 </div>
             </div>
 

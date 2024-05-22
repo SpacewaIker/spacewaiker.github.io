@@ -73,4 +73,8 @@ body {
   .styled-body blockquote {
     @apply border-l-4 border-purple pl-2 font-line;
   }
+
+  .styled-body-cols ul {
+    @apply columns-3;
+  }
 }
