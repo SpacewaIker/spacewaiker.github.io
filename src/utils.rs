@@ -46,26 +46,29 @@ pub fn format_date(datetime: &Datetime, lang: &str) -> String {
 }
 
 /// Reroots the table to bring the language keys to the top level
+#[must_use]
 pub fn reroot(table: Table) -> Table {
+    let mut new_table = Table::new();
     let mut table_en = Table::new();
     let mut table_fr = Table::new();
 
     for (key, value) in table {
         if let toml::Value::Table(table) = value {
+            // table with keys "en" and "fr"
             if table.contains_key("en") && table.contains_key("fr") {
                 table_en.insert(key.clone(), table.get("en").unwrap().clone());
                 table_fr.insert(key.clone(), table.get("fr").unwrap().clone());
                 continue;
             }
-            table_en.insert(key.clone(), toml::Value::Table(table.clone()));
-            table_fr.insert(key.clone(), toml::Value::Table(table.clone()));
+
+            // table without keys "en" and "fr"
+            new_table.insert(key.clone(), toml::Value::Table(table.clone()));
         } else {
-            table_en.insert(key.clone(), value.clone());
-            table_fr.insert(key.clone(), value.clone());
+            // other value that doesn't depend on language
+            new_table.insert(key.clone(), value.clone());
         }
     }
 
-    let mut new_table = Table::new();
     new_table.insert("en".to_string(), toml::Value::Table(table_en));
     new_table.insert("fr".to_string(), toml::Value::Table(table_fr));
     new_table

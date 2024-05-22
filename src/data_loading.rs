@@ -80,7 +80,7 @@ pub async fn get_directory_items(directory: String) -> Vec<String> {
             })).await;
 
             items.sort_by_key(|(_, table)| {
-                let date = table.get("en").unwrap().as_table().unwrap().get("date").unwrap().as_table().unwrap();
+                let date = table.get("date").unwrap().as_table().unwrap();
                 date.get("end").unwrap_or_else(|| date.get("start").unwrap()).as_datetime().unwrap().to_owned()
             });
             items.reverse();

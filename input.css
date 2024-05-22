@@ -56,7 +56,7 @@ body {
     @apply space-y-4;
   }
   .styled-body a {
-    @apply underline hover:text-purple;
+    @apply underline text-purple;
   }
   .styled-body code { /* code snippets `` and `````` */
     @apply bg-[#00000018];

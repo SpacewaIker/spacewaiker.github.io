@@ -45,6 +45,10 @@ pub fn ContentDetailsView(directory: String) -> impl IntoView {
 fn ContentDetailsViewInner(content: toml::Table) -> impl IntoView {
     let lang = use_context::<AppLanguage>().expect("No context found!").0;
 
+    let links = content.get("links").map(ToOwned::to_owned);
+    let date = content.get("date").map(ToOwned::to_owned);
+    let images = content.get("images").map(ToOwned::to_owned);
+
     let content = create_memo(move |_| content.get(&lang.get()).unwrap().clone());
 
     let title = move || {
@@ -66,8 +70,8 @@ fn ContentDetailsViewInner(content: toml::Table) -> impl IntoView {
     view! {
         <div class="bg-beige h-fit min-h-screen p-10 pt-20">
             <h1 class="font-title text-4xl font-bold underline text-darkpurple inline-block mb-4">{title}</h1>
-            <ContentLinkIcons links=content.get_untracked().get("links").map(ToOwned::to_owned) />
-            <ContentDate date=content.get_untracked().get("date").map(ToOwned::to_owned) lang=lang />
+            <ContentLinkIcons links=links />
+            <ContentDate date=date lang=lang />
             <ContentTags tags=move || content.get().get("tags").map(ToOwned::to_owned) />
             <div class="flex flex-row space-x-8">
                 <div class="ml-8 basis-3/4">
@@ -76,11 +80,11 @@ fn ContentDetailsViewInner(content: toml::Table) -> impl IntoView {
                 </div>
                 <div class="basis-1/4">
                     {icon}
-                    <ContentImageGallery images=content.get_untracked().get("media").map(ToOwned::to_owned) show_all=true />
+                    <ContentImageGallery images=images.clone() show_all=true />
                 </div>
             </div>
             <div class="mt-16">
-                <ContentImageGalleryL images=content.get_untracked().get("media").map(ToOwned::to_owned) />
+                <ContentImageGalleryL images=images />
             </div>
         </div>
     }
@@ -112,6 +116,10 @@ fn ContentSummaryViewInner<'a>(
 ) -> impl IntoView {
     let lang = use_context::<AppLanguage>().expect("No context found!").0;
 
+    let links = content.get("links").map(ToOwned::to_owned);
+    let date = content.get("date").map(ToOwned::to_owned);
+    let images = content.get("images").map(ToOwned::to_owned);
+
     let content = create_memo(move |_| content.get(&lang.get()).unwrap().clone());
 
     let title = move || {
@@ -135,8 +143,8 @@ fn ContentSummaryViewInner<'a>(
         <A href=format!("/{directory}/{id}") class="block mt-28 mb-4 rounded-md hover:outline-purple hover:outline hover:outline-4">
             <div class="bg-beige p-4">
                 <h1 class="font-title text-4xl font-bold underline text-darkpurple inline-block mb-4">{title}</h1>
-                <ContentLinkIcons links=content.get_untracked().get("links").map(ToOwned::to_owned) />
-                <ContentDate date=content.get_untracked().get("date").map(ToOwned::to_owned) lang=lang />
+                <ContentLinkIcons links=links />
+                <ContentDate date=date lang=lang />
                 <ContentTags tags=move || content.get().get("tags").map(ToOwned::to_owned) />
                 <div class="flex flex-row space-x-8">
                     <div class="ml-8 basis-3/4">
@@ -145,7 +153,7 @@ fn ContentSummaryViewInner<'a>(
                     </div>
                     <div class="basis-1/4">
                         {icon}
-                        <ContentImageGallery images=content.get_untracked().get("media").map(ToOwned::to_owned) show_all=false />
+                        <ContentImageGallery images=images show_all=false />
                     </div>
                 </div>
             </div>
