@@ -3,6 +3,32 @@ use leptos::{component, document, use_context, view, window, IntoView, SignalGet
 use leptos_router::A;
 use wasm_bindgen::JsCast;
 
+fn expand_header(_: web_sys::MouseEvent) {
+    let header = document()
+        .get_elements_by_tag_name("header")
+        .item(0)
+        .unwrap()
+        .dyn_into::<web_sys::HtmlElement>()
+        .unwrap();
+    header
+        .style()
+        .set_property("right", "0")
+        .expect("Failed to set right");
+}
+
+fn collapse_header(_: web_sys::MouseEvent) {
+    let header = document()
+        .get_elements_by_tag_name("header")
+        .item(0)
+        .unwrap()
+        .dyn_into::<web_sys::HtmlElement>()
+        .unwrap();
+    header
+        .style()
+        .set_property("right", "-150vw")
+        .expect("Failed to set right");
+}
+
 /// Header component
 #[component]
 pub fn Header() -> impl IntoView {
@@ -33,9 +59,18 @@ pub fn Header() -> impl IntoView {
     );
 
     view! {
-        <header class="text-yellow font-mono text-lg fixed text-center w-screen z-20 top-0">
-            <div class="bg-purple -z-[1] w-[130vw] h-24 absolute rotate-1 -left-[15vw] -top-8 shadow-header"></div>
-            <nav class="inline-block *:inline-block *:mr-4 mt-4">
+        <header class="text-yellow font-mono text-lg fixed w-[90vw] h-screen z-20 -right-[150vw] transition-[right] duration-300
+                       md:text-center md:w-screen md:h-auto md:right-0 md:top:0">
+            <button on:click=expand_header class="absolute h-16 w-16 rounded-full top-8 -left-[80vw] text-4xl bg-purple shadow-header md:hidden">
+                <i class="nf nf-md-menu"></i>
+            </button>
+            <button on:click=collapse_header class="absolute top-12 left-4 text-4xl md:hidden">
+                <i class="nf nf-md-close"></i>
+            </button>
+            <div class="bg-purple -z-[1] w-[130vw] h-[130vh] absolute -rotate-12 left-[15vw] -top-24 shadow-header
+                        md:h-24 md:rotate-1 md:-left-[15vw] md:-top-8"></div>
+            <nav class="flex flex-col items-end space-y-4 mr-12 mt-12 mb-12
+                        md:inline-block md:*:inline-block md:*:mr-4 md:space-y-0 md:mr-0 md:mt-3 md:mb-0">
                 <div>
                     "menu("
                     <div class="sliding-underline-yellow hover:cursor-pointer" on:click=switch_lang>{lang}</div>
@@ -45,9 +80,10 @@ pub fn Header() -> impl IntoView {
                 <A href="/projects" class="sliding-underline-yellow">{links_titles.1}</A>
                 <A href="/experience" class="sliding-underline-yellow">{links_titles.2}</A>
                 <A href="/education" class="sliding-underline-yellow">{links_titles.3}</A>
-                "}"
+                <div>"}"</div>
             </nav>
-            <nav class="inline-block *:inline-block *:mr-4 mt-4 absolute right-4 text-2xl">
+            <nav class="flex flex-col space-y-8 mt-4 absolute right-12 text-2xl
+                        md:inline-block md:*:inline-block md:*:mr-4 md:space-y-0 md:right-4">
                 <a class="sliding-underline-yellow-low" href="https://www.linkedin.com/in/thibaut-baguette" title=icons_title.0 target="_blank"><i class="nf nf-fa-linkedin"></i></a>
                 <a class="sliding-underline-yellow-low" href="https://www.github.com/SpacewaIker" title=icons_title.1 target="_blank"><i class="nf nf-fa-github"></i></a>
                 <a class="sliding-underline-yellow-low" href="https://spacewaiker.itch.io" title=icons_title.2 target="_blank"><i class="nf nf-fa-itch_io"></i></a>
@@ -144,7 +180,7 @@ pub fn Footer() -> impl IntoView {
     );
 
     view! {
-        <footer class="sticky bottom-0 w-full flex justify-center text-beige text-lg space-x-20 font-line bg-darkpurple p-8">
+        <footer class="sticky bottom-0 w-full justify-center text-beige text-lg font-line bg-darkpurple p-8 md:flex md:space-x-20">
             // "Website Links" column
             <div class="flex flex-col items-center text-center z-10">
                 <h1 class="font-mono text-3xl font-bold my-6">{website_links.0}</h1>
