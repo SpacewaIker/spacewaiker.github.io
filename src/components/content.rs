@@ -68,13 +68,13 @@ fn ContentDetailsViewInner(content: toml::Table) -> impl IntoView {
     let body = view! { <div inner_html=body_html class="font-paragraph text-darkpurple text-lg styled-body" /> };
 
     view! {
-        <div class="bg-beige h-fit min-h-screen p-10 pt-20">
+        <div class="bg-beige h-fit min-h-screen p-4 md:p-10 pt-20">
             <h1 class="font-title text-4xl font-bold underline text-darkpurple inline-block mb-4">{title}</h1>
             <ContentLinkIcons links=links />
             <ContentDate date=date lang=lang />
             <ContentTags tags=move || content.get().get("tags").map(ToOwned::to_owned) />
-            <div class="flex flex-row space-x-8">
-                <div class="ml-8 basis-3/4">
+            <div class="flex flex-col md:flex-row md:space-x-8">
+                <div class="md:ml-8 basis-3/4">
                     <ContentResumeLines lines=move || content.get().get("resume_lines").map(ToOwned::to_owned) />
                     {body}
                 </div>
@@ -147,7 +147,7 @@ fn ContentSummaryViewInner<'a>(
                 <ContentDate date=date lang=lang />
                 <ContentTags tags=move || content.get().get("tags").map(ToOwned::to_owned) />
                 <div class="flex flex-col md:flex-row md:space-x-8">
-                    <div class="ml-0 md:ml-8 basis-3/4">
+                    <div class="md:ml-8 basis-3/4">
                         <ContentResumeLines lines=move || content.get().get("resume_lines").map(ToOwned::to_owned) />
                         {summary}
                     </div>
