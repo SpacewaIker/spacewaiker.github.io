@@ -16,7 +16,7 @@ pub fn ContentListingPage(directory: String) -> impl IntoView {
     let ids_directory = directory.clone();
     view! {
         <div>
-            <div class="bg-beige h-fit min-h-screen p-10 pt-20">
+            <div class="bg-beige h-fit min-h-screen p-4 md:p-10 pt-20">
                 <Await
                     future=move || get_content(index_directory.clone())
                     let:index

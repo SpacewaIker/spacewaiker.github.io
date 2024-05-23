@@ -19,7 +19,7 @@ pub fn ContentTags(#[prop(into)] tags: Signal<Option<Value>>) -> impl IntoView {
     let items_exist = move || tags.get().is_some();
 
     move || {
-        items_exist().then(|| view! { <ul class="font-mono text-purple text-lg mb-2 space-x-6">{ list_items() }</ul> })
+        items_exist().then(|| view! { <ul class="font-mono text-purple text-lg py-4 md:py-0 mb-2 inline-block md:block *:mr-6">{ list_items() }</ul> })
     }
 }
 
@@ -44,7 +44,7 @@ pub fn ContentDate(date: Option<Value>, #[prop(into)] lang: Signal<String>) -> i
                 .map(|v| format!(" - {}", format_date(v.as_datetime().unwrap(), &lang.get())))
         };
 
-        view! { <span class="font-mono text-lg float-right">{ start_date }{ end_date }</span> }
+        view! { <span class="font-mono text-lg float-right block md:inline py-4 md:py-0">{ start_date }{ end_date }</span> }
     })
 }
 

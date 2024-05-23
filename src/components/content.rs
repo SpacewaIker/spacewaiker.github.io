@@ -141,13 +141,13 @@ fn ContentSummaryViewInner<'a>(
 
     view! {
         <A href=format!("/{directory}/{id}") class="block mt-28 mb-4 rounded-md hover:outline-purple hover:outline hover:outline-4">
-            <div class="bg-beige p-4">
+            <div class="bg-beige p-0 md:p-4">
                 <h1 class="font-title text-4xl font-bold underline text-darkpurple inline-block mb-4">{title}</h1>
                 <ContentLinkIcons links=links />
                 <ContentDate date=date lang=lang />
                 <ContentTags tags=move || content.get().get("tags").map(ToOwned::to_owned) />
-                <div class="flex flex-row space-x-8">
-                    <div class="ml-8 basis-3/4">
+                <div class="flex flex-col md:flex-row md:space-x-8">
+                    <div class="ml-0 md:ml-8 basis-3/4">
                         <ContentResumeLines lines=move || content.get().get("resume_lines").map(ToOwned::to_owned) />
                         {summary}
                     </div>
