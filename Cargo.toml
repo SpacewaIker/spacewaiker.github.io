@@ -10,7 +10,7 @@ base64 = "0.22.1"
 cached = { version = "0.51.3", features = ["async", "wasm"] }
 console_error_panic_hook = "0.1.7"
 futures = "0.3.30"
-itertools = "0.12.1"
+itertools = "0.13.0"
 leptos = { version = "0.6.11", features = ["csr"] }
 leptos_meta = { version = "0.6.11", features = ["csr"] }
 leptos_router = { version = "0.6.11", features = ["csr"] }
@@ -25,4 +25,5 @@ web-sys = { version = "0.3.69", features = [
   "HtmlDocument",
   "HtmlInputElement",
   "EventTarget",
+  "MediaQueryList",
 ] }

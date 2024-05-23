@@ -17,6 +17,11 @@ fn expand_header(_: web_sys::MouseEvent) {
 }
 
 fn collapse_header(_: web_sys::MouseEvent) {
+    let query = window().match_media("(min-width: 768px)").unwrap().unwrap();
+    if query.matches() {
+        return;
+    }
+
     let header = document()
         .get_elements_by_tag_name("header")
         .item(0)
@@ -76,10 +81,10 @@ pub fn Header() -> impl IntoView {
                     <div class="sliding-underline-yellow hover:cursor-pointer" on:click=switch_lang>{lang}</div>
                     ") {"
                 </div>
-                <A href="/" class="sliding-underline-yellow">{links_titles.0}</A>
-                <A href="/projects" class="sliding-underline-yellow">{links_titles.1}</A>
-                <A href="/experience" class="sliding-underline-yellow">{links_titles.2}</A>
-                <A href="/education" class="sliding-underline-yellow">{links_titles.3}</A>
+                <A on:click=collapse_header href="/" class="sliding-underline-yellow">{links_titles.0}</A>
+                <A on:click=collapse_header href="/projects" class="sliding-underline-yellow">{links_titles.1}</A>
+                <A on:click=collapse_header href="/experience" class="sliding-underline-yellow">{links_titles.2}</A>
+                <A on:click=collapse_header href="/education" class="sliding-underline-yellow">{links_titles.3}</A>
                 <div>"}"</div>
             </nav>
             <nav class="flex flex-col space-y-8 mt-4 absolute right-12 text-2xl
@@ -88,7 +93,7 @@ pub fn Header() -> impl IntoView {
                 <a class="sliding-underline-yellow-low" href="https://www.github.com/SpacewaIker" title=icons_title.1 target="_blank"><i class="nf nf-fa-github"></i></a>
                 <a class="sliding-underline-yellow-low" href="https://spacewaiker.itch.io" title=icons_title.2 target="_blank"><i class="nf nf-fa-itch_io"></i></a>
                 <a class="sliding-underline-yellow-low font-paragraph font-black" href="./cv.pdf" title=icons_title.3 target="_blank">CV</a>
-                <a class="sliding-underline-yellow-low" href="maito:thibaut.baguette@mail.mcgill.ca" title=icons_title.4><i class="nf nf-md-email_edit_outline"></i></a>
+                <a class="sliding-underline-yellow-low" href="mailto:thibaut.baguette@mail.mcgill.ca" title=icons_title.4><i class="nf nf-md-email_edit_outline"></i></a>
             </nav>
         </header>
     }
