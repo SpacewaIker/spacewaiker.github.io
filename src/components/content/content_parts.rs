@@ -1,7 +1,8 @@
 use leptos::{component, view, CollectView, IntoView, Signal, SignalGet};
+use leptos_i18n::Locale as _;
 use toml::Value;
 
-use crate::utils::format_date;
+use crate::{i18n::use_i18n, utils::format_date};
 
 /// Component for the "tags" in a piece of content
 #[component]
@@ -27,7 +28,10 @@ pub fn ContentTags(#[prop(into)] tags: Signal<Option<Value>>) -> impl IntoView {
 ///
 /// The date is constant once loaded, but the language can change
 #[component]
-pub fn ContentDate(date: Option<Value>, #[prop(into)] lang: Signal<String>) -> impl IntoView {
+pub fn ContentDate(date: Option<Value>) -> impl IntoView {
+    let i18n = use_i18n();
+    let lang = move || i18n.get_locale().as_str();
+
     date.map(|v| {
         let date = v.as_table().unwrap();
         let start_date = date.get("start").cloned();
@@ -36,12 +40,12 @@ pub fn ContentDate(date: Option<Value>, #[prop(into)] lang: Signal<String>) -> i
         let start_date = move || {
             start_date
                 .clone()
-                .map(|v| format_date(v.as_datetime().unwrap(), &lang.get()))
+                .map(|v| format_date(v.as_datetime().unwrap(), lang()))
         };
         let end_date = move || {
             end_date
                 .clone()
-                .map(|v| format!(" - {}", format_date(v.as_datetime().unwrap(), &lang.get())))
+                .map(|v| format!(" - {}", format_date(v.as_datetime().unwrap(), lang())))
         };
 
         view! { <span class="font-mono text-lg float-right block md:inline py-4 md:py-0">{ start_date }{ end_date }</span> }

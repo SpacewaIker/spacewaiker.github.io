@@ -1,8 +1,9 @@
-use leptos::{component, create_memo, use_context, view, Await, IntoView, SignalGet};
+use leptos::{component, create_memo, view, Await, IntoView, SignalGet};
+use leptos_i18n::Locale as _;
 use wasm_bindgen::JsCast;
 use web_sys::HtmlElement;
 
-use crate::{data_loading::get_content, AppLanguage};
+use crate::{data_loading::get_content, i18n::use_i18n};
 
 /// Home page of the website
 #[component]
@@ -19,9 +20,10 @@ pub fn HomePage() -> impl IntoView {
 
 #[component]
 fn HomePageInner(content: toml::Table) -> impl IntoView {
-    let lang = use_context::<AppLanguage>().expect("No context found!").0;
+    let i18n = use_i18n();
+    let lang = move || i18n.get_locale().as_str();
 
-    let content = create_memo(move |_| content.get(&lang.get()).unwrap().clone());
+    let content = create_memo(move |_| content.get(lang()).unwrap().clone());
 
     let intro_html =
         move || markdown::to_html(content.get().get("intro").unwrap().as_str().unwrap());
@@ -85,8 +87,7 @@ fn name_event() {
 
     // check if path is home, otherwise can't get the first-name and last-name elements
     let href = window.location().href().unwrap();
-    if !href.ends_with('/') {
-        // path for home should end with '/'
+    if !href.ends_with("/home") {
         return;
     }
 

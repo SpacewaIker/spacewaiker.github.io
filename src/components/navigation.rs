@@ -1,6 +1,7 @@
-use crate::AppLanguage;
-use leptos::{component, document, use_context, view, window, IntoView, SignalGet, SignalSet};
-use leptos_router::A;
+use crate::i18n::{use_i18n, Locale};
+use leptos::{component, document, view, window, IntoView, SignalGet};
+use leptos_i18n::{t, Locale as _};
+use leptos_router::{use_location, use_navigate, NavigateOptions, A};
 use wasm_bindgen::JsCast;
 
 fn expand_header(_: web_sys::MouseEvent) {
@@ -37,31 +38,22 @@ fn collapse_header(_: web_sys::MouseEvent) {
 /// Header component
 #[component]
 pub fn Header() -> impl IntoView {
-    let lang = use_context::<AppLanguage>().expect("No context found!").0;
+    let i18n = use_i18n();
+
+    let navigate = use_navigate();
     let switch_lang = move |_| {
-        lang.set(if lang.get() == "fr" {
-            "en".to_string()
-        } else {
-            "fr".to_string()
-        });
+        let current = use_location().pathname.get();
+        #[rustfmt::skip]
+        let (lang, locale) = if current.starts_with("/fr") { ("en", Locale::en) } else { ("fr", Locale::fr) };
+        let new = format!(
+            "/{lang}{}",
+            current.trim_start_matches("/en").trim_start_matches("/fr")
+        );
+        navigate(&new, NavigateOptions::default());
+        i18n.set_locale(locale);
     };
 
-    #[rustfmt::skip]
-    let links_titles = (
-        move || { if lang.get() == "fr" { "Accueil();" } else { "Home();" } },
-        move || { if lang.get() == "fr" { "Projets();" } else { "Projects();" } },
-        move || { if lang.get() == "fr" { "Expérience();" } else { "Experience();" } },
-        move || { if lang.get() == "fr" { "Éducation();" } else { "Education();" } },
-    );
-
-    #[rustfmt::skip]
-    let icons_title = (
-        move || { if lang.get() == "fr" { "Connecter avec moi!" } else { "Connect with me!" } },
-        move || { if lang.get() == "fr" { "Voir mes projets!" } else { "Check out my projects!" } },
-        move || { if lang.get() == "fr" { "Voir mes jeux!" } else { "Check out my games!" } },
-        move || { if lang.get() == "fr" { "Obtenis mon CV!" } else { "Get my resume!" } },
-        move || { if lang.get() == "fr" { "Envoyer un courriel!" } else { "Send me an email!" } },
-    );
+    let lang = move || format!("lang: {}", i18n.get_locale().as_str());
 
     view! {
         <header class="text-yellow font-mono text-lg fixed w-[90vw] h-screen z-20 -right-[150vw] transition-[right] duration-300
@@ -81,19 +73,19 @@ pub fn Header() -> impl IntoView {
                     <div class="sliding-underline-yellow hover:cursor-pointer" on:click=switch_lang>{lang}</div>
                     ") {"
                 </div>
-                <A on:click=collapse_header href="/" class="sliding-underline-yellow">{links_titles.0}</A>
-                <A on:click=collapse_header href="/projects" class="sliding-underline-yellow">{links_titles.1}</A>
-                <A on:click=collapse_header href="/experience" class="sliding-underline-yellow">{links_titles.2}</A>
-                <A on:click=collapse_header href="/education" class="sliding-underline-yellow">{links_titles.3}</A>
+                <A on:click=collapse_header href="home" class="sliding-underline-yellow">{t!(i18n, header.nav.home)}</A>
+                <A on:click=collapse_header href="projects" class="sliding-underline-yellow">{t!(i18n, header.nav.projects)}</A>
+                <A on:click=collapse_header href="experience" class="sliding-underline-yellow">{t!(i18n, header.nav.experience)}</A>
+                <A on:click=collapse_header href="education" class="sliding-underline-yellow">{t!(i18n, header.nav.education)}</A>
                 <div>"}"</div>
             </nav>
-            <nav class="flex flex-col space-y-8 mt-4 absolute right-12 text-2xl
+            <nav class="flex flex-col space-y-8 mt-4 absolute right-12 text-2xl *:sliding-underline-yellow-low
                         md:inline-block md:*:inline-block md:*:mr-4 md:space-y-0 md:right-4">
-                <a class="sliding-underline-yellow-low" href="https://www.linkedin.com/in/thibaut-baguette" title=icons_title.0 target="_blank"><i class="nf nf-fa-linkedin"></i></a>
-                <a class="sliding-underline-yellow-low" href="https://www.github.com/SpacewaIker" title=icons_title.1 target="_blank"><i class="nf nf-fa-github"></i></a>
-                <a class="sliding-underline-yellow-low" href="https://spacewaiker.itch.io" title=icons_title.2 target="_blank"><i class="nf nf-fa-itch_io"></i></a>
-                <a class="sliding-underline-yellow-low font-paragraph font-black" href="./cv.pdf" title=icons_title.3 target="_blank">CV</a>
-                <a class="sliding-underline-yellow-low" href="mailto:thibaut.baguette@mail.mcgill.ca" title=icons_title.4><i class="nf nf-md-email_edit_outline"></i></a>
+                <a href="https://www.linkedin.com/in/thibaut-baguette" title=t!(i18n, header.hover.linkedin) target="_blank"><i class="nf nf-fa-linkedin"></i></a>
+                <a href="https://www.github.com/SpacewaIker" title=t!(i18n, header.hover.github) target="_blank"><i class="nf nf-fa-github"></i></a>
+                <a href="https://spacewaiker.itch.io" title=t!(i18n, header.hover.itchio) target="_blank"><i class="nf nf-fa-itch_io"></i></a>
+                <a class="font-paragraph font-black" href="./cv.pdf" title=t!(i18n, header.hover.resume) target="_blank">CV</a>
+                <a href="mailto:thibaut.baguette@mail.mcgill.ca" title=t!(i18n, header.hover.email)><i class="nf nf-md-email_edit_outline"></i></a>
             </nav>
         </header>
     }
@@ -155,70 +147,45 @@ fn copy_email_action(_: web_sys::MouseEvent) {
 /// Footer component
 #[component]
 pub fn Footer() -> impl IntoView {
-    let lang = use_context::<AppLanguage>().expect("No context found!").0;
-
-    #[rustfmt::skip]
-    let website_links = (
-        move || { if lang.get() == "fr" { "Liens du site" } else { "Website Links" } },
-        move || { if lang.get() == "fr" { "Accueil" } else { "Home" } },
-        move || { if lang.get() == "fr" { "À propos de moi" } else { "About me" } },
-        move || { if lang.get() == "fr" { "Chronologie" } else { "Timeline" } },
-    );
-
-    #[rustfmt::skip]
-    let copy_email = move || { if lang.get() == "fr" { "Courriel copié!" } else { "Email copied!" } };
-
-    #[rustfmt::skip]
-    let about = (
-        move || { if lang.get() == "fr" { "À propos" } else { "About" } },
-        move || { if lang.get() == "fr" { "Site web conçu et construit par" } else { "Website designed and built by" } },
-        move || { if lang.get() == "fr" { "Visiter le dépôt du site web" } else { "Visit Website Repository" } },
-    );
-
-    #[rustfmt::skip]
-    let links_titles = (
-        move || { if lang.get() == "fr" { "Copier mon adresse courriel!" } else { "Copy my email address!" } },
-        move || { if lang.get() == "fr" { "Voir mes projets!" } else { "Check out my projects!" } },
-        move || { if lang.get() == "fr" { "Voir mes jeux!" } else { "Check out my games!" } },
-        move || { if lang.get() == "fr" { "Connecter avec moi!" } else { "Connect with me!" } },
-        move || { if lang.get() == "fr" { "Obtenir mon CV!" } else { "Get my resume!" } },
-    );
+    let i18n = use_i18n();
 
     view! {
         <footer class="sticky bottom-0 w-full justify-center text-beige text-lg font-line bg-darkpurple p-8 md:flex md:space-x-20">
             // "Website Links" column
             <div class="flex flex-col items-center text-center z-10">
-                <h1 class="font-mono text-3xl font-bold my-6">{website_links.0}</h1>
+                <h1 class="font-mono text-3xl font-bold my-6">{t!(i18n, footer.website_links.title)}</h1>
                 <ul>
-                    <li><a class="sliding-underline-beige" href="/">{website_links.1}</a></li>
-                    <li><a class="sliding-underline-beige" href="/#intro-screen">{website_links.2}</a></li>
-                    <li><a class="sliding-underline-beige" href="/#timeline-screen">{website_links.3}</a></li>
+                    <li><a class="sliding-underline-beige" href="home">{t!(i18n, footer.website_links.home)}</a></li>
+                    <li><a class="sliding-underline-beige" href="./#intro-screen">{t!(i18n, footer.website_links.about_me)}</a></li>
+                    <li><a class="sliding-underline-beige" href="./#timeline-screen">{t!(i18n, footer.website_links.timeline)}</a></li>
                 </ul>
             </div>
 
             // "Social" column
             <div class="flex flex-col items-center text-center z-10">
-                <h1 class="font-mono text-3xl font-bold my-6">"Social"</h1>
+                <h1 class="font-mono text-3xl font-bold my-6">{t!(i18n, footer.social.title)}</h1>
                 <div class="absolute top-32 p-2 rounded-md border-4 border-purple bg-darkpurple -z-[1] opacity-0 transition-opacity duration-300" id="email-copy-popup">
-                    {copy_email}
+                    {t!(i18n, footer.social.popup)}
                 </div>
-                <p class="cursor-pointer" on:click=copy_email_action title=links_titles.0>
+                <p class="cursor-pointer" on:click=copy_email_action title=t!(i18n, footer.social.email)>
                     "Email"<br/>"thibaut.baguette@mail.mcgill.ca"
                 </p>
-                <ul>
-                    <li><a class="sliding-underline-beige" href="https://www.github.com/SpacewaIker" title=links_titles.1 target="_blank">"GitHub"</a></li>
-                    <li><a class="sliding-underline-beige" href="https://spacewaiker.itch.io" title=links_titles.2 target="_blank">"Itch.io"</a></li>
-                    <li><a class="sliding-underline-beige" href="https://www.linkedin.com/in/thibaut-baguette" title=links_titles.3 target="_blank">LinkedIn</a></li>
-                    <li><a class="sliding-underline-beige" href="/cv.pdf" title=links_titles.4>CV</a></li>
+                <ul class="*:sliding-underline-beige">
+                    <li><a href="https://www.github.com/SpacewaIker" title=t!(i18n, footer.social.github) target="_blank">"GitHub"</a></li>
+                    <li><a href="https://spacewaiker.itch.io" title=t!(i18n, footer.social.itchio) target="_blank">"Itch.io"</a></li>
+                    <li><a href="https://www.linkedin.com/in/thibaut-baguette" title=t!(i18n, footer.social.linkedin) target="_blank">LinkedIn</a></li>
+                    <li><a href="/cv.pdf" title=t!(i18n, footer.social.resume)>CV</a></li>
                 </ul>
             </div>
 
             // "About" column
             <div class="flex flex-col items-center text-center z-10">
-                <h1 class="font-mono text-3xl font-bold my-6">{about.0}</h1>
-                <p>{about.1}<br/>"Thibaut Baguette"</p>
+                <h1 class="font-mono text-3xl font-bold my-6">{t!(i18n, footer.about.title)}</h1>
+                <p>{t!(i18n, footer.about.credits)}<br/>"Thibaut Baguette"</p>
                 <p class="mt-4">
-                    <a class="sliding-underline-beige" href="https://www.github.com/SpacewaIker/spacewaiker.github.io" target="_blank">{about.2}</a>
+                    <a class="sliding-underline-beige" href="https://www.github.com/SpacewaIker/spacewaiker.github.io" target="_blank">
+                        {t!(i18n, footer.about.repo)}
+                    </a>
                 </p>
             </div>
         </footer>

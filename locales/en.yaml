@@ -1,0 +1,31 @@
+header:
+  nav:
+    home: Home();
+    projects: Projects();
+    experience: Experience();
+    education: Education();
+  hover:
+    linkedin: Connect with me!
+    github: Check out my projects!
+    itchio: Check out my games!
+    resume: Get my resume!
+    email: Send me an email!
+
+footer:
+  website_links:
+    title: Website Links
+    home: Home
+    about_me: About me
+    timeline: Timeline
+  social:
+    title: Social
+    email: Copy my email address!
+    popup: Email copied!
+    github: Check out my projects!
+    itchio: Check out my games!
+    linkedin: Connect with me!
+    resume: Get my resume!
+  about:
+    title: About
+    credits: Website designed and built by
+    repo: Visit Website Repository

@@ -1,10 +1,11 @@
 use crate::{
     components::content::ContentSummaryView,
     data_loading::{get_content, get_directory_items},
-    AppLanguage,
+    i18n::use_i18n,
 };
 use itertools::Itertools;
-use leptos::{component, create_memo, use_context, view, Await, CollectView, IntoView, SignalGet};
+use leptos::{component, create_memo, view, Await, CollectView, IntoView, SignalGet};
+use leptos_i18n::Locale as _;
 
 /// Comtonent for the main pages of the site
 ///
@@ -47,9 +48,10 @@ pub fn ContentListingPage(directory: String) -> impl IntoView {
 /// Index part of a content listing page
 #[component]
 fn ContentListingPageIndex(index: toml::Table) -> impl IntoView {
-    let lang = use_context::<AppLanguage>().expect("No context found!").0;
+    let i18n = use_i18n();
+    let lang = move || i18n.get_locale().as_str();
 
-    let index = create_memo(move |_| index.get(&lang.get()).unwrap().clone());
+    let index = create_memo(move |_| index.get(lang()).unwrap().clone());
 
     let title = move || {
         index

@@ -921,6 +921,32 @@ dependencies = [
 ]
 
 [[package]]
+name = "leptos_i18n"
+version = "0.3.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "6f74acc148183951986b9564214f34a2bdb2c14ef45f6db20898839e195a891d"
+dependencies = [
+ "cfg-if",
+ "leptos",
+ "leptos_i18n_macro",
+ "leptos_meta",
+]
+
+[[package]]
+name = "leptos_i18n_macro"
+version = "0.3.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "bf1c733bc79fccdd31c585535ad1d41586a4e7a22b17a5015405542acd828f3c"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "serde",
+ "serde_yaml",
+ "syn",
+ "toml",
+]
+
+[[package]]
 name = "leptos_macro"
 version = "0.6.11"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1322,6 +1348,7 @@ dependencies = [
  "futures",
  "itertools 0.13.0",
  "leptos",
+ "leptos_i18n",
  "leptos_meta",
  "leptos_router",
  "markdown",
@@ -1718,6 +1745,19 @@ dependencies = [
 ]
 
 [[package]]
+name = "serde_yaml"
+version = "0.9.34+deprecated"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "6a8b1a1a2ebf674015cc02edccce75287f1a0130d394307b36743c2f5d504b47"
+dependencies = [
+ "indexmap",
+ "itoa",
+ "ryu",
+ "serde",
+ "unsafe-libyaml",
+]
+
+[[package]]
 name = "server_fn"
 version = "0.6.11"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2111,6 +2151,12 @@ name = "unicode-xid"
 version = "0.2.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f962df74c8c05a667b5ee8bcf162993134c104e96440b663c8daa176dc772d8c"
+
+[[package]]
+name = "unsafe-libyaml"
+version = "0.2.11"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "673aac59facbab8a9007c7f6108d11f63b603f7cabff99fabf650fea5c32b861"
 
 [[package]]
 name = "url"
