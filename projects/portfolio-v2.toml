@@ -7,21 +7,85 @@ icon = "favicon.ico"
 github = "https://www.github.com/SpacewaIker/spacewaiker.github.io"
 
 [tags]
-en = ["Rust", "Leptos", "WebAssembly"]
-fr = ["Rust", "Leptos", "WebAssembly"]
+en = [
+  "Rust",
+  "Leptos",
+  "WebAssembly",
+  "Tailwind CSS",
+  "Responsive Design",
+  "i18n",
+  "Static Site Generator",
+]
+fr = [
+  "Rust",
+  "Leptos",
+  "WebAssembly",
+  "Tailwind CSS",
+  "Site web réactif",
+  "i18n",
+  "Générateur de site statique",
+]
 
 [summary]
-en = ""
-fr = ""
+en = "To make it easier to update my portfolio, I decided to create a new version of my website using Rust and Leptos. This version fetches the content in separate files, like a static site generator, meaning that if I want to add a new project or work experience, I can just write the text file and the website will automatically be updated! The result is this fast, practical website where I can show off my work."
+fr = "Pour faciliter la mise à jour de mon portfolio, j'ai décidé de créer une nouvelle version de mon site web en utilisant Rust et Leptos. Cette version récupère le contenu dans des fichiers séparés, comme un générateur de site statique. Donc si je veux ajouter un nouveau projet ou une nouvelle expérience de travail, je peux simplement écrire le fichier texte et le site web sera automatiquement mis à jour! Le résultat est ce site web rapide et pratique où je peux montrer mon travail."
 
 [resume_lines]
-en = [""]
-fr = [""]
+en = [
+  "Created a custom static site generator single-page application in Rust using Leptos, which compiles to WebAssembly.",
+  "Developed a website with responsive design, using internationalization principles to support both English and French.",
+  "Implemented a system to fetch content from a repository using the GitHub API, allowing for easy updates to the website.",
+]
+fr = [
+  "Creation d'une application web monopage de génération de site statique en Rust utilisant Leptos, qui compile en WebAssembly.",
+  "Développement d'un site web avec un design réactif, utilisant des principes d'internationalisation pour supporter le français et l'anglais.",
+  "Implémentation d'un système pour récupérer le contenu dans un dépôt en utilisant l'API de GitHub, permettant des mises à jour faciles du site web.",
+]
 
 [body]
 en = """
+When I made the [first version of my portfolio website](projects/portfolio-v1), I had just started learning the basics of web development: HTML, CSS, and JavaScript. I also wanted to understand the basics well before moving on to frameworks and more complicated concepts. Because of this, I had decided to make the site out of pure HTML and CSS with some JavaScript. Of course, in hindsight, that was a pretty naive decision, as it was very unpractical to update the website: I had to write the content in the HTML directly, respecting the complicated nested structure of divs, and repeating information between pages. It was a mess! I am still proud of what I was able to achieve for my first website, though.
 
+Hence, I wanted to recreate my website from the ground up using a more practical approach. The main idea was to separate the content from the structure and functionality of the website, so that I could easily update the content with just text. Since the first version, I had learned the Rust programming language, and worked on a [small webapp in Rust](projects/rust-webapp-demo). Therefore, I decided to develop this v2 in Rust, this time using the Leptos framework and Tailwind CSS for styling. The main advangate of Rust is the compilation to WebAssembly, meaning that the website re-renders pages extremely quickly once the data is loaded.
+
+For the content, I decided to use TOML files to make metadata (such as dates, links, image paths, etc.) easy to write and parse. I also wanted to have some styling capabilities in the text, so the main text fields are parsed as Markdown. This way, I can very easily have *italics*, **bold**, `inline code`, [links](/),
+```
+code blocks
+```
+- unordered
+- lists
+
+1. ordered
+2. lists
+
+> and blockquotes
+
+all using the simple Markdown syntax!
+
+The website uses the `leptos_i18n` crate to support both English and French. The content files have English and French fields, and the webiste interface text is stored in locale YAML files. 
+
+I am very happy with the result of this project. It is now much easier to update, while being faster and with less display bugs!
 """
 fr = """
+Lorsque j'ai créé la [première version de mon site web portfolio](projects/portfolio-v1), je venais de commencer à apprendre les bases du développement web : HTML, CSS et JavaScript. Je voulais aussi bien comprendre les bases avant de passer aux frameworks et concepts plus compliqués. C'est pour ça que j'avais décidé de faire le site purement avec du HTML et du CSS avec un peu de JavaScript. Bien sûr, avec le recul, c'était une décision assez naïve, vu que ça rendait la mise à jour du site très peu pratique : je devais écrire le contenu directement dans le HTML, en respectant la structure compliquée des divs, et en répétant l'information entre les pages. Je suis par contre quand même fier de ce que j'ai pu réaliser pour mon premier site web.
 
+Donc, je voulais recréer mon site web de zéro en utilisant une approche plus pratique. L'idée principale était de séparer le contenu de la structure et de la fonctionnalité du site web, pour que je puisse facilement mettre à jour le contenu avec juste du texte. Depuis la première version, j'avais appris le langage de programmation Rust, et travaillé sur une [petite application web en Rust](projects/rust-webapp-demo). J'ai donc décidé de développer cette v2 en Rust, cette fois-ci en utilisant le framework Leptos et Tailwind CSS pour le style. Le principal avantage de Rust est la compilation en WebAssembly, ce qui signifie que le site re-rend les pages extrêmement rapidement une fois les données chargées.
+
+Pour le contenu, j'ai décidé d'utiliser des fichiers TOML pour rendre les métadonnées (comme les dates, les liens, les chemins d'images, etc.) faciles à écrire et à lire dans le programme. Je voulais aussi avoir des capacités de style dans le texte, donc les champs de texte principaux sont analysés en Markdown. Comme ça, je peux très facilement avoir du texte *italique*, **gras**, `du code`, [des liens](/),
+```
+des blocs de code
+```
+- des listes
+- non ordonnées
+
+1. des listes
+2. ordonnées
+
+> et des citations
+
+tout ça en utilisant la syntaxe simple de Markdown !
+
+Le site web utilise la crate `leptos_i18n` pour supporter le français et l'anglais. Les fichiers de contenu ont des champs anglais et français, et le texte de l'interface du site est stocké dans des fichiers YAML de localisation.
+
+Je suis très content du résultat de ce projet. Il est maintenant beaucoup plus facile à mettre à jour, tout en étant plus rapide et avec moins de bugs d'affichage !
 """
