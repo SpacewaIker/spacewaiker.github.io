@@ -1,5 +1,5 @@
-use crate::{components::NotFound, data_loading::get_content, i18n::use_i18n};
-use leptos::{component, create_memo, view, Await, IntoView, SignalGet, SignalGetUntracked};
+use crate::{data_loading::get_content, i18n::use_i18n};
+use leptos::{component, create_memo, view, Await, IntoView, SignalGet};
 use leptos_i18n::Locale as _;
 use leptos_router::{use_params_map, A};
 use std::borrow::ToOwned;
@@ -14,19 +14,14 @@ use content_parts::*;
 /// This is intended as a full-page view
 #[component]
 pub fn ContentDetailsView(directory: String) -> impl IntoView {
-    let params = use_params_map().get_untracked();
+    let params = use_params_map();
 
-    let id = params.get("id");
-
-    if id.is_none() {
-        return NotFound().into_view();
-    }
-
-    let id = id.unwrap().clone();
+    let id = move || params.get().get("id").unwrap().clone();
 
     view! {
+        move ||
         <Await
-            future=move || get_content(format!("{directory}/{id}"))
+            future=move || get_content(format!("{directory}/{}", id()))
             let:content
         >
             <ContentDetailsViewInner content=content.clone() />
@@ -37,7 +32,6 @@ pub fn ContentDetailsView(directory: String) -> impl IntoView {
             </svg>
         </Await>
     }
-    .into_view()
 }
 
 #[component]
