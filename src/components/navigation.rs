@@ -170,7 +170,7 @@ pub fn Footer() -> impl IntoView {
                 <p class="cursor-pointer" on:click=copy_email_action title=t!(i18n, footer.social.email)>
                     "Email"<br/>"thibaut.baguette@mail.mcgill.ca"
                 </p>
-                <ul class="*:sliding-underline-beige">
+                <ul class="*:*:sliding-underline-beige">
                     <li><a href="https://www.github.com/SpacewaIker" title=t!(i18n, footer.social.github) target="_blank">"GitHub"</a></li>
                     <li><a href="https://spacewaiker.itch.io" title=t!(i18n, footer.social.itchio) target="_blank">"Itch.io"</a></li>
                     <li><a href="https://www.linkedin.com/in/thibaut-baguette" title=t!(i18n, footer.social.linkedin) target="_blank">LinkedIn</a></li>
