@@ -45,8 +45,8 @@ fn HomePageInner(content: toml::Table) -> impl IntoView {
                 // title screen
 
                 <div class="relative z-20 font-title text-[23vw] text-[transparent] mix-blend-color-dodge title-text-stroke">
-                    <div id="first-name" class="absolute left-1/2 -translate-x-1/2 top-0">Thibaut</div>
-                    <div id="last-name"  class="absolute left-1/2 -translate-x-1/2 top-[45vh]">Baguette</div>
+                    <div id="first-name" class="absolute left-1/2 -translate-x-1/2 top-[20vh] md:top-0">Thibaut</div>
+                    <div id="last-name"  class="absolute left-1/2 -translate-x-1/2 top-[50vh] md:top-[45vh]">Baguette</div>
                 </div>
 
                 <div class="w-full h-screen">
@@ -59,20 +59,24 @@ fn HomePageInner(content: toml::Table) -> impl IntoView {
                 </div>
 
                 // intro screen
-                <div class="bg-darkgray text-beige relative w-full flex" style="padding-top: calc(15rem + 12vw);">
-                    <div class="relative overflow-hidden -left-16 -top-10 h-[40vw] w-[40vw] rounded-[30%] rotate-12">
-                        // <img class="-rotate-12" src="https://github.com/SpacewaIker/portfolio-v2/blob/content/media/profile_picture.jpg?raw=true" />
-                        <img class="relative -top-[5%] h-[110%] w-[110%] max-w-none -rotate-12" src="https://thibautbaguette.com/img/profile_picture.jpg" />
+                <div class="bg-darkgray text-beige relative w-full flex flex-col md:flex-row items-center"
+                     style="padding-top: calc(15rem + 12vw);">
+                    <div class="relative overflow-hidden h-[80vw] w-[80vw] rounded-[30%] rotate-12
+                                md:-left-16 -top-10 md:h-[40vw] md:w-[40vw]">
+                        <img class="relative -top-[6%] -left-[6%] h-[110%] w-[110%] max-w-none -rotate-12"
+                             src="https://thibautbaguette.com/img/profile_picture.jpg" />
                     </div>
-                    <div inner_html=intro_html class="w-1/2 right-20 font-paragraph text-2xl styled-body" />
+                    <div inner_html=intro_html class="px-4 w-full md:w-1/2 right-20 font-paragraph text-2xl styled-body leading-relaxed" />
                 </div>
 
-                <div class="bg-darkgray text-beige w-full font-paragraph text-xl styled-body styled-body-cols py-10 px-24" inner_html=body_html>
+                <div class="relative -top-2 bg-darkgray text-beige w-full font-paragraph text-xl styled-body styled-body-cols
+                            py-10 px-4 leading-relaxed space-y-8 md:px-24"
+                     inner_html=body_html>
                 </div>
             </div>
 
             // required to make the footer angled
-            <svg class="h-20 w-full relative -top-2" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <svg class="h-20 w-full relative -top-4" viewBox="0 0 100 100" preserveAspectRatio="none">
                 <polyline class="fill-darkgray" points="0 0, 100 0, 100 60, 0 100"></polyline>
             </svg>
         </div>
@@ -136,9 +140,15 @@ fn name_event() {
         .unwrap();
 
     // y position
-    let y_start_first = 0.0;
-    let y_start_last = 0.45 * window_height;
-    let y_end = 15.0f64.mul_add(rem, window_height); // 100vh + 10rem (separator height) + 5rem padding
+    let query = window.match_media("(min-width: 768px)").unwrap().unwrap();
+    let (y_start_first, y_start_last) = if query.matches() {
+        // md
+        (0.0, 0.45 * window_height)
+    } else {
+        // sm
+        (0.20 * window_height, 0.50 * window_height)
+    };
+    let y_end = 17.5f64.mul_add(rem, window_height); // 100vh + 10rem * 175% (separator height)
     let y_first = (y_end - y_start_first).mul_add(t, y_start_first);
     let y_last = (y_end - y_start_last).mul_add(t, y_start_last);
 

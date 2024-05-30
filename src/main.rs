@@ -26,6 +26,7 @@ fn App() -> impl IntoView {
                     <Route path="/education/:id" view=move || view! { <ContentDetailsView directory=String::from("education") /> } />
                     <Route path="*" view=|| view! { <Redirect path="home" /> } />
                 </Route>
+                <Route path="*" view=|| view! { <Redirect path="/en/home" /> } />
             </Routes>
         </Router>
     }

@@ -48,7 +48,11 @@ body {
 
   /* title */
   .title-text-stroke {
-    -webkit-text-stroke: 4px #AB21DF;
+    -webkit-text-stroke: 2px #AB21DF;
+
+    @media (min-width: 768px) {
+      -webkit-text-stroke: 4px #AB21DF;
+    }
   }
 
   /* .styled-body is applied to a container of markdown to html formatted text */

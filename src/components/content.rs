@@ -19,7 +19,6 @@ pub fn ContentDetailsView(directory: String) -> impl IntoView {
     let id = move || params.get().get("id").unwrap().clone();
 
     view! {
-        move ||
         <Await
             future=move || get_content(format!("{directory}/{}", id()))
             let:content
