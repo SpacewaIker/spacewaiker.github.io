@@ -20,6 +20,7 @@ leptos_i18n = { version = "0.3.3", default-features = false, features = [
 leptos_meta = { version = "0.6.11", features = ["csr"] }
 leptos_router = { version = "0.6.11", features = ["csr"] }
 markdown = { git = "https://github.com/johannhof/markdown.rs.git", rev = "68ff3f837a24e47219e204b2c420a4f008951387" }
+rand = "0.8.5"
 reqwest = { version = "0.12.4", features = ["json"] }
 serde_json = "1.0.117"
 toml = "0.8.10"

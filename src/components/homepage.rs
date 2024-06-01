@@ -1,5 +1,6 @@
-use leptos::{component, create_memo, view, Await, IntoView, SignalGet};
+use leptos::{component, create_memo, view, Await, CollectView, IntoView, SignalGet};
 use leptos_i18n::Locale as _;
+use rand::{seq::SliceRandom, thread_rng};
 use wasm_bindgen::JsCast;
 use web_sys::HtmlElement;
 
@@ -23,6 +24,15 @@ fn HomePageInner(content: toml::Table) -> impl IntoView {
     let i18n = use_i18n();
     let lang = move || i18n.get_locale().as_str();
 
+    let words = content
+        .get("word_soup")
+        .unwrap()
+        .as_array()
+        .unwrap()
+        .iter()
+        .map(|v| v.as_str().unwrap().to_owned())
+        .collect::<Vec<_>>();
+
     let content = create_memo(move |_| content.get(lang()).unwrap().clone());
 
     let intro_html =
@@ -43,6 +53,9 @@ fn HomePageInner(content: toml::Table) -> impl IntoView {
         <div>
             <div class="bg-beige h-fit min-h-screen overflow-x-hidden">
                 // title screen
+                <div class="absolute w-full h-[120vh]">
+                    <WordSoup words=&words />
+                </div>
 
                 <div class="relative z-20 font-title text-[23vw] text-[transparent] mix-blend-color-dodge title-text-stroke">
                     <div id="first-name" class="absolute left-1/2 -translate-x-1/2 top-[20vh] md:top-0">Thibaut</div>
@@ -79,6 +92,31 @@ fn HomePageInner(content: toml::Table) -> impl IntoView {
             <svg class="h-20 w-full relative -top-4" viewBox="0 0 100 100" preserveAspectRatio="none">
                 <polyline class="fill-darkgray" points="0 0, 100 0, 100 60, 0 100"></polyline>
             </svg>
+        </div>
+    }
+}
+
+#[component]
+#[allow(clippy::needless_lifetimes)]
+fn WordSoup<'a>(words: &'a [String]) -> impl IntoView {
+    let mut rng = thread_rng();
+
+    let mut all_words = Vec::new();
+    for _ in 0..10 {
+        all_words.extend_from_slice(words);
+    }
+    all_words.shuffle(&mut rng);
+
+    let list_items = all_words
+        .into_iter()
+        .map(|word| view! { <li class="inline-block">{ word }</li> })
+        .collect_view();
+
+    view! {
+        <div class="w-full h-full overflow-hidden font-mono text-darkgray tracking-[0.3em] blur-[1px] opacity-20 select-none">
+            <ul class="rotate-12 list-none w-[130%] h-[130%] relative fixed-center space-x-8 space-y-4">
+                {list_items}
+            </ul>
         </div>
     }
 }
