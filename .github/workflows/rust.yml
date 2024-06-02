@@ -25,6 +25,13 @@ jobs:
       
     - name: Add trunk
       run: cargo install trunk
+
+    - uses: actions/setup-node@v4
+      with:
+        node-version: latest
+
+    - name: Install tailwindcss
+      run: npm install -g tailwindcss
       
     - name: Build
       run: trunk build --release --minify
