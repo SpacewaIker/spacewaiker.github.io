@@ -34,7 +34,7 @@ jobs:
       run: npm install -g tailwindcss
       
     - name: Build
-      run: trunk build --release --minify
+      run: GH_API_PAT=${{ secrets.GH_API_PAT }} trunk build --release --minify
       
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@v4
