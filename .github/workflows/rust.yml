@@ -1,0 +1,35 @@
+name: Build and deploy
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: write
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Add target
+      run: rustup target add wasm32-unknown-unknown
+      
+    - name: Add trunk
+      run: cargo install trunk
+      
+    - name: Build
+      run: trunk build --release --minify
+      
+    - name: Deploy
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        folder: dist
