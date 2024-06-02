@@ -18,7 +18,7 @@ pub async fn get_content(path: String) -> toml::Table {
     let client = create_client();
 
     let req = client.get(format!(
-        "https://api.github.com/repos/SpacewaIker/portfolio-v2/contents/{path}.toml?ref=content"
+        "https://api.github.com/repos/SpacewaIker/spacewaiker.github.io/contents/{path}.toml?ref=content"
     ));
 
     fetch_parse_content(req).await
@@ -29,7 +29,7 @@ pub async fn get_content(path: String) -> toml::Table {
 fn create_client() -> Client {
     #[cfg(debug_assertions)]
     leptos::logging::log!("Creating client");
-    let github_pat = include_str!("../.github_pat").trim();
+    let github_pat = env!("GH_API_PAT");
 
     let mut headers = HeaderMap::new();
     headers.insert(
@@ -57,7 +57,7 @@ pub async fn get_directory_items(directory: String) -> Vec<String> {
 
     let client = create_client();
 
-    client.get(format!("https://api.github.com/repos/SpacewaIker/portfolio-v2/contents/{directory}?ref=content"))
+    client.get(format!("https://api.github.com/repos/SpacewaIker/spacewaiker.github.io/contents/{directory}?ref=content"))
         .send()
         .and_then(reqwest::Response::json::<serde_json::Value>)
         .and_then(|json| async move {
