@@ -1,0 +1,18 @@
+spin_manifest_version = 2
+
+[application]
+name = "portfolio"
+version = "0.1.0"
+authors = ["Thibaut Baguette <thibaut.baguette@mail.mcgill.ca"]
+description = "My portfolio website"
+
+[[trigger.http]]
+route = "/..."
+component = "portfolio"
+
+[component.portfolio]
+source = "target/wasm32-wasi/release/portfolio.wasm"
+allowed_outbound_hosts = []
+[component.portfolio.build]
+command = "cargo build --target wasm32-wasi --release"
+watch = ["src/**/*.rs", "Cargo.toml"]
