@@ -54,7 +54,7 @@ jobs:
         run: cargo clippy & cargo fmt
 
       - name: Download and install tailwindcss binary
-        run: npm install -D tailwindcss
+        run: npm install -g tailwindcss
 
       - name: Download and install Trunk binary
         uses: jetli/trunk-action@v0.5.0
