@@ -1,0 +1,90 @@
+# For setup instructions needed for Fermyon Cloud, see:
+# https://developer.fermyon.com/cloud/github-actions
+
+# For reference, see:
+# https://developer.fermyon.com/cloud/changelog/gh-actions-spin-deploy
+
+# For the Fermyon gh actions themselves, see:
+# https://github.com/fermyon/actions
+
+name: Release to Spin Cloud
+
+on:
+push:
+    branches: [main]
+workflow_dispatch:
+
+permissions:
+contents: read
+id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+group: "spin"
+cancel-in-progress: false
+
+env:
+  GH_API_PAT: ${{ secrets.GH_API_PAT }}
+
+jobs:
+Spin-Release:
+
+    timeout-minutes: 10
+
+    environment:
+    name: production
+    url: ${{ steps.deployment.outputs.app-url }}
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4 # repo checkout
+
+    # Install Rust Toolchain, with Clippy & Rustfmt
+    - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+        components: clippy, rustfmt
+
+    - name: Add WASM & WASI targets
+        run: rustup target add wasm32-unknown-unknown && rustup target add wasm32-wasi
+
+    - name: lint
+        run: cargo clippy & cargo fmt
+
+    - name: Download and install tailwindcss binary
+        run: npm install -D tailwindcss
+
+    - name: Download and install Trunk binary
+        uses: jetli/trunk-action@v0.5.0
+        with:
+          version: latest
+
+    - name: Build with Trunk
+        run: trunk build --public-url "https://thibautbaguette.com" --release --minify
+
+
+    # Install Spin CLI & Deploy
+
+    - name: Setup Spin
+        uses: fermyon/actions/spin/setup@v1
+        # with:
+        # plugins:
+
+    - name: Build and deploy
+        id: deployment
+        uses: fermyon/actions/spin/deploy@v1
+        with:
+        fermyon_token: ${{ secrets.FERMYON_CLOUD_TOKEN }}
+        # key_values: |-
+            # abc=xyz
+            # foo=bar
+        # variables: |-
+            # password=${{ secrets.SECURE_PASSWORD }}
+            # apikey=${{ secrets.API_KEY }}
+
+    # Create an explicit message to display the URL of the deployed app, as well as in the job graph
+    - name: Deployed URL
+        run: |
+        echo "Deployed app URL: ${{ steps.deployment.outputs.app-url }}" >> $GITHUB_STEP_SUMMARY
