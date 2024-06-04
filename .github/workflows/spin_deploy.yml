@@ -62,7 +62,7 @@ jobs:
           version: latest
 
       - name: Build with Trunk
-        run: trunk build --public-url "https://thibautbaguette.com" --release --minify
+        run: trunk build --release --minify
 
 
     # Install Spin CLI & Deploy
