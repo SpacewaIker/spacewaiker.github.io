@@ -78,7 +78,9 @@ pub fn ContentResumeLines(#[prop(into)] lines: Signal<Option<Value>>) -> impl In
 }
 
 fn image_path(image: &str) -> String {
-    format!("https://github.com/SpacewaIker/portfolio-v2/blob/content/media/{image}?raw=true")
+    format!(
+        "https://github.com/SpacewaIker/spacewaiker.github.io/blob/content/media/{image}?raw=true"
+    )
 }
 
 /// Component for the images in a piece of content

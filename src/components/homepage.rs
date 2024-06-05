@@ -77,7 +77,7 @@ fn HomePageInner(content: toml::Table) -> impl IntoView {
                     <div class="relative overflow-hidden h-[80vw] w-[80vw] rounded-[30%] rotate-12
                                 md:-left-16 -top-10 md:h-[40vw] md:w-[40vw]">
                         <img class="relative -top-[6%] -left-[6%] h-[110%] w-[110%] max-w-none -rotate-12"
-                             src="https://thibautbaguette.com/img/profile_picture.jpg" />
+                             src="https://github.com/spacewaiker/spacewaiker.github.io/blob/content/media/profile_picture.jpg?raw=true" />
                     </div>
                     <div inner_html=intro_html class="px-4 w-full md:w-1/2 right-20 font-paragraph text-2xl styled-body leading-relaxed" />
                 </div>
