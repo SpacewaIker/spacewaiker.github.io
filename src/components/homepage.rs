@@ -102,7 +102,7 @@ fn WordSoup<'a>(words: &'a [String]) -> impl IntoView {
     let mut rng = thread_rng();
 
     let mut all_words = Vec::new();
-    for _ in 0..10 {
+    for _ in 0..15 {
         all_words.extend_from_slice(words);
     }
     all_words.shuffle(&mut rng);
@@ -113,8 +113,8 @@ fn WordSoup<'a>(words: &'a [String]) -> impl IntoView {
         .collect_view();
 
     view! {
-        <div class="w-full h-full overflow-hidden font-mono text-darkgray tracking-[0.3em] blur-[1px] opacity-20 select-none">
-            <ul class="rotate-12 list-none w-[130%] h-[130%] relative fixed-center space-x-8 space-y-4">
+        <div class="w-full h-full overflow-hidden font-mono text-darkgray tracking-[0.3em] blur-[1.5px] opacity-20 select-none">
+            <ul class="rotate-12 list-none w-[250%] md:w-[150%] h-[150%] relative fixed-center space-x-8 space-y-4">
                 {list_items}
             </ul>
         </div>

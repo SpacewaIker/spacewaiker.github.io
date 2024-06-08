@@ -29,7 +29,7 @@ pub async fn get_content(path: String) -> toml::Table {
 fn create_client() -> Client {
     #[cfg(debug_assertions)]
     leptos::logging::log!("Creating client");
-    let github_pat = env!("GH_API_PAT");
+    let github_pat = env!("GH_API_PAT").trim();
 
     let mut headers = HeaderMap::new();
     headers.insert(
