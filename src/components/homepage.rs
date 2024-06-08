@@ -72,7 +72,7 @@ fn HomePageInner(content: toml::Table) -> impl IntoView {
                 </div>
 
                 // intro screen
-                <div class="bg-darkgray text-beige relative w-full flex flex-col md:flex-row items-center"
+                <div id="intro" class="bg-darkgray text-beige relative w-full flex flex-col md:flex-row items-center"
                      style="padding-top: calc(15rem + 12vw);">
                     <div class="relative overflow-hidden h-[80vw] w-[80vw] rounded-[30%] rotate-12
                                 md:-left-16 -top-10 md:h-[40vw] md:w-[40vw]">
@@ -128,7 +128,7 @@ fn name_event() {
     let window = leptos::window();
 
     // check if path is home, otherwise can't get the first-name and last-name elements
-    let href = window.location().href().unwrap();
+    let href = window.location().pathname().unwrap();
     if !href.ends_with("/home") {
         return;
     }

@@ -4,6 +4,8 @@ use leptos_i18n::{t, Locale as _};
 use leptos_router::{use_location, use_navigate, NavigateOptions, A};
 use wasm_bindgen::JsCast;
 
+const CV_URL: &str = "https://docs.google.com/viewer?url=https://raw.githubusercontent.com/SpacewaIker/spacewaiker.github.io/content/thibaut_baguette_cv.pdf";
+
 fn expand_header(_: web_sys::MouseEvent) {
     let header = document()
         .get_elements_by_tag_name("header")
@@ -84,7 +86,7 @@ pub fn Header() -> impl IntoView {
                 <a href="https://www.linkedin.com/in/thibaut-baguette" title=t!(i18n, header.hover.linkedin) target="_blank"><i class="nf nf-fa-linkedin"></i></a>
                 <a href="https://www.github.com/SpacewaIker" title=t!(i18n, header.hover.github) target="_blank"><i class="nf nf-fa-github"></i></a>
                 <a href="https://spacewaiker.itch.io" title=t!(i18n, header.hover.itchio) target="_blank"><i class="nf nf-fa-itch_io"></i></a>
-                <a class="font-paragraph font-black" href="./cv.pdf" title=t!(i18n, header.hover.resume) target="_blank">CV</a>
+                <a class="font-paragraph font-black" href=CV_URL title=t!(i18n, header.hover.resume) target="_blank">CV</a>
                 <a href="mailto:thibaut.baguette@mail.mcgill.ca" title=t!(i18n, header.hover.email)><i class="nf nf-md-email_edit_outline"></i></a>
             </nav>
         </header>
@@ -156,8 +158,7 @@ pub fn Footer() -> impl IntoView {
                 <h1 class="font-mono text-3xl font-bold my-6">{t!(i18n, footer.website_links.title)}</h1>
                 <ul>
                     <li><a class="sliding-underline-beige" href="home">{t!(i18n, footer.website_links.home)}</a></li>
-                    <li><a class="sliding-underline-beige" href="./#intro-screen">{t!(i18n, footer.website_links.about_me)}</a></li>
-                    <li><a class="sliding-underline-beige" href="./#timeline-screen">{t!(i18n, footer.website_links.timeline)}</a></li>
+                    <li><a class="sliding-underline-beige" href="home#intro">{t!(i18n, footer.website_links.about_me)}</a></li>
                 </ul>
             </div>
 
@@ -174,7 +175,7 @@ pub fn Footer() -> impl IntoView {
                     <li><a href="https://www.github.com/SpacewaIker" title=t!(i18n, footer.social.github) target="_blank">"GitHub"</a></li>
                     <li><a href="https://spacewaiker.itch.io" title=t!(i18n, footer.social.itchio) target="_blank">"Itch.io"</a></li>
                     <li><a href="https://www.linkedin.com/in/thibaut-baguette" title=t!(i18n, footer.social.linkedin) target="_blank">LinkedIn</a></li>
-                    <li><a href="/cv.pdf" title=t!(i18n, footer.social.resume)>CV</a></li>
+                    <li><a href=CV_URL title=t!(i18n, footer.social.resume) target="_blank">CV</a></li>
                 </ul>
             </div>
 
