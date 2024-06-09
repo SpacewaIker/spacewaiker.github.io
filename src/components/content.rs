@@ -76,9 +76,6 @@ fn ContentDetailsViewInner(content: toml::Table) -> impl IntoView {
                     <ContentImageGallery images=images.clone() show_all=true />
                 </div>
             </div>
-            <div class="mt-16">
-                <ContentImageGalleryL images=images />
-            </div>
         </div>
     }
 }

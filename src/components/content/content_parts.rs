@@ -78,9 +78,14 @@ pub fn ContentResumeLines(#[prop(into)] lines: Signal<Option<Value>>) -> impl In
 }
 
 fn image_path(image: &str) -> String {
-    format!(
-        "https://github.com/SpacewaIker/spacewaiker.github.io/blob/content/media/{image}?raw=true"
-    )
+    if image.starts_with("http") {
+        // If the image is already a URL, return it as is
+        image.to_owned()
+    } else {
+        format!(
+            "https://github.com/SpacewaIker/spacewaiker.github.io/blob/content/media/{image}?raw=true"
+        )
+    }
 }
 
 /// Component for the images in a piece of content
@@ -100,7 +105,7 @@ pub fn ContentImageGallery(images: Option<Value>, show_all: bool) -> impl IntoVi
 
                 if show_all {
                     div_class += " has-[:focus]:fixed has-[:focus]:w-screen has-[:focus]:h-screen has-[:focus]:top-0 has-[:focus]:left-0 has-[:focus]:backdrop-blur-sm has-[:focus]:backdrop-brightness-50 has-[:focus]:z-50";
-                    button_class += " focus:fixed focus:fixed-center group";
+                    button_class += " focus:fixed focus:fixed-center group focus:mt-10";
                     img_class += " hover:outline hover:outline-purple hover:shadow-lg group-focus:hover:outline-none group-focus:max-w-[90vw] group-focus:max-h-[90vh]";
                 }
 
@@ -120,23 +125,6 @@ pub fn ContentImageGallery(images: Option<Value>, show_all: bool) -> impl IntoVi
         };
 
         view! { <div>{ images }</div> }
-    })
-}
-
-/// Component for the images in a piece of content
-///
-/// The images are rendered in full width
-#[component]
-pub fn ContentImageGalleryL(images: Option<Value>) -> impl IntoView {
-    images.map(|images| {
-        let images = images
-            .as_array()
-            .unwrap()
-            .iter()
-            .map(|image| view! { <img src=image_path(image.as_str().unwrap()) class="rounded-xl shadow-lg"/> })
-            .collect_view();
-
-        view! { <div class="space-y-4">{ images }</div> }
     })
 }
 
