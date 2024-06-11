@@ -1,0 +1,47 @@
+date = { start = 2024-03-01 }
+title = { en = "Python Raytracer", fr = "Raytracer Python" }
+media = [
+  "https://raw.githubusercontent.com/SpacewaIker/python-raytracer/main/renders/NovelScene1.png",
+  "https://raw.githubusercontent.com/SpacewaIker/python-raytracer/main/renders/NovelScene2.png",
+  "https://raw.githubusercontent.com/SpacewaIker/python-raytracer/main/renders/MirrorRefraction.png",
+  "https://raw.githubusercontent.com/SpacewaIker/python-raytracer/main/renders/MotionBlur.png",
+]
+
+[links]
+github = "https://github.com/SpacewaIker/python-raytracer"
+
+[tags]
+en = ["Ray tracing", "Python", "Computer graphics", "Rendering"]
+fr = ["Ray tracing", "Python", "Graphisme", "Rendu"]
+
+[summary]
+en = "For my Computer Graphics course, I implemented a simple raytracer in Python. It supports basic shapes such as spheres, planes, and boxes, hierarchic structures, triangle mesh rendering, anti-aliasing through super sampling and jittering, reflective and refractive surfaces, simple motion blur, depth of field, constructive solid geometry, and texture-mapped surfaces. I had a lot of fun working on this project, and I'm proud of the images the raytracer was able to render."
+fr = "Pour mon cours de *Computer Graphics*, j'ai implémenté un raytracer en Python. Il supporte des formes de base telles que des sphères, des plans et des boîtes, des structures hiérarchiques, le rendu de maillages de triangles, l'anti-aliasing par sur-échantillonnage et jittering, des surfaces réfléchissantes et réfractives, un flou de mouvement simple, la profondeur de champ, la géométrie solide constructive et des surfaces texturées. J'ai adoré travailler sur ce projet, et je suis fier des images que le raytracer a pu rendre."
+
+[resume_lines]
+en = [
+  "Developed a raytracer in Python able to produce complex images from 3D scene descriptions",
+  "Implemented support for primitive shapes, hierarchic structures, triangle mesh rendering, and constructive solid geometry",
+  "Supported effects such as anti-aliasing, reflection, refraction, motion blur, depth of field, and texture mapping",
+]
+fr = [
+  "Développement d'un raytracer en Python capable de produire des images complexes à partir de descriptions de scènes 3D",
+  "Implémentation de support pour des formes primitives, des structures hiérarchiques, le rendu de maillages de triangles et la géométrie solide constructive",
+  "Support d'effets tels que l'anti-aliasing, la réflexion, la réfraction, le flou de mouvement, la profondeur de champ et les textures",
+]
+
+[body]
+en = """
+As the fourth assignment for my Computer Graphics course, I developed a raytracer in Python. The project started with the basic functionalities of intersecting with spheres, planes, and axis-aligned bounding boxes, lighting and shading, shadow rays, hierarchy intersection, triangle mesh intersection, and anti-aliasing. Even with just these few features, it was possible to design interesting scenes, with optically accurate shadows, lighting, and shape definitions. 
+
+Then, I implemented more advanced bonus features. Most were relatively simple to implement, but it was still a lot of work overall. I added retlective and refractive surfaces, motion blur based on simple linear motion, depth of field blur, constructive solid geometry, and texture-mapped surfaces. With all of these new features, I designed a scene as an homage to one of the first movies using computer-generated images: Tron. This scene of two lightcycles demonstrates all of the raytracer's features. 
+
+This project was a lot of fun to work on, being able to see a visual output of a program that I wrote was very rewarding. As raytracing technology is becoming more and more common in video games, it was interesting to learn the details about how it works and to implement a basic raytracer myself.
+"""
+fr = """
+Pour le quatrième projet de mon cours de *Computer Graphics*, j'ai développé un raytracer en Python. Le projet a commencé avec les fonctionnalités de base d'intersection avec des sphères, des plans et des boîtes (AABB), d'éclairage et d'ombrage, de rayons d'ombre, d'intersection hiérarchique, d'intersection de maillage de triangles et d'anti-aliasing. Même avec seulement ces quelques fonctionnalités, il était possible de créer des scènes intéressantes, avec des ombres, un éclairage et des définitions de forme optiquement précis.
+
+Ensuite, j'ai implémenté des fonctionnalités bonus plus avancées. La plupart étaient relativement simples à implémenter, mais cela représentait tout de même beaucoup de travail dans l'ensemble. J'ai ajouté des surfaces réfléchissantes et réfractives, un flou de mouvement basé sur un mouvement linéaire simple, un flou de profondeur de champ, de la géométrie solide constructive et des surfaces texturées. Avec toutes ces nouvelles fonctionnalités, j'ai conçu une scène en hommage à l'un des premiers films utilisant des images générées par ordinateur : Tron. Cette scène de deux lightcycles démontre toutes les fonctionnalités du raytracer.
+
+Ce projet a été très amusant à réaliser, pouvoir voir une sortie visuelle d'un programme que j'ai écrit était très gratifiant. Vu que les technologies de raytracing deviennent de plus en plus courantes dans les jeux vidéo, il était intéressant d'apprendre les détails de leur fonctionnement et d'implémenter un raytracer basique moi-même.
+"""
