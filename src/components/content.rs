@@ -71,7 +71,7 @@ fn ContentDetailsViewInner(content: toml::Table) -> impl IntoView {
                     <ContentResumeLines lines=move || content.get().get("resume_lines").map(ToOwned::to_owned) />
                     {body}
                 </div>
-                <div class="basis-1/4">
+                <div class="basis-1/4 space-y-2">
                     {icon}
                     <ContentImageGallery images=images.clone() show_all=true />
                 </div>

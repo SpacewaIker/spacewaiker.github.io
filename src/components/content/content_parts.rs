@@ -1,6 +1,8 @@
 use leptos::{component, view, CollectView, IntoView, Signal, SignalGet};
 use leptos_i18n::Locale as _;
 use toml::Value;
+use wasm_bindgen::JsCast;
+use web_sys::{HtmlElement, HtmlImageElement, MouseEvent};
 
 use crate::{i18n::use_i18n, utils::format_date};
 
@@ -88,43 +90,59 @@ fn image_path(image: &str) -> String {
     }
 }
 
+fn image_fullscreen(event: MouseEvent) {
+    let img = event.target().unwrap().dyn_into::<HtmlImageElement>();
+
+    if let Ok(img) = img {
+        // clicked on image, make it fullscreen
+        let div = img
+            .parent_element()
+            .unwrap()
+            .dyn_into::<HtmlElement>()
+            .unwrap();
+        img.class_list().toggle("fullscreen_img").unwrap();
+        div.class_list().toggle("fullscreen_container").unwrap();
+    } else {
+        // clicked on something else
+        let document = leptos::document();
+        document
+            .get_elements_by_class_name("fullscreen_img")
+            .item(0)
+            .inspect(|img| {
+                img.class_list().remove_1("fullscreen_img").unwrap();
+            });
+        document
+            .get_elements_by_class_name("fullscreen_container")
+            .item(0)
+            .inspect(|div| {
+                div.class_list().remove_1("fullscreen_container").unwrap();
+            });
+    }
+}
+
 /// Component for the images in a piece of content
 ///
 /// The images are rendered in a button that gets maximized when clicked
 #[component]
 pub fn ContentImageGallery(images: Option<Value>, show_all: bool) -> impl IntoView {
     images.map(|images| {
-        let images = images
-            .as_array()
-            .unwrap()
-            .iter()
-            .map(|image| {
-                let mut div_class = String::from("py-2");
-                let mut button_class = String::new();
-                let mut img_class = String::from("rounded-xl");
-
-                if show_all {
-                    div_class += " has-[:focus]:fixed has-[:focus]:w-screen has-[:focus]:h-screen has-[:focus]:top-0 has-[:focus]:left-0 has-[:focus]:backdrop-blur-sm has-[:focus]:backdrop-brightness-50 has-[:focus]:z-50";
-                    button_class += " focus:fixed focus:fixed-center group focus:mt-10";
-                    img_class += " hover:outline hover:outline-purple hover:shadow-lg group-focus:hover:outline-none group-focus:max-w-[90vw] group-focus:max-h-[90vh]";
-                }
-
+        let images = images.as_array().unwrap().iter().map(|image| {
+            if show_all {
                 view! {
-                    <div class=div_class>
-                        <button class=button_class>
-                            <img src=image_path(image.as_str().unwrap()) class=img_class/>
-                        </button>
+                    <div on:click=image_fullscreen class="hover:rounded-xl hover:outline hover:outline-purple hover:cursor-pointer">
+                        <img src=image_path(image.as_str().unwrap()) class="rounded-xl"/>
                     </div>
-                }
-            });
+                }.into_view()
+            } else {
+                view! { <img src=image_path(image.as_str().unwrap()) class="rounded-xl"/> }.into_view()
+            }
+        });
 
-        let images = if show_all {
+        if show_all {
             images.collect_view()
         } else {
             images.take(1).collect_view()
-        };
-
-        view! { <div>{ images }</div> }
+        }
     })
 }
 
