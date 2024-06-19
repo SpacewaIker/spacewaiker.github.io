@@ -1,0 +1,49 @@
+date = { start = 2024-06-01 }
+title = { en = "ObstacleAssault 3D Platformer", fr = "Jeu de plateformes 3D ObstacleAssault" }
+media = [
+  "https://img.itch.zone/aW1hZ2UvMjc3NTUyOC8xNjU2MTEzNi5wbmc=/347x500/MfUV1X.png",
+  "https://img.itch.zone/aW1hZ2UvMjc3NTUyOC8xNjU2MTEzNy5wbmc=/347x500/9993Qn.png",
+  "https://img.itch.zone/aW1hZ2UvMjc3NTUyOC8xNjU2MTEzOC5wbmc=/347x500/kQNQUM.png",
+]
+
+[links]
+itchio = "https://spacewaiker.itch.io/obstacle-assault"
+
+[tags]
+en = ["Unreal Engine 5", "3D Platformer", "Game Dev", "C++"]
+fr = [
+  "Unreal Engine 5",
+  "Jeu de plateformes 3D",
+  "Développement de jeux",
+  "C++",
+]
+
+[summary]
+en = "As a small project when taking a course on Udemy to learn Unreal Engine 5, I made a small 3D platformer game. The game has a course with moving platform, push blocks, spinning platforms, and checkpoints along the way. I learned a lot while working on this project and I'm happy with the result! You can see a gameplay demo by following the itch.io link!"
+fr = "Comme petit projet quand j'ai suivi un cours sur Udemy pour apprendre Unreal Engine 5, j'ai créé un petit jeu de plateformes 3D. Le jeu a un parcours avec des plateformes mobiles, des blocs pousseurs, des plateformes tournantes et des points de sauvegarde en chemin. J'ai beaucoup appris en travaillant sur ce projet et je suis assez satisfait du résultat! Une démo du gameplay est disponible en suivant le lien itch.io!"
+
+[resume_lines]
+en = [
+  "Created a 3D platformer game in Unreal Engine 5 using C++ and Blueprints",
+  "Learned multiple Blueprint concepts such as interfaces and event dispatchers",
+]
+fr = [
+  "Création d'un jeu de plateformes 3D dans Unreal Engine 5 en utilisant C++ et des Blueprints",
+  "Apprentissage de plusieurs concepts de Blueprints tels que les interfaces et les event dispatchers",
+]
+
+[body]
+en = """
+To learn Unreal Engine 5, I took a course on Udemy and worked on several small projects along the way. One of these projects was a 3D platformer game called ObstacleAssault. The player must get from one floating island to the next by jumping on moving platforms, push blocks, spinning platforms, and other obstacles while activating checkpoints along the way. The game offers a fair bit of challenge and variation in the different platforming sections. With the game's timer, the player can also try to complete the course as fast as possible, like a time attack course.
+
+While working on this project, I learned a lot about Unreal Engine 5. I learned how to use C++ in UE5 projects and some of the macros provided, for instance to expose variables to the editor or print to the editor's logging system. I also learned about Blueprint communication mechanisms such as interfaces and event dispatchers. I also got more comfortable with the editor in general, the different window layouts, and debugging techniques.
+
+You can see a gameplay demo or download and play the game yourself on the itch.io page linked above!
+"""
+fr = """
+Pour apprendre Unreal Engine 5, j'ai suivi un cours sur Udemy et j'ai travaillé sur plusieurs petits projets en chemin. L'un de ces projets était un jeu de plateformes 3D appelé ObstacleAssault. Le joueur doit passer d'une île flottante à l'autre en sautant sur des plateformes mobiles, des blocs pousseurs, des plateformes tournantes et d'autres obstacles tout en activant des points de sauvegarde en chemin. Le jeu offre un bon défi et de la variation dans les différentes sections de plateformes. Avec le chronomètre du jeu, le joueur peut également essayer de terminer le parcours le plus rapidement possible, comme un parcours contre la montre.
+
+En travaillant sur ce projet, j'ai beaucoup appris sur Unreal Engine 5. J'ai appris à utiliser C++ dans les projets UE5 et certaines des macros fournies, par exemple pour exposer des variables à l'éditeur ou pour afficher des messages dans le système de logging de l'éditeur. J'ai également appris sur les mécanismes de communication des Blueprints tels que les interfaces et les event dispatchers. Je me suis également senti plus à l'aise avec l'éditeur en général, les différentes dispositions de fenêtres et les techniques de débugging.
+
+Vous pouvez voir une démo du gameplay ou télécharger et jouer au jeu vous-même sur la page itch.io liée ci-dessus!
+"""
