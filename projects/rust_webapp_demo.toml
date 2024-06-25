@@ -4,6 +4,7 @@ media = ["artist_details.png"]
 
 [links]
 github = "https://www.github.com/SpacewaIker/rust-webapp-demo/"
+itchio = "https://spacewaiker.itch.io/the-amulet-of-sirref"
 
 [tags]
 en = ["Rust", "Rocket", "SeaORM", "Yew", "PostgreSQL"]
