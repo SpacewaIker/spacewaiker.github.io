@@ -159,7 +159,7 @@ pub fn ContentLinkIcons(links: Option<Value>) -> impl IntoView {
                 let url = value.as_str().unwrap().to_owned();
                 let icon = match key.as_str() {
                     "github" => view! { <i class="nf nf-fa-github"></i> },
-                    "itchio" => view! { <i class="nf nf-fa-itch-io"></i> },
+                    "itchio" => view! { <i class="nf nf-fa-itch_io"></i> },
                     _ => view! { <i class="nf nf-fa-link"></i> },
                 };
                 view! {
