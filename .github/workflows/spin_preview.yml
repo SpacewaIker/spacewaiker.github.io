@@ -72,7 +72,7 @@ jobs:
           version: latest
 
       - name: Build with Trunk
-        run: trunk build --release --minify --public-url https://raw.githubusercontent.com/SpacewaIker/spacewaiker.github.io/main/
+        run: trunk build --release --minify
 
 
     # Install Spin CLI & Deploy
