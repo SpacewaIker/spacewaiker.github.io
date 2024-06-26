@@ -129,7 +129,7 @@ pub fn ContentImageGallery(images: Option<Value>, show_all: bool) -> impl IntoVi
         let images = images.as_array().unwrap().iter().map(|image| {
             if show_all {
                 view! {
-                    <div on:click=image_fullscreen class="hover:rounded-xl hover:outline hover:outline-purple hover:cursor-pointer">
+                    <div on:click=image_fullscreen class="w-fit hover:rounded-xl hover:outline hover:outline-purple hover:cursor-pointer">
                         <img src=image_path(image.as_str().unwrap()) class="rounded-xl"/>
                     </div>
                 }.into_view()
