@@ -25,7 +25,7 @@ pub fn ContentListingPage(directory: String) -> impl IntoView {
                     <ContentListingPageIndex index=index.clone() />
                 </Await>
 
-                <svg class="absolute h-36 w-full top-[70vh] left-0 fill-purple" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <svg class="absolute h-36 w-full top-[50vh] left-0 fill-purple" viewBox="0 0 100 100" preserveAspectRatio="none">
                     <polyline points="0 30, 100 0, 100 70, 0 100"></polyline>
                 </svg>
 
@@ -63,7 +63,7 @@ fn ContentListingPageIndex(index: toml::Table) -> impl IntoView {
     let body_html = move || markdown::to_html(index.get().get("body").unwrap().as_str().unwrap());
 
     view! {
-        <div class="h-[70vh] text-darkpurple">
+        <div class="h-[50vh] md:w-[60vw] text-darkpurple">
             <h1 class="text-6xl font-serif my-8">{title}</h1>
             <div inner_html=body_html class="font-paragraph text-darkpurple text-xl styled-body" />
         </div>
