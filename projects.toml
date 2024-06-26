@@ -4,12 +4,12 @@ fr = "Projets"
 
 [body]
 en = """
-One of the best ways to learn programming is through practicing and working on projects. Whether it is alone or in a team, for a course or a personal project, trying to create something is crucial to concretizing theoretical knowledge.
+I believe that one of the best ways to learn programming is through practicing and working on projects. Whether it is alone or in a team, for a course or a personal project, trying to create something and solve the problems encountered along the way is crucial to concretizing theoretical knowledge.
 
-My bigger projects are presented below, and almost all are also available on GitHub. Scroll down to discover them!
+Many of my projects are presented below, and almost all are also available on GitHub. Scroll down to discover them!
 """
 fr = """
-Une des meilleures façons d'apprendre la programmation est en pratiquant et en travaillant sur des projets. Que ce soit seul ou en équipe, pour un cours ou un projet personnel, essayer de créer quelque chose est crucial pour concrétizer les connaissances théoriques.
+Selon moi, une des meilleures façons d'apprendre la programmation est en pratiquant et en travaillant sur des projets. Que ce soit seul ou en équipe, pour un cours ou un projet personnel, essayer de créer quelque chose et résoudre les problèmes rencontrés en cours de route est crucial pour concrétizer les connaissances théoriques.
 
-Mes plus gros projets sont présentés ci-dessous, et la majorité sont aussi présentés sur GitHub. Faites défiler pour les découvrir!
+Beaucoup de mes projets sont présentés ci-dessous, et la majorité sont aussi présentés sur GitHub. Faites défiler pour les découvrir!
 """
