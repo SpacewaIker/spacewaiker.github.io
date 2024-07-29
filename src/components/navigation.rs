@@ -4,7 +4,7 @@ use leptos_i18n::{t, Locale as _};
 use leptos_router::{use_location, use_navigate, NavigateOptions, A};
 use wasm_bindgen::JsCast;
 
-const CV_URL: &str = "https://docs.google.com/viewer?url=https://raw.githubusercontent.com/SpacewaIker/spacewaiker.github.io/content/thibaut_baguette_cv.pdf";
+const CV_URL: &str = "https://github.com/SpacewaIker/spacewaiker.github.io/blob/content/thibaut_baguette_cv.pdf";
 
 fn expand_header(_: web_sys::MouseEvent) {
     let header = document()
