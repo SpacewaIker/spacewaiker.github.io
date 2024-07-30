@@ -102,7 +102,7 @@ fn WordSoup<'a>(words: &'a [String]) -> impl IntoView {
     let mut rng = thread_rng();
 
     let mut all_words = Vec::new();
-    for _ in 0..15 {
+    for _ in 0..30 {
         all_words.extend_from_slice(words);
     }
     all_words.shuffle(&mut rng);
