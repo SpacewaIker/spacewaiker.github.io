@@ -70,36 +70,38 @@ Je suis un étudiant en génie logiciel à l'Université McGill avec un intérê
 
 [body]
 en = """
-Whether it is through the projects I've worked on, university courses, or work experience, I have developed strong technical skills in software development. I've started learning the Rust programming languages a few years ago and have loved the language since then. I am also skilled in Java, C, C++, and Python, with some experience in JavaScript and OCaml. In terms of other tools, I've completed a few small projects in Unreal Engine 5, and I'm working on a game with others that we're developing in Unity. I use git and GitHub almost daily and I am also proficient with development tools such as Neovim, VS Code, bash scripting, and many other command-line tools. My most developed skills are:
+Whether it is through the projects I've worked on, university courses, or work experience, I have developed strong technical skills in software development. I've started learning the Rust programming languages a few years ago and have loved the language since then. I am also skilled in Java, C, C++, and Python, with some experience in JavaScript and OCaml. In terms of other tools, I've completed a few projects in Unreal Engine 5, and I'm working on a game with others that we're developing in Unity. I use git and GitHub almost daily and I am also proficient with development tools such as Neovim, VS Code, bash scripting, and many other command-line tools. My most developed skills are:
 
 - Rust
+- C++
 - Java
-- C/C++
+- C
 - Python
 - Unreal Engine 5
 - Git/GitHub
 - Command-line tools
 
-However, technical skills aren't that useful without good interpersonal and teamworking skills. Luckily, I've had many opportunities to develop these as well. Whether it is in English or in French, I have good oral and written communication skills. I have also developed my problem solving and conflict resolution skills during team projects on many occasions. I am also a good autodidact and I am generally a good autonomous developer.
+However, technical skills aren't that useful without good interpersonal and teamworking skills. Luckily, I've had many opportunities to develop these as well. Whether it is in English or in French, I have good oral and written communication skills. I have also developed my problem solving and conflict resolution skills during team projects on many occasions. I am also a good autodidact and a good autonomous developer.
 
 Outside of work, I enjoy playing video games, mostly single-player action-adventure and role-playing games. I've rencently started the Dark Souls series and I've loved the challenging combat and the approach to world-building and level design. One of the first series of games I played was the Assassin's Creed games, although the last few entries were less appealing to me. Two other series of games I love are the recent Spiderman games and the Star Wars Jedi series, as I am a fan of both the Marvel and Star Wars universes.
 
-I also try to keep a good balance between work, personal life, and exercising. I exercise regularly through calisthenics and also bouldering and parkour/acrobatics.
+I also keep a good balance between work, personal life, and exercising. I exercise regularly through calisthenics and also bouldering and parkour/acrobatics.
 """
 fr = """
-Que ce soit à travers les projets sur lesquels j'ai travaillé, les cours à l'université ou mon expérience professionnelle, j'ai développé de solides compétences techniques en développement logiciel. J'ai commencé à apprendre le langage de programmation Rust il y a quelques années et j'ai adoré le langage depuis. Je suis également compétent en Java, C, C++, et Python, avec un peu d'expérience en JavaScript et OCaml. En termes d'autres outils, j'ai réalisé quelques petits projets avec Unreal Engine 5, et je travaille sur un jeu avec d'autres que nous développons avec Unity. J'utilise git et GitHub presque quotidiennement et je suis également compétent avec des outils de développement tels que Neovim, VS Code, les scripts bash, et de nombreux autres outils en ligne de commande. Mes compétences les plus développées sont :
+Que ce soit par les projets sur lesquels j'ai travaillé, les cours à l'université ou mon expérience professionnelle, j'ai développé de solides compétences techniques en développement logiciel. J'ai commencé à apprendre le langage de programmation Rust il y a quelques années et j'ai adoré le langage depuis. Je suis également compétent en Java, C, C++, et Python, avec un peu d'expérience en JavaScript et OCaml. En termes d'autres outils, j'ai réalisé quelques projets avec Unreal Engine 5, et je travaille sur un jeu avec des coéquipiers que nous développons avec Unity. J'utilise git et GitHub presque quotidiennement et je suis également compétent avec des outils de développement tels que Neovim, VS Code, les scripts bash, et de nombreux autres outils en ligne de commande. Mes compétences les plus développées sont :
 
 - Rust
+- C++
 - Java
-- C/C++
+- C
 - Unreal Engine 5
 - Unity
 - Git/GitHub
 - Outils en ligne de commande
 
-Par contre, les compétences techniques ne sont pas très utiles sans de bonnes compétences interpersonnelles et de travail en équipe. Heureusement, j'ai eu de nombreuses occasions de développer celles-ci également. Que ce soit en français ou en anglais, j'ai de bonnes compétences en communication orale et écrite. J'ai également développé mes compétences en résolution de problèmes et en résolution de conflits lors de projets d'équipe à de nombreuses reprises. Je suis également un bon autodidacte et je suis généralement un bon développeur autonome.
+Par contre, les compétences techniques ne sont pas très utiles sans de bonnes compétences interpersonnelles et de travail en équipe. Heureusement, j'ai eu de nombreuses occasions de développer celles-ci également. Que ce soit en français ou en anglais, j'ai de bonnes compétences en communication orale et écrite. J'ai également développé mes compétences en résolution de problèmes et en résolution de conflits lors de projets d'équipe à de nombreuses reprises. Je suis également un bon autodidacte et un bon développeur autonome.
 
 En dehors du travail, j'aime jouer à des jeux vidéo, principalement des jeux solo action-aventure et de rôle. J'ai récemment commencé la série des Dark Souls et j'ai adoré le combat difficile et l'approche de la construction du monde et du level design. L'une des premières séries de jeux auxquelles j'ai joué était les jeux Assassin's Creed, bien que les derniers opus étaient moins attrayants pour moi. Deux autres séries de jeux que j'adore sont les récents jeux Spiderman et la série Star Wars Jedi, vu que je suis fan des univers Marvel et Star Wars.
 
-J'essaie également de maintenir un bon équilibre entre le travail, la vie personnelle et l'exercice. Je fais régulièrement de la calisthénie et je pratique également l'escalade et le parkour/acrobatie.
+Je maintiens également un bon équilibre entre le travail, la vie personnelle et l'exercice. Je fais régulièrement de la calisthénie et je pratique également l'escalade et le parkour/acrobatie.
 """

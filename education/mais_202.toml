@@ -4,7 +4,7 @@ icon = "mais_logo.webp"
 
 [summary]
 en = "I was chosen among the top 30 applicants to participate in an introductory AI bootcamp, which consisted of two hours of teaching per week and multiple projects."
-fr = "J'ai été choisi parmi les 30 meilleurs applicants pour participer à un cours d'introduction à l'intélligence artificielle. Celui-ci consistait de deux heures de cours par semaine et de multiples projets."
+fr = "J'ai été choisi parmi les 30 meilleurs applicants pour participer à un cours d'introduction à l'intelligence artificielle. Celui-ci comportait deux heures de cours par semaine et de multiples projets."
 
 [resume_lines]
 en = [
@@ -16,7 +16,7 @@ en = [
 fr = [
   "Complétion d'un cours extracurriculaire de trois mois sur l'IA ayant une charge de cours complète",
   "Apprentissage des fondations mathématiques de l'IA et plusieurs algorithmes de machine learning.",
-  "Application des connaissances acquises et développé une application basée sur l'IA pour le projet final.",
+  "Application des connaissances acquises et développement d'une application basée sur l'IA pour le projet final.",
   "Gagnant d'un concours d'algorithme de classification en entraînant un réseau neuronal sur les données Fashion MNIST qui classifiait correctement le plus d'images de vêtements en différentes catégories.",
 ]
 
@@ -27,7 +27,7 @@ The McGill Artificial Intelligence Society is a student-lead community of AI ent
 The final assignment for this bootcamp was to build an AI-based project, that we completed in pairs. The project that I worked on is described in the [projects page](https://thibautbaguette.com/en/projects.html#airdraw-project).
 """
 fr = """
-La société d'intelligence artificielle de McGill est une communauté menée par des étudiants ayant pour but d'apprendre et d'enseigner, d'encourager la communauté d'IA, et de connecter les étudiants avec l'industrie. Leur cours « MAIS 202 » est une introduction accélérée de deux mois à l'IA et au machine learning avec des projets et cours à la charge équivalente à un cours normal.
+La société d'intelligence artificielle de McGill est une communauté menée par des étudiants ayant pour but d'apprendre et d'enseigner, d'encourager la communauté d'IA, et de connecter les étudiants avec l'industrie. Leur cours « MAIS 202 » est une introduction accélérée de deux mois à l'IA et au machine learning avec des projets et des cours à la charge équivalente à un cours normal.
 
 Le projet final pour ce cours était de créer un programme basé sur l'IA, que nous complétions en paires. Le projet sur lequel j'ai travaillé est décrit dans la [page des projets](https://thibautbaguette.com/en/projects.html#airdraw-project).
 """

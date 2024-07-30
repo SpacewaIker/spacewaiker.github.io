@@ -20,7 +20,7 @@ en = [
   "Support for object oriented programming features such as inheritance and polymorphism.",
 ]
 fr = [
-  "Compilateur complèt pour une partie du langage C écrit de zéro en Java.",
+  "Compilateur complet pour une partie du langage C écrit de zéro en Java.",
   "Implémentation manuelle d'un analyzeur lexical, un analyzeur syntaxique et sémantique, un générateur de code et un allocateur de registres.",
   "Support pour des fonctionalités de programmation orienté objet telles que l'héritage et le polymorphisme.",
 ]
