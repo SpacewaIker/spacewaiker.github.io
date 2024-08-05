@@ -1,0 +1,47 @@
+date = { start = 2024-06-02 }
+title = { en = "CryptRaider Puzzle Game", fr = "Jeu d'Énigmes CryptRaider" }
+media = [
+  "https://img.itch.zone/aW1hZ2UvMjgxMjk5My8xNjgwMTE5OS5wbmc=/original/lsg9PZ.png",
+  "https://img.itch.zone/aW1hZ2UvMjgxMjk5My8xNjgwMTE5Ny5wbmc=/original/3CBxwI.png",
+  "https://img.itch.zone/aW1hZ2UvMjgxMjk5My8xNjgwMTE5OC5wbmc=/original/byWIzY.png",
+]
+
+[links]
+itchio = "https://spacewaiker.itch.io/cryptraider"
+git = "https://dev.azure.com/spacewaiker/_git/CryptRaider"
+
+[tags]
+en = ["Unreal Engine 5", "C++", "Puzzle Game", "Game Dev", "Graphics"]
+fr = [
+  "Unreal Engine 5",
+  "C++",
+  "Jeu d'Énigmes",
+  "Développement de Jeu",
+  "Graphismes",
+]
+
+[summary]
+en = "To continue deepening my skills with Unreal Engine 5 and C++, I created a small immersive puzzle game called CryptRaider. The first-person game sets the player in a mysterious dungeon, where they must interact with the environment to solve puzzles with the goal of finding the golden statue. Check out the Itch.io page or the git repository with the project files!"
+fr = "Pour continuer à approfondir mes compétences avec Unreal Engine 5 et le C++, j'ai créé un petit jeu d'énigmes immersif appelé CryptRaider. Le jeu à la première personne place le joueur dans un donjon mystérieux, où il doit interagir avec l'environnement pour résoudre des énigmes dans le but de trouver la statue dorée. Consultez la page Itch.io ou le dépôt git avec les fichiers du projet !"
+
+[resume_lines]
+en = [
+  "Created an immersive puzzle game with Unreal Engine 5 and C++",
+  "Learned multiple UE C++ concepts such as geometry sweeping, physics handles, and implementing C++ interfaces in Blueprints",
+]
+fr = [
+  "Création d'un jeu d'énigmes immersif avec Unreal Engine 5 et le C++",
+  "Apprentissage de multiples concepts de C++ UE tels que le balayage de géométrie, les *physics handles*, et l'implémentation d'interfaces C++ dans les Blueprints",
+]
+
+[body]
+en = """
+For this project, I focused more on the atmosphere of the game, making it immersive and polished. As such, I went for a first-person camera, and I focused on the graphics by using Unreal Engine 5's Lumen lighting system, as well as post-processing volumes. I also handcrafted the map from a modular asset pack, and created interactive puzzles for the player to solve.
+
+I learned a lot about using C++ in Unreal Engine 5 for this project. I used geometry sweeping to detect the player grabbing objects, and physics handles to move them around. I implemented multiple C++ components and interfaces that I could use in Blueprints, such as a Grabber component for grabbing objects, a Mover component allowing moving geometry, and an Interactable C++ interface implemented in Blueprints, which was used for opening doors for instance. I also used git with the Large File Storage addon for managing binary files for this project. 
+"""
+fr = """
+Pour ce projet, je me suis concentré sur l'atmosphère du jeu, le rendant immersif et poli. J'ai donc opté pour une caméra à la première personne, et j'ai mis l'accent sur les graphismes en utilisant le système d'éclairage Lumen d'Unreal Engine 5, ainsi que des volumes de post-processing. J'ai également fabriqué la carte manuellement à partir d'un pack d'assets modulaires, et créé des énigmes interactives à être résolues par le joueur.
+
+J'ai beaucoup appris sur l'utilisation du C++ dans Unreal Engine 5 pour ce projet. J'ai utilisé le balayage de géométrie pour détecter la saisie d'objets par le joueur, et les *physics handles* pour les déplacer. J'ai implémenté plusieurs composants et interfaces C++ que j'ai pu utiliser dans les Blueprints, tels qu'un composant Grabber pour saisir des objets, un composant Mover permettant de déplacer de la géométrie, et une interface C++ Interactable implémentée dans les Blueprints, qui a été utilisée pour l'ouverture de portes par exemple. J'ai également utilisé git avec l'addon Large File Storage pour gérer les fichiers binaires de ce projet.
+"""

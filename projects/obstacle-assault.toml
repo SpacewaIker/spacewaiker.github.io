@@ -19,8 +19,8 @@ fr = [
 ]
 
 [summary]
-en = "As a small project when taking a course on Udemy to learn Unreal Engine 5, I made a small 3D platformer game. The game has a course with moving platform, push blocks, spinning platforms, and checkpoints along the way. I learned a lot while working on this project and I'm happy with the result! You can see a gameplay demo by following the itch.io link!"
-fr = "Comme petit projet quand j'ai suivi un cours sur Udemy pour apprendre Unreal Engine 5, j'ai créé un petit jeu de plateformes 3D. Le jeu a un parcours avec des plateformes mobiles, des blocs pousseurs, des plateformes tournantes et des points de sauvegarde en chemin. J'ai beaucoup appris en travaillant sur ce projet et je suis assez satisfait du résultat! Une démo du gameplay est disponible en suivant le lien itch.io!"
+en = "As a small project when taking a course on Udemy to learn Unreal Engine 5, I made a 3D platformer game. The game has a course with moving platform, push blocks, spinning platforms, and checkpoints along the way. I learned a lot while working on this project and I'm happy with the result! You can see a gameplay demo by following the itch.io link!"
+fr = "Comme petit projet quand j'ai suivi un cours sur Udemy pour apprendre Unreal Engine 5, j'ai créé un jeu de plateformes 3D. Le jeu a un parcours avec des plateformes mobiles, des blocs pousseurs, des plateformes tournantes et des points de sauvegarde en chemin. J'ai beaucoup appris en travaillant sur ce projet et je suis assez satisfait du résultat! Une démo du gameplay est disponible en suivant le lien itch.io!"
 
 [resume_lines]
 en = [
