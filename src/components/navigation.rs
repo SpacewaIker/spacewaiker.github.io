@@ -87,7 +87,7 @@ pub fn Header() -> impl IntoView {
                 <a href="https://www.github.com/SpacewaIker" title=t!(i18n, header.hover.github) target="_blank"><i class="nf nf-fa-github"></i></a>
                 <a href="https://spacewaiker.itch.io" title=t!(i18n, header.hover.itchio) target="_blank"><i class="nf nf-fa-itch_io"></i></a>
                 <a class="font-paragraph font-black" href=CV_URL title=t!(i18n, header.hover.resume) target="_blank">CV</a>
-                <a href="mailto:thibaut.baguette@mail.mcgill.ca" title=t!(i18n, header.hover.email)><i class="nf nf-md-email_edit_outline"></i></a>
+                <a href="mailto:tb@thibautbaguette.com" title=t!(i18n, header.hover.email)><i class="nf nf-md-email_edit_outline"></i></a>
             </nav>
         </header>
     }
@@ -104,7 +104,7 @@ fn copy_email_action(_: web_sys::MouseEvent) {
         .unwrap()
         .append_child(&el)
         .expect("Failed to append child");
-    el.set_value("thibaut.baguette@mail.mcgill.ca");
+    el.set_value("tb@thibautbaguette.com");
     el.select();
     document()
         .dyn_into::<web_sys::HtmlDocument>()
@@ -169,7 +169,7 @@ pub fn Footer() -> impl IntoView {
                     {t!(i18n, footer.social.popup)}
                 </div>
                 <p class="cursor-pointer" on:click=copy_email_action title=t!(i18n, footer.social.email)>
-                    "Email"<br/>"thibaut.baguette@mail.mcgill.ca"
+                    "Email"<br/>"tb@thibautbaguette.com"
                 </p>
                 <ul class="*:*:sliding-underline-beige">
                     <li><a href="https://www.github.com/SpacewaIker" title=t!(i18n, footer.social.github) target="_blank">"GitHub"</a></li>
