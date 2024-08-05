@@ -1,0 +1,50 @@
+date = { start = 2024-07-01, end = 2024-08-01 }
+title = { en = "C++ Raytracer", fr = "Raytracer C++" }
+media = [
+  "https://github.com/SpacewaIker/CppRayTracer/blob/main/screenshot.png?raw=true",
+]
+
+[links]
+github = "https://github.com/SpacewaIker/CppRayTracer/"
+
+[tags]
+en = [
+  "Ray tracing",
+  "C++",
+  "CMake",
+  "Computer graphics",
+  "Real-time 3D rendering",
+]
+fr = ["Ray tracing", "C++", "CMake", "Graphisme", "Rendu 3D en temps réel"]
+
+[summary]
+en = "To work on my C++ skills and continue exploring the field of ray tracing, I wrote a simple real-time ray tracer in C++. It supports basic shapes, materials, lighting, and camera movement, but also more advanced features such as signed distance field based geometry and physically based materials and rendering."
+fr = "Pour travailler sur mes compétences en C++ et continuer à explorer le domaine du ray tracing, j'ai écrit un simple ray tracer en temps réel en C++. Il prend en charge les formes de base, les matériaux, l'éclairage et le mouvement de la caméra, mais aussi des fonctionnalités plus avancées telles que la géométrie basée sur des champs de distance signée et les matériaux et le rendu basés sur la physique."
+
+[resume_lines]
+en = [
+  "Developed a real-time ray tracer in C++ using ImGUI, GLM, and CMake",
+  "Implemented basic shapes, materials, lighting, and camera movement, with file loading and saving for scene descriptions",
+  "Added advanced features such as signed distance field based geometry and physically based materials and rendering",
+]
+fr = [
+  "Développement d'un ray tracer en temps réel en C++ en utilisant ImGUI, GLM et CMake",
+  "Implémentation de formes de base, de matériaux, d'éclairage et de mouvement de caméra, avec chargement et sauvegarde de fichiers pour les descriptions de scènes",
+  "Ajout de fonctionnalités avancées telles que la géométrie basée sur des champs de distance signée et les matériaux et le rendu basés sur la physique",
+]
+
+[body]
+en = """
+After working on my [first ray tracer](python_raytracer) in Python, I wanted to work on a more performance-oriented ray tracer. While I was happy with what I accomplished with the Python ray tracer, it was pretty slow which meant that testing different features and creating scenes was very time consuming and involved a lot of waiting. This is why I decided to restart a new ray tracing project, this time in C++, with a focus on better performance. Ultimately, my goal would be to use a GPU accelerated workflow to improve performance the most, but for now I decided to stay with CPU programming out of simplicity.
+
+The ray tracer program has a GUI with a viewport and some settings windows. The viewport displayes the rendered image in real time, and the user can interact with the scene by moving the camera around. The settings windows allows the user to change some rendering settings such as the resolution scaling and toggling jittering and pixel accumulation, as well as some scene settings such as the field of view and the sky colour. The scene settings are then saved in a file and reloaded the next time the program is run.
+
+The rendering currently follows a physically-based rendering path tracing approach, where rays bounce in random directions and must be accumulated over time to converge on the final image. The program supports basic shapes, signed distance field based geometry and constructive solid geometry with smoothing, and emissive materials.
+"""
+fr = """
+Après avoir travaillé sur mon [premier ray tracer](python_raytracer) en Python, j'ai voulu travailler sur un ray tracer plus orienté sur la performance. Bien que j'étais satisfait de ce que j'avais accompli avec le ray tracer en Python, il était assez lent, ce qui signifiait que tester différentes fonctionnalités et créer des scènes demandait du temps et impliquait beaucoup d'attente. C'est pourquoi j'ai décidé de recommencer un nouveau projet de ray tracing, cette fois en C++, avec un accent sur la performance. À terme, mon objectif serait d'utiliser un pipeline accéléré par GPU pour améliorer la performance au maximum, mais pour l'instant j'ai décidé de rester avec la programmation CPU pour des raisons de simplicité.
+
+Le programme du ray tracer a une interface graphique avec un viewport et quelques fenêtres de paramètres. Le viewport affiche l'image rendue en temps réel, et l'utilisateur peut interagir avec la scène en déplaçant la caméra. Les fenêtres de paramètres permettent à l'utilisateur de changer certains paramètres de rendu tels que l'échelle de résolution et l'activation du jittering et de l'accumulation de pixels, ainsi que certains paramètres de scène tels que le champ de vision et la couleur du ciel. Les paramètres de scène sont ensuite sauvegardés dans un fichier et rechargés la prochaine fois que le programme est exécuté.
+
+Le rendu suit actuellement une approche de rendu basé sur la physique avec du path tracing, où les rayons rebondissent dans des directions aléatoires et doivent être accumulés au fil du temps pour converger vers l'image finale. Le programme prend en charge les formes de base, la géométrie basée sur des champs de distance signée et la géométrie solide constructive avec smoothing, et les matériaux émissifs.
+"""
