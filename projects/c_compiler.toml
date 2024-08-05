@@ -16,7 +16,7 @@ fr = "Pour mon cours de « Compiler Design », j'ai écrit un compilateur pour u
 [resume_lines]
 en = [
   "Complete compiler for a subset of the C language from scratch in Java.",
-  "Hand-wrote a lexer, a parser, a semantic analyzer, a code generator, and a regiser allocator.",
+  "Hand-wrote a lexer, a parser, a semantic analyzer, a code generator, and a register allocator.",
   "Support for object oriented programming features such as inheritance and polymorphism.",
 ]
 fr = [
