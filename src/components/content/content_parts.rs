@@ -160,6 +160,7 @@ pub fn ContentLinkIcons(links: Option<Value>) -> impl IntoView {
                 let icon = match key.as_str() {
                     "github" => view! { <i class="nf nf-fa-github"></i> },
                     "itchio" => view! { <i class="nf nf-fa-itch_io"></i> },
+                    "git" => view! { <i class="nf nf-md-git"></i> },
                     _ => view! { <i class="nf nf-fa-link"></i> },
                 };
                 view! {
