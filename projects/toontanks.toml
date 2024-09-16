@@ -1,0 +1,35 @@
+date = { start = 2024-07-01, end = "present" }
+title = { en = "ToonTanks Shooting Game", fr = "Jeu de Tir ToonTanks" }
+media = [
+  "https://img.itch.zone/aW1hZ2UvMjk3NzYxMi8xNzgxMTgyNS5wbmc=/original/eIby%2B8.png",
+]
+
+[links]
+itchio = "https://spacewaiker.itch.io/toontanks"
+git = "https://dev.azure.com/spacewaiker/_git/ToonTanks"
+
+[tags]
+en = ["Unreal Engine 5", "C++", "Game Development", "3D Shooter"]
+fr = ["Unreal Engine 5", "C++", "Développement de Jeu", "Jeu de Tir 3D"]
+
+[summary]
+en = "This is a tank shooter game I am making in Unreal Engine 5. The player can drive around and shoot projectiles at turrets and must avoid getting hit themselves. This game is still in development and there are a lot of features I'd like to implement."
+fr = "Ce jeu est un jeu de tir de tanks que je crée avec Unreal Engine 5. Le.a joueur.euse peut conduire le tank et tirer des projectiles sur des tourelles et doit éviter de se faire toucher lui.elle-même. Ce jeu est toujours en développement et il y a beaucoup de fonctionalités que j'aimerais implémenter."
+
+[resume_lines]
+en = [
+  "Created a 3D shooter game in Unreal Engine 5 using C++ and Blueprints",
+  "Implemented multiple C++ classes with inheritance such as pawn classes, projectile classes, a health component, etc.",
+]
+fr = [
+  "Création d'un jeu de tir en 3D avec Unreal Engine 5 en utilisant C++ et des Blueprints",
+  "Implémentation de multiples classes C++ avec héritage, telles des classes pour les pions, les projectiles, un composant pour les points de vie, etc.",
+]
+
+[body]
+en = """
+This is a tank shooter game I am making in Unreal Engine 5. The player can drive around and shoot projectiles at turrets and must avoid getting hit themselves. This game is still in development and there are a lot of features I'd like to implement.
+"""
+fr = """
+Ce jeu est un jeu de tir de tanks que je crée avec Unreal Engine 5. Le.a joueur.euse peut conduire le tank et tirer des projectiles sur des tourelles et doit éviter de se faire toucher lui.elle-même. Ce jeu est toujours en développement et il y a beaucoup de fonctionalités que j'aimerais implémenter.
+"""
