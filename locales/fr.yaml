@@ -28,3 +28,6 @@ footer:
     title: À propos
     credits: Site web conçu et construit par
     repo: Visiter le dépôt du site web
+
+date:
+  present: présent

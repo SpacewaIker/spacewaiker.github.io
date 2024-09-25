@@ -1,5 +1,5 @@
 use leptos::{component, view, CollectView, IntoView, Signal, SignalGet};
-use leptos_i18n::Locale as _;
+use leptos_i18n::{t, Locale as _};
 use toml::Value;
 use wasm_bindgen::JsCast;
 use web_sys::{HtmlElement, HtmlImageElement, MouseEvent};
@@ -47,7 +47,15 @@ pub fn ContentDate(date: Option<Value>) -> impl IntoView {
         let end_date = move || {
             end_date
                 .clone()
-                .map(|v| format!(" - {}", format_date(v.as_datetime().unwrap(), lang())))
+                .map(|v| {
+                    match v {
+                        Value::String(_) => Some(t!(i18n, date.present)().to_owned()),
+                        Value::Datetime(d) => Some(format_date(&d, lang())),
+                        _ => None,
+                    }
+                })
+                .flatten()
+                .map(|s| format!(" - {}", s))
         };
 
         view! { <span class="font-mono text-lg float-right block md:inline py-4 md:py-0">{ start_date }{ end_date }</span> }

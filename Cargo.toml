@@ -8,6 +8,7 @@ edition = "2021"
 [dependencies]
 base64 = "0.22.1"
 cached = { version = "0.53.1", features = ["async", "wasm"] }
+chrono = "0.4.38"
 console_error_panic_hook = "0.1.7"
 futures = "0.3.30"
 itertools = "0.13.0"

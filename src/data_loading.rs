@@ -1,5 +1,6 @@
 use base64::prelude::*;
 use cached::proc_macro::cached;
+use chrono::Utc;
 use futures::{future::join_all, TryFutureExt};
 use reqwest::header::{HeaderMap, HeaderValue, ACCEPT, AUTHORIZATION};
 use reqwest::{Client, RequestBuilder};
@@ -81,7 +82,11 @@ pub async fn get_directory_items(directory: String) -> Vec<String> {
 
             items.sort_by_key(|(_, table)| {
                 let date = table.get("date").unwrap().as_table().unwrap();
-                date.get("end").unwrap_or_else(|| date.get("start").unwrap()).as_datetime().unwrap().to_owned()
+                match date.get("end") {
+                    Some(toml::Value::String(_)) => Utc::now().to_rfc3339().parse::<toml::value::Datetime>().unwrap(),
+                    Some(toml::Value::Datetime(d)) => d.to_owned(),
+                    _ => date.get("start").unwrap().as_datetime().unwrap().to_owned(),
+                }
             });
             items.reverse();
 
