@@ -1,0 +1,49 @@
+date = { start = 2025-01-13, end = 2025-04-18 }
+title = { en = "Gameplay Programmer Intern - Ubisoft Montreal", fr = "Stagiaire Programmeur Gameplay - Ubisoft Montréal" }
+icon = "Ubisoft_Montr_al.webp"
+
+[tags]
+en = [
+  "C++",
+  "3C",
+  "Snowdrop",
+  "Perforce",
+  "Jira",
+  "AAA Game Dev",
+  "Gameplay Programming",
+]
+fr = [
+  "C++",
+  "3C",
+  "Snowdrop",
+  "Perforce",
+  "Jira",
+  "Développement de jeux AAA",
+  "Programmation Gameplay",
+]
+
+[summary]
+en = "I worked as a Gameplay Programmer on an upcoming unannounced AAA video game at Ubisoft. During this internship, I developed significant new features, as well as resolving bugs in existing features."
+fr = "J'ai travaillé en tant que programmeur gameplay sur un futur jeu vidéo AAA non annoncé chez Ubisoft. Pendant ce stage, j'ai pu développer de nouvelles fonctionnalités importantes, ainsi que resoudre des bugs dans des fonctionnalités existantes."
+
+[resume_lines]
+en = [
+  "Developed autonomously significant gameplay features in C++ for an upcoming AAA video game (unannounced).",
+  "Investigated and successfully resolved bugs related to gameplay code.",
+  "Wrote technical documentation for new features and designs, as well as bug fixes.",
+  "Participated in team meetings, code reviews, and QA playtest sessions.",
+]
+fr = [
+  "Développement autonome de fonctionnalités reliées au gameplay en C++ pour un futur jeu video AAA (non annoncé).",
+  "Investigation et résolution de bugs liés à du code de gameplay.",
+  "Écriture de documentation technique pour de nouvelles fonctionnalités et designs, ainsi que pour des résolutions de bugs.",
+  "Participations aux réunions d'équipe, aux révisions de code et à des sessions de playtest QA.",
+]
+
+[body]
+en = """
+  
+"""
+fr = """
+  
+"""
