@@ -1,0 +1,48 @@
+date = { start = 2025-05-05, end = 2025-08-22 }
+title = { en = "AI Programmer Intern - EA Motive - Iron Man", fr = "Stagiaire programmation IA - EA Motive - Iron Man" }
+icon = "motive_logo.png"
+media = ["EA_Iron_Man_Teaser_16x9.png"]
+
+[tags]
+en = [
+  "C++",
+  "Unreal Engine 5",
+  "Game AI",
+  "Perforce",
+  "Jira",
+  "AAA Game Dev",
+]
+fr = [
+  "C++",
+  "Unreal Engine 5",
+  "IA de jeux",
+  "Perforce",
+  "Jira",
+  "Développement de jeux AAA",
+]
+
+[summary]
+en = "I worked as an AI programmer on EA Motive's upcoming Iron Man game. I touched many aspects of the game's AI archetypes, mainly related to combat behaviour. I developed new features, fixed bugs, and collaborated with other programmers, game designers, technical designers, and artists."
+fr = "J'ai travaillé en tant que programmeur IA sur le futur jeu Iron Man d'EA Motive. J'ai touché à beaucoup d'aspects des archétypes d'IA du jeu, principalement liés au comportement en combat. J'ai développé de nouvelles fonctionalités, résolu des bugs et collaboré avec d'autres programmeurs, des game designers, designers techniques et artistes."
+
+[resume_lines]
+en = [
+  "Developed autonomously new combat AI-related features, allowing for more control over AI behaviour.",
+  "Successfully resolved many bugs related to combat AI behaviour, ensuring a smooth gameplay experience.",
+  "Frequently collaborated with other programmers, game designers, technical designers, QA testers, and artists.",
+  "Designed and implemented a new friendly combat AI based on adaptive behaviour as an intern project.",
+]
+fr = [
+  "Développement autonome de fonctionnalités reliées à l'IA en combat, permettant plus de controle sur le comportement des IA.",
+  "Résolution des nombreux bugs reliés au comportement des IA en combat, assurant une experience de gameplay fluide.",
+  "Collaboration fréquente avec d'autres programmeurs, game designers, designers techniques, testeurs QA, et artistes.",
+  "Design et implémentation d'une nouvelle IA d'allié en combat basée sur un comportement adaptatif comme projet de stage.",
+]
+
+[body]
+en = """
+  
+"""
+fr = """
+  
+"""
